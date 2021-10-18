@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:10:28 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:30:32 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:51:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	init_data(t_data *data)
 	data->player.size = 25;
 	data->player.speed = 5.0f;
 	data->player.growth_direction = UP;
-	data->enemy_speed = 3.0f;
 	data->seconds_run = 0;
 	data->last_modeswap = 0;
 	data->special_mode = 0;
-	data->current_enemies = 0;
-	data->total_enemies = 0;
+	data->current_circles = 0;
+	data->total_circles = 0;
 	data->player.slide_amount = 0;
 	data->player.is_sliding = FALSE;
 	data->hiscore = LoadStorageValue(STORAGE_POSITION_HISCORE);

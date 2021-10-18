@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:33:29 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:53:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(void)
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		player(&data);
-		enemies(&data);
+		circles(&data);
 		text_gui(&data);
 		EndDrawing();
-		enemy_collision(&data);
+		circle_collision(&data);
 		if (player_collision(&data) == GAMEOVER)
 			break ;
 	}

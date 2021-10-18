@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:36:40 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:53:33 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ typedef enum {
 	STORAGE_POSITION_HISCORE	= 1
 } StorageData;
 
-typedef struct s_enemy
+typedef struct s_circle
 {
 	Vector2	position;
 	Color	color;
 	float	size;
 	float	speed;
 	int		move_direction;
-}				t_enemy;
+}				t_circle;
 
 typedef struct s_player
 {
@@ -90,17 +90,16 @@ typedef struct s_player
 }				t_player;
 
 typedef struct s_data {
-	t_enemy	enemy[10];
+	t_circle	circle[10];
 	t_player player;
-	float	enemy_speed;
 	int		hiscore;
 	int		seconds_run;
 	int		last_modeswap;
 	int		screen_height;
 	int		screen_width;
 	int		special_mode;
-	int 	total_enemies;
-	int 	current_enemies;
+	int 	total_circles;
+	int 	current_circles;
 }				t_data;
 
 /*
@@ -112,9 +111,9 @@ int		init_data(t_data *data);
 void	special_modes(t_data *data);
 void	text_gui(t_data *data);
 void 	player(t_data *data);
-void	enemies(t_data *data);
+void	circles(t_data *data);
 int		player_collision(t_data *data);
-void	enemy_collision(t_data *data);
+void	circle_collision(t_data *data);
 void	ice_slide(t_data *data);
 void	mirror_slide(t_data *data);
 
