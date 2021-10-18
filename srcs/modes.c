@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:34:22 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:50:31 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:53:44 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minigame.h"
+#include "../includes/circlegame.h"
 
 static void	mirror_ice_mode(t_data *data)
 {

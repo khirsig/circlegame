@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:06:02 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:46:59 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:53:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minigame.h"
+#include "../includes/circlegame.h"
 
 static void	reverse_movement(t_data *data)
 {

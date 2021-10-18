@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:25:07 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:53:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minigame.h"
+#include "../includes/circlegame.h"
 
 
 int	main(void)

@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 12:59:57 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/17 13:23:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:53:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minigame.h"
+#include "../includes/circlegame.h"
 
 void	ice_slide(t_data *data)
 {

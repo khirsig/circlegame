@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:34:07 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/17 09:45:06 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:53:21 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minigame.h"
+#include "../includes/circlegame.h"
 
 static void	enemy_setup(t_data *data, int enemy_id)
 {
