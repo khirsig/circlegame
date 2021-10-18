@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 13:39:05 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:36:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define BIG 2
 # define ICE 3
 # define MIRROR_ICE 4
+# define GROWTH 5
+# define SPEED 6
+# define WARP 7
 
 # define NONE -1
 # define LEFT 0
@@ -35,6 +38,14 @@
 
 # define GAMEOVER 0
 # define GAME 1
+
+# define ENEMYGRAY1 CLITERAL(Color){ 70, 70, 70, 255 }
+# define ENEMYGRAY2 CLITERAL(Color){ 80, 80, 80, 255 }
+# define ENEMYGRAY3 CLITERAL(Color){ 90, 90, 90, 255 }
+# define ENEMYGRAY4 CLITERAL(Color){ 110, 110, 110, 255 }
+# define ENEMYGRAY5 CLITERAL(Color){ 130, 130, 130, 255 }
+# define MIRROR_ICE_GREEN CLITERAL(Color){ 0, 117, 117, 255 }
+# define GROWTH_PURPLE CLITERAL(Color){ 100, 22, 255, 255 }
 
 /*
 ** -----------------------------------------------------------------------------
@@ -64,16 +75,25 @@ typedef struct s_enemy
 	int		move_direction;
 }				t_enemy;
 
-typedef struct s_data {
-	Vector2	ball_position;
-	Color	ball_color;
-	t_enemy	enemy[10];
-	float	enemy_speed;
-	float	ball_size;
-	int		hiscore;
+typedef struct s_player
+{
+	Vector2	position;
+	Color	color;
+	float	size;
+	float	speed;
+	float	growth_min;
+	float	growth_max;
+	int		growth_direction;
 	int		slide_amount;
 	int		slide_direction;
 	int		is_sliding;
+}				t_player;
+
+typedef struct s_data {
+	t_enemy	enemy[10];
+	t_player player;
+	float	enemy_speed;
+	int		hiscore;
 	int		seconds_run;
 	int		last_modeswap;
 	int		screen_height;
@@ -91,6 +111,7 @@ void	move_character(t_data *data);
 int		init_data(t_data *data);
 void	special_modes(t_data *data);
 void	text_gui(t_data *data);
+void 	player(t_data *data);
 void	enemies(t_data *data);
 int		player_collision(t_data *data);
 void	enemy_collision(t_data *data);

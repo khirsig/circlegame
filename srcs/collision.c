@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:27:09 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 13:41:38 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:15:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	player_collision(t_data *data)
 	index = 0;
 	while (index < data->current_enemies)
 	{
-		if (CheckCollisionCircles(data->ball_position, data->ball_size, data->enemy[index].position, data->enemy[index].size))
+		if (CheckCollisionCircles(data->player.position, data->player.size, data->enemy[index].position, data->enemy[index].size))
 		{
 			temp = LoadStorageValue(STORAGE_POSITION_HISCORE);
 			if (data->seconds_run > temp)

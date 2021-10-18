@@ -23,6 +23,7 @@ SRC =	./srcs/main.c									\
 		./srcs/movement.c								\
 		./srcs/modes.c									\
 		./srcs/text_gui.c								\
+		./srcs/player.c									\
 		./srcs/enemies.c								\
 		./srcs/collision.c								\
 		./srcs/slide.c									\

@@ -6,11 +6,29 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:34:07 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 13:38:07 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:02:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/circlegame.h"
+
+static void	enemy_color(t_data *data, int enemy_id)
+{
+	int rnd;
+
+	rnd = GetRandomValue (1, 5);
+	if (rnd == 1)
+		data->enemy[enemy_id].color = ENEMYGRAY1;
+	if (rnd == 2)
+		data->enemy[enemy_id].color = ENEMYGRAY2;
+	if (rnd == 3)
+		data->enemy[enemy_id].color = ENEMYGRAY3;
+	if (rnd == 4)
+		data->enemy[enemy_id].color = ENEMYGRAY4;
+	if (rnd == 5)
+		data->enemy[enemy_id].color = ENEMYGRAY5;
+	return ;
+}
 
 static void	enemy_setup(t_data *data, int enemy_id)
 {
@@ -19,6 +37,7 @@ static void	enemy_setup(t_data *data, int enemy_id)
 	rnd = GetRandomValue(1, 4);
 	data->enemy[enemy_id].speed = GetRandomValue(2, 5);
 	data->enemy[enemy_id].size = GetRandomValue(20, 40);
+	enemy_color(data, enemy_id);
 	if (rnd == 1)
 	{
 		data->enemy[enemy_id].position.x = data->screen_width + data->enemy[enemy_id].size;
@@ -67,7 +86,7 @@ void	enemies(t_data *data)
 	index = 0;
 	while (index < data->current_enemies)
 	{
-		DrawCircleV(data->enemy[index].position, data->enemy[index].size, DARKGRAY);
+		DrawCircleV(data->enemy[index].position, data->enemy[index].size, data->enemy[index].color);
 		if (data->enemy[index].move_direction == UP)
 		{
 			data->enemy[index].position.y -= data->enemy[index].speed;
