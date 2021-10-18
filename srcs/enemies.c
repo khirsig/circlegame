@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:34:07 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:53:21 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 13:38:07 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ static void	enemy_setup(t_data *data, int enemy_id)
 	int rnd;
 
 	rnd = GetRandomValue(1, 4);
+	data->enemy[enemy_id].speed = GetRandomValue(2, 5);
+	data->enemy[enemy_id].size = GetRandomValue(20, 40);
 	if (rnd == 1)
 	{
-		data->enemy[enemy_id].size = GetRandomValue(20, 40);
 		data->enemy[enemy_id].position.x = data->screen_width + data->enemy[enemy_id].size;
 		rnd = GetRandomValue(data->enemy[enemy_id].size, data->screen_height + data->enemy[enemy_id].size);
 		data->enemy[enemy_id].position.y = rnd;
@@ -27,7 +28,6 @@ static void	enemy_setup(t_data *data, int enemy_id)
 	}
 	else if (rnd == 2)
 	{
-		data->enemy[enemy_id].size = GetRandomValue(20, 40);
 		rnd = GetRandomValue(data->enemy[enemy_id].size, data->screen_width - data->enemy[enemy_id].size);
 		data->enemy[enemy_id].position.x = rnd;
 		data->enemy[enemy_id].position.y = 0 - data->enemy[enemy_id].size;
@@ -35,7 +35,6 @@ static void	enemy_setup(t_data *data, int enemy_id)
 	}
 	else if (rnd == 3)
 	{
-		data->enemy[enemy_id].size = GetRandomValue(20, 40);
 		data->enemy[enemy_id].position.x = 0 - data->enemy[enemy_id].size;
 		rnd = GetRandomValue(data->enemy[enemy_id].size, data->screen_height - data->enemy[enemy_id].size);
 		data->enemy[enemy_id].position.y = rnd;
@@ -43,7 +42,6 @@ static void	enemy_setup(t_data *data, int enemy_id)
 	}
 	else if (rnd == 4)
 	{
-		data->enemy[enemy_id].size = GetRandomValue(20, 40);
 		rnd = GetRandomValue(data->enemy[enemy_id].size, data->screen_width - data->enemy[enemy_id].size);
 		data->enemy[enemy_id].position.x = rnd;
 		data->enemy[enemy_id].position.y = data->screen_height + data->enemy[enemy_id].size;
@@ -72,7 +70,7 @@ void	enemies(t_data *data)
 		DrawCircleV(data->enemy[index].position, data->enemy[index].size, DARKGRAY);
 		if (data->enemy[index].move_direction == UP)
 		{
-			data->enemy[index].position.y -= data->enemy_speed;
+			data->enemy[index].position.y -= data->enemy[index].speed;
 			if (data->enemy[index].position.y <= 0 - data->enemy[index].size)
 			{
 				data->current_enemies--;
@@ -81,7 +79,7 @@ void	enemies(t_data *data)
 		}
 		else if (data->enemy[index].move_direction == DOWN)
 		{
-			data->enemy[index].position.y += data->enemy_speed;
+			data->enemy[index].position.y += data->enemy[index].speed;
 			if (data->enemy[index].position.y >= data->screen_height + data->enemy[index].size)
 			{
 				data->current_enemies--;
@@ -90,7 +88,7 @@ void	enemies(t_data *data)
 		}
 		else if (data->enemy[index].move_direction == RIGHT)
 		{
-			data->enemy[index].position.x += data->enemy_speed;
+			data->enemy[index].position.x += data->enemy[index].speed;
 			if (data->enemy[index].position.x >= data->screen_width + data->enemy[index].size)
 			{
 				data->current_enemies--;
@@ -99,7 +97,7 @@ void	enemies(t_data *data)
 		}
 		else if (data->enemy[index].move_direction == LEFT)
 		{
-			data->enemy[index].position.x -= data->enemy_speed;
+			data->enemy[index].position.x -= data->enemy[index].speed;
 			if (data->enemy[index].position.x <= 0 - data->enemy[index].size)
 			{
 				data->current_enemies--;

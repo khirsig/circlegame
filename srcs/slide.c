@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 12:59:57 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:53:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 09:59:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ void	mirror_slide(t_data *data)
 	{
 		if ((data->slide_direction == RIGHT || data->slide_direction == RIGHT_DOWN || data->slide_direction == RIGHT_UP)
 			&& data->ball_position.x != data->screen_width - data->ball_size)
-			data->ball_position.x -= 2.5f;
+			data->ball_position.x += 2.5f;
 		if ((data->slide_direction == LEFT || data->slide_direction == LEFT_DOWN || data->slide_direction == LEFT_UP)
 			&& data->ball_position.x != data->ball_size)
-			data->ball_position.x += 2.5f;
+			data->ball_position.x -= 2.5f;
 		if ((data->slide_direction == UP || data->slide_direction == LEFT_UP || data->slide_direction == RIGHT_UP)
 			&& data->ball_position.y != data->ball_size)
-			data->ball_position.y += 2.5f;
+			data->ball_position.y -= 2.5f;
 		if ((data->slide_direction == DOWN || data->slide_direction == LEFT_DOWN || data->slide_direction == RIGHT_DOWN)
 			&& data->ball_position.y != data->screen_height - data->ball_size)
-			data->ball_position.y -= 2.5f;
+			data->ball_position.y += 2.5f;
 	}
 	if ((IsKeyReleased(KEY_D) || IsKeyReleased(KEY_RIGHT)) && data->ball_position.x != data->screen_width - data->ball_size)
 	{
@@ -108,9 +108,9 @@ void	mirror_slide(t_data *data)
 	}
 	if ((IsKeyReleased(KEY_W) || IsKeyReleased(KEY_UP)) && data->ball_position.y != data->ball_size)
 	{
-		if (data->slide_direction == RIGHT)
+		if (data->slide_direction == LEFT)
 			data->slide_direction = LEFT_DOWN;
-		else if (data->slide_direction == LEFT)
+		else if (data->slide_direction == RIGHT)
 			data->slide_direction = RIGHT_DOWN;
 		else
 			data->slide_direction = DOWN;
@@ -119,9 +119,9 @@ void	mirror_slide(t_data *data)
 	}
 	if ((IsKeyReleased(KEY_S) || IsKeyReleased(KEY_DOWN)) && data->ball_position.y != data->screen_height - data->ball_size)
 	{
-		if (data->slide_direction == LEFT)
+		if (data->slide_direction == RIGHT)
 			data->slide_direction = RIGHT_UP;
-		else if (data->slide_direction == RIGHT)
+		else if (data->slide_direction == LEFT)
 			data->slide_direction = LEFT_UP;
 		else
 			data->slide_direction = UP;

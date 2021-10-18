@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:53:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 13:42:43 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	t_data data;
 
 	init_data(&data);
-	InitWindow(data.screen_width, data.screen_height, "squidgame");
+	InitWindow(data.screen_width, data.screen_height, "circlegame");
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
 	{
@@ -26,9 +26,9 @@ int	main(void)
 		special_modes(&data);
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
-		text_gui(&data);
 		enemies(&data);
 		DrawCircleV(data.ball_position, data.ball_size, data.ball_color);
+		text_gui(&data);
 		EndDrawing();
 		enemy_collision(&data);
 		if (player_collision(&data) == GAMEOVER)

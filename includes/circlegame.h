@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minigame.h                                         :+:      :+:    :+:   */
+/*   circlegame.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 09:46:27 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/18 13:39:05 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ typedef enum {
 typedef struct s_enemy
 {
 	Vector2	position;
+	Color	color;
 	float	size;
+	float	speed;
 	int		move_direction;
 }				t_enemy;
 
