@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:53:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/11/09 23:31:43 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define MIRROR_ICE 4
 # define GROWTH 5
 # define SPEED 6
-# define WARP 7
+# define SLOW 7
+# define WARP 8
 
 # define NONE -1
 # define LEFT 0
@@ -75,6 +76,19 @@ typedef struct s_circle
 	int		move_direction;
 }				t_circle;
 
+typedef struct s_triangle
+{
+	Vector2	v1;
+	Vector2 v2;
+	Vector2 v3;
+	Color	color;
+	float	speed;
+	float	speed_max;
+	int		move_direction;
+	int		times_moved;
+	int		alive;
+}				t_triangle;
+
 typedef struct s_player
 {
 	Vector2	position;
@@ -86,20 +100,24 @@ typedef struct s_player
 	int		growth_direction;
 	int		slide_amount;
 	int		slide_direction;
+	int		warp_power;
+	int		warp_direction;
 	int		is_sliding;
+	int		tp_amount;
 }				t_player;
 
 typedef struct s_data {
 	t_circle	circle[10];
-	t_player player;
-	int		hiscore;
-	int		seconds_run;
-	int		last_modeswap;
-	int		screen_height;
-	int		screen_width;
-	int		special_mode;
-	int 	total_circles;
-	int 	current_circles;
+	t_triangle	triangle;
+	t_player 	player;
+	int			hiscore;
+	int			seconds_run;
+	int			last_modeswap;
+	int			screen_height;
+	int			screen_width;
+	int			special_mode;
+	int 		total_circles;
+	int 		current_circles;
 }				t_data;
 
 /*
@@ -116,5 +134,7 @@ int		player_collision(t_data *data);
 void	circle_collision(t_data *data);
 void	ice_slide(t_data *data);
 void	mirror_slide(t_data *data);
+void	triangles(t_data *data);
+void	warp_movement(t_data *data);
 
 #endif

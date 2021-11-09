@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:06:02 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:18:44 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/11/09 23:33:50 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,15 @@ static void	normal_movement(t_data *data)
 
 void	move_character(t_data *data)
 {
-	if (data->special_mode != REVERSE && data->special_mode != MIRROR_ICE)
+	if (data->special_mode != REVERSE && data->special_mode != MIRROR_ICE && data->special_mode != WARP)
 		normal_movement(data);
-	else
+	else if (data->special_mode != WARP)
 		reverse_movement(data);
 	if (data->special_mode == ICE)
 		ice_slide(data);
 	if (data->special_mode == MIRROR_ICE)
 		mirror_slide(data);
+	if (data->special_mode == WARP)
+		warp_movement(data);
 	return ;
 }

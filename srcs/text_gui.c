@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:47:32 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:36:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/11/09 23:59:10 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	text_gui(t_data *data)
 		DrawText("Mode: Growth", 320, 10, 20, GROWTH_PURPLE);
 	if (data->special_mode == SPEED)
 		DrawText("Mode: Speed", 320, 10, 20, BLUE);
+	if (data->special_mode == SLOW)
+		DrawText("Mode: Slow", 320, 10, 20, BROWN);
+	if (data->special_mode == WARP)
+		DrawText("Mode: Warp", 320, 10, 20, ORANGE);
 	temp = ft_itoa(GetTime());
 	if (GetTime() != data->seconds_run)
 		data->seconds_run = GetTime();

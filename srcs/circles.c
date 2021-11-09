@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:34:07 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:53:13 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/22 10:34:05 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	circle_setup(t_data *data, int enemy_id)
 	int rnd;
 
 	rnd = GetRandomValue(1, 4);
-	data->circle[enemy_id].speed = GetRandomValue(2, 5);
-	data->circle[enemy_id].size = GetRandomValue(20, 40);
+	data->circle[enemy_id].speed = GetRandomValue(2, 4);
+	data->circle[enemy_id].size = GetRandomValue(20, 30);
 	circle_color(data, enemy_id);
 	if (rnd == 1)
 	{
@@ -77,10 +77,10 @@ void	circles(t_data *data)
 
 	if (data->seconds_run < 5)
 		max_enemies = 1;
-	else if (data->seconds_run < 50)
-		max_enemies = data->total_circles / 5 + 1;
+	else if (data->seconds_run < 25)
+		max_enemies = data->seconds_run / 5 + 1;
 	else
-		max_enemies = 10;
+		max_enemies = 5;
 	while (data->current_circles < max_enemies)
 		circle_setup(data, data->current_circles);
 	index = 0;

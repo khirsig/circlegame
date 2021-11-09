@@ -6,11 +6,27 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:34:22 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:37:28 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/11/09 23:59:23 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/circlegame.h"
+
+static void warp_mode(t_data *data)
+{
+	data->player.color = ORANGE;
+	data->special_mode = WARP;
+	data->player.size = 25;
+	data->player.speed = 0.0f;
+}
+
+static void	slow_mode(t_data *data)
+{
+	data->player.color = BROWN;
+	data->special_mode = SLOW;
+	data->player.size = 25;
+	data->player.speed = 2.0f;
+}
 
 static void	speed_mode(t_data *data)
 {
@@ -76,9 +92,10 @@ void	special_modes(t_data *data)
 
 	if (data->seconds_run % 10 == 0 && data->last_modeswap != data->seconds_run)
 	{
-		rnd = GetRandomValue(0, 6);
-		while (data->special_mode == rnd)
-			rnd = GetRandomValue(0, 6);
+		// rnd = GetRandomValue(0, 8);
+		// while (data->special_mode == rnd)
+		// 	rnd = GetRandomValue(0, 8);
+		rnd = 8;
 		if (rnd == 0)
 			normal_mode(data);
 		if (rnd == 1)
@@ -93,6 +110,10 @@ void	special_modes(t_data *data)
 			growth_mode(data);
 		if (rnd == 6)
 			speed_mode(data);
+		if (rnd == 7)
+			slow_mode(data);
+		if (rnd == 8)
+			warp_mode(data);
 		data->last_modeswap = data->seconds_run;
 	}
 	return ;

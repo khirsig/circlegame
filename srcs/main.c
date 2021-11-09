@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:53:47 by khirsig          ###   ########.fr       */
+/*   Updated: 2021/10/22 10:53:43 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(void)
 		ClearBackground(RAYWHITE);
 		player(&data);
 		circles(&data);
+		// if (data.triangle.alive == TRUE || data.seconds_run % 30 == 0)
+		// 	triangles(&data);
 		text_gui(&data);
 		EndDrawing();
 		circle_collision(&data);

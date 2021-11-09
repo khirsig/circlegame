@@ -25,8 +25,10 @@ SRC =	./srcs/main.c									\
 		./srcs/text_gui.c								\
 		./srcs/player.c									\
 		./srcs/circles.c								\
+		./srcs/triangles.c								\
 		./srcs/collision.c								\
 		./srcs/slide.c									\
+		./srcs/warp.c									\
 
 all: header $(NAME)
 
