@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:47:32 by khirsig           #+#    #+#             */
-/*   Updated: 2021/11/09 23:59:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:39:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ void	text_gui(t_data *data)
 		DrawText("Mode: Slow", 320, 10, 20, BROWN);
 	if (data->special_mode == WARP)
 		DrawText("Mode: Warp", 320, 10, 20, ORANGE);
-	temp = ft_itoa(GetTime());
-	if (GetTime() != data->seconds_run)
-		data->seconds_run = GetTime();
-	DrawText(temp, 10, 30, 20, BLUE);
-	free(temp);
 	temp = ft_itoa(GetFPS());
 	DrawText(temp, 10, 10, 20, DARKGREEN);
 	free(temp);
 	temp = ft_itoa(data->hiscore);
-	DrawText("Hiscore:", 10, data->screen_height - 30, 20, MAROON);
-	DrawText(temp, 100, data->screen_height - 30, 20, MAROON);
+	DrawText("Hiscore:", data->screen_width - 130, data->screen_height - 30, 20, MAROON);
+	DrawText(temp, data->screen_width - 40, data->screen_height - 30, 20, MAROON);
+	temp = ft_itoa(data->current_run);
+	DrawText("Score:", 10, data->screen_height - 30, 20, BLUE);
+	DrawText(temp, 80, data->screen_height - 30, 20, BLUE);
 	free(temp);
 	return ;
 }

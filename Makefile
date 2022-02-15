@@ -8,7 +8,7 @@ SDIR = ./srcs/
 OBJDIR = ./objs/
 LIBFT = ./libs/libft/libft.a
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -O2
 OBJECTS = $(OBJDIR)/*.o
 
 DARKBLUE	= \033[0;34m
@@ -28,7 +28,9 @@ SRC =	./srcs/main.c									\
 		./srcs/triangles.c								\
 		./srcs/collision.c								\
 		./srcs/slide.c									\
+		./srcs/time.c									\
 		./srcs/warp.c									\
+		./srcs/window.c									\
 
 all: header $(NAME)
 

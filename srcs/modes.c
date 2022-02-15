@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:34:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 14:13:18 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:45:59 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	special_modes(t_data *data)
 {
 	int rnd;
 
-	if (data->seconds_run % 10 == 0 && data->last_modeswap != data->seconds_run)
+	if (data->current_run % 10 == 0 && data->last_modeswap != data->current_run)
 	{
 		rnd = GetRandomValue(0, 8);
 		while (data->special_mode == rnd)
@@ -113,7 +113,7 @@ void	special_modes(t_data *data)
 			slow_mode(data);
 		if (rnd == 8)
 			warp_mode(data);
-		data->last_modeswap = data->seconds_run;
+		data->last_modeswap = data->current_run;
 	}
 	return ;
 }

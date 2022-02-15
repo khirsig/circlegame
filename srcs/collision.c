@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:27:09 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/18 14:53:40 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:40:04 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	circle_collision(t_data *data)
 	return ;
 }
 
-int	player_collision(t_data *data)
+void	player_collision(t_data *data)
 {
 	int index;
 	int temp;
@@ -55,9 +55,8 @@ int	player_collision(t_data *data)
 			temp = LoadStorageValue(STORAGE_POSITION_HISCORE);
 			if (data->seconds_run > temp)
 				SaveStorageValue(STORAGE_POSITION_HISCORE, data->seconds_run);
-			return (GAMEOVER);
+			data->game_state = GAMEOVER;
 		}
 		index++;
 	}
-	return (GAME);
 }

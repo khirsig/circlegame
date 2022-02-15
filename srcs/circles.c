@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:34:07 by khirsig           #+#    #+#             */
-/*   Updated: 2021/10/22 10:34:05 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:54:45 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,58 @@ static void	circle_setup(t_data *data, int enemy_id)
 	data->total_circles++;
 }
 
+static void	circle_movement(t_data *data, int index)
+{
+	if (data->circle[index].move_direction == UP)
+	{
+		data->circle[index].position.y -= data->circle[index].speed;
+		if (data->circle[index].position.y <= 0 - data->circle[index].size)
+		{
+			data->current_circles--;
+			circle_setup(data, index);
+		}
+	}
+	else if (data->circle[index].move_direction == DOWN)
+	{
+		data->circle[index].position.y += data->circle[index].speed;
+		if (data->circle[index].position.y >= data->screen_height + data->circle[index].size)
+		{
+			data->current_circles--;
+			circle_setup(data, index);
+		}
+	}
+	else if (data->circle[index].move_direction == RIGHT)
+	{
+		data->circle[index].position.x += data->circle[index].speed;
+		if (data->circle[index].position.x >= data->screen_width + data->circle[index].size)
+		{
+			data->current_circles--;
+			circle_setup(data, index);
+		}
+	}
+	else if (data->circle[index].move_direction == LEFT)
+	{
+		data->circle[index].position.x -= data->circle[index].speed;
+		if (data->circle[index].position.x <= 0 - data->circle[index].size)
+		{
+			data->current_circles--;
+			circle_setup(data, index);
+		}
+	}
+}
+
 void	circles(t_data *data)
 {
 	int max_enemies;
 	int index;
 
-	if (data->seconds_run < 5)
+	if (data->current_run < 5)
 		max_enemies = 1;
-	else if (data->seconds_run < 25)
-		max_enemies = data->seconds_run / 5 + 1;
+	else if (data->current_run < 25)
+		max_enemies = data->current_run / 5 + 1;
 	else
+		max_enemies = 5;
+	if (data->game_state != GAME)
 		max_enemies = 5;
 	while (data->current_circles < max_enemies)
 		circle_setup(data, data->current_circles);
@@ -87,42 +129,8 @@ void	circles(t_data *data)
 	while (index < data->current_circles)
 	{
 		DrawCircleV(data->circle[index].position, data->circle[index].size, data->circle[index].color);
-		if (data->circle[index].move_direction == UP)
-		{
-			data->circle[index].position.y -= data->circle[index].speed;
-			if (data->circle[index].position.y <= 0 - data->circle[index].size)
-			{
-				data->current_circles--;
-				circle_setup(data, index);
-			}
-		}
-		else if (data->circle[index].move_direction == DOWN)
-		{
-			data->circle[index].position.y += data->circle[index].speed;
-			if (data->circle[index].position.y >= data->screen_height + data->circle[index].size)
-			{
-				data->current_circles--;
-				circle_setup(data, index);
-			}
-		}
-		else if (data->circle[index].move_direction == RIGHT)
-		{
-			data->circle[index].position.x += data->circle[index].speed;
-			if (data->circle[index].position.x >= data->screen_width + data->circle[index].size)
-			{
-				data->current_circles--;
-				circle_setup(data, index);
-			}
-		}
-		else if (data->circle[index].move_direction == LEFT)
-		{
-			data->circle[index].position.x -= data->circle[index].speed;
-			if (data->circle[index].position.x <= 0 - data->circle[index].size)
-			{
-				data->current_circles--;
-				circle_setup(data, index);
-			}
-		}
+		if (data->game_state == GAME || data->game_state == START)
+			circle_movement(data, index);
 		index++;
 	}
 }

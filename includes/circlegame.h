@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   circlegame.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 13:54:47 by tjensen          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:38:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 
 # define GAMEOVER 0
 # define GAME 1
+# define INIT 2
+# define START 3
 
 # define ENEMYGRAY1 CLITERAL(Color){ 70, 70, 70, 255 }
 # define ENEMYGRAY2 CLITERAL(Color){ 80, 80, 80, 255 }
@@ -110,8 +112,11 @@ typedef struct s_data {
 	t_circle	circle[10];
 	t_triangle	triangle;
 	t_player 	player;
+	int			game_state;
 	int			hiscore;
+	int			start_time;
 	int			seconds_run;
+	int			current_run;
 	int			last_modeswap;
 	int			screen_height;
 	int			screen_width;
@@ -130,11 +135,14 @@ void	special_modes(t_data *data);
 void	text_gui(t_data *data);
 void 	player(t_data *data);
 void	circles(t_data *data);
-int		player_collision(t_data *data);
+void	player_collision(t_data *data);
 void	circle_collision(t_data *data);
 void	ice_slide(t_data *data);
 void	mirror_slide(t_data *data);
 void	triangles(t_data *data);
 void	warp_movement(t_data *data);
+void	start_screen(t_data *data);
+void	ingame_screen(t_data *data);
+void	set_time(t_data *data);
 
 #endif
