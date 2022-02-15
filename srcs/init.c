@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:10:28 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:59:43 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:02:01 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int	init_data(t_data *data)
 	data->triangle.times_moved = 0;
 	data->player.slide_amount = 0;
 	data->player.is_sliding = FALSE;
-	data->hiscore = LoadStorageValue(STORAGE_POSITION_HISCORE);
 	return (0);
 }

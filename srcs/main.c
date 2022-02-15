@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:46:38 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:02:11 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/circlegame.h"
-
 
 int	main(void)
 {
@@ -21,6 +20,7 @@ int	main(void)
 	data.screen_height = 600;
 	data.seconds_run = 0;
 	data.game_state = INIT;
+	data.hiscore = LoadStorageValue(STORAGE_POSITION_HISCORE);
 	InitWindow(data.screen_width, data.screen_height, "circlegame");
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
