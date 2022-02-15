@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:27:09 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:40:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:00:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	player_collision(t_data *data)
 		if (CheckCollisionCircles(data->player.position, data->player.size, data->circle[index].position, data->circle[index].size))
 		{
 			temp = LoadStorageValue(STORAGE_POSITION_HISCORE);
-			if (data->seconds_run > temp)
+			if (data->current_run > temp)
 				SaveStorageValue(STORAGE_POSITION_HISCORE, data->seconds_run);
+			data->hiscore = LoadStorageValue(STORAGE_POSITION_HISCORE);
 			data->game_state = GAMEOVER;
 		}
 		index++;
