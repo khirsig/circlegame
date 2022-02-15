@@ -48,6 +48,7 @@ SRC =		ft_atoi.c			\
 			ft_toupper.c		\
 			ft_utoa.c			\
 			get_next_line.c		\
+			get_next_line_2.c	\
 			get_next_line_utils.c\
 
 OBJECTS = ./*.o
@@ -56,14 +57,8 @@ NAME = libft.a
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
-	@printf "|                                        Libft compiling complete.                                       |"
 
 $(OBJECTS): $(SRC)
-	@printf "|                                            Libft compiling.                                            |\r"
-	@sleep 0.5
-	@printf "|                                            Libft compiling..                                           |\r"
-	@sleep 0.5
-	@printf "|                                            Libft compiling...                                          |\r"
 	@$(CC) -c $(CFLAGS) $(SRC)
 
 clean:
@@ -71,6 +66,5 @@ clean:
 
 fclean:
 	@rm -f $(NAME) $(OBJECTS)
-	@echo "|                                               Libft cleaned.                                            |"
 
 re: fclean $(NAME)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jhagedor <jhagedor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 09:58:00 by khirsig           #+#    #+#             */
-/*   Updated: 2021/08/19 11:47:30 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/07 14:28:17 by jhagedor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char		*ft_strcpy(char *dest, const char *src);
 int			ft_cntnbr(long long n);
 int			ft_count_lines(char *file);
 char		*get_next_line(int fd);
+char		*get_next_line_2(int fd);
 int			ft_count_lines(char *file);
 int			ft_new_line(char *str);
 
