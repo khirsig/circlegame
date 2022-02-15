@@ -2,7 +2,7 @@ CC = gcc
 
 NAME = circlegame
 
-LFLAGS = `pkg-config --libs --cflags raylib`
+LFLAGS = -lraylib
 
 SDIR = ./srcs/
 OBJDIR = ./objs/
