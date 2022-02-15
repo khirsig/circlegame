@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   circlegame.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2021/11/09 23:31:43 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/15 13:54:47 by tjensen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # include <string.h>
 # include <unistd.h>
 # include "../libs/libft/libft.h"
-# include "/opt/homebrew/Cellar/raylib/3.7.0/include/raylib.h"
+# include "raylib.h"
 
 /*
 ** -----------------------------------------------------------------------------
