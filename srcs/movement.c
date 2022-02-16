@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:06:02 by khirsig           #+#    #+#             */
-/*   Updated: 2021/11/09 23:33:50 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:37:19 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	reverse_movement(t_data *data)
 {
-	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && data->player.position.x != data->screen_width - data->player.size)
+	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && data->player.position.x <= data->screen_width - data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -23,7 +23,7 @@ static void	reverse_movement(t_data *data)
 		}
 		data->player.position.x += data->player.speed;
 	}
-	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && data->player.position.x != data->player.size)
+	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && data->player.position.x >= data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -32,7 +32,7 @@ static void	reverse_movement(t_data *data)
 		}
 		data->player.position.x -= data->player.speed;
 	}
-	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && data->player.position.y != data->player.size)
+	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && data->player.position.y >= data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -41,7 +41,7 @@ static void	reverse_movement(t_data *data)
 		}
 		data->player.position.y -= data->player.speed;
 	}
-	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && data->player.position.y != data->screen_height - data->player.size)
+	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && data->player.position.y <= data->screen_height - data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -54,7 +54,7 @@ static void	reverse_movement(t_data *data)
 
 static void	normal_movement(t_data *data)
 {
-	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && data->player.position.x != data->screen_width - data->player.size)
+	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && data->player.position.x <= data->screen_width - data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -63,7 +63,7 @@ static void	normal_movement(t_data *data)
 		}
 		data->player.position.x += data->player.speed;
 	}
-	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && data->player.position.x != data->player.size)
+	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && data->player.position.x >= data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -72,7 +72,7 @@ static void	normal_movement(t_data *data)
 		}
 		data->player.position.x -= data->player.speed;
 	}
-	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && data->player.position.y != data->player.size)
+	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && data->player.position.y >= data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{
@@ -81,7 +81,7 @@ static void	normal_movement(t_data *data)
 		}
 		data->player.position.y -= data->player.speed;
 	}
-	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && data->player.position.y != data->screen_height - data->player.size)
+	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && data->player.position.y <= data->screen_height - data->player.size)
 	{
 		if (data->player.is_sliding == TRUE)
 		{

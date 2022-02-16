@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:47:32 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:39:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:26:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ void	text_gui(t_data *data)
 		DrawText("Mode: Slow", 320, 10, 20, BROWN);
 	if (data->special_mode == WARP)
 		DrawText("Mode: Warp", 320, 10, 20, ORANGE);
-	temp = ft_itoa(GetFPS());
-	DrawText(temp, 10, 10, 20, DARKGREEN);
-	free(temp);
 	temp = ft_itoa(data->hiscore);
 	DrawText("Hiscore:", data->screen_width - 130, data->screen_height - 30, 20, MAROON);
 	DrawText(temp, data->screen_width - 40, data->screen_height - 30, 20, MAROON);

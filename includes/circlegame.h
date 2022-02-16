@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:38:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:35:35 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_data {
 	t_circle	circle[10];
 	t_triangle	triangle;
 	t_player 	player;
+	int			debug;
 	int			game_state;
 	int			hiscore;
 	int			start_time;
@@ -136,7 +137,6 @@ void	text_gui(t_data *data);
 void 	player(t_data *data);
 void	circles(t_data *data);
 void	player_collision(t_data *data);
-void	circle_collision(t_data *data);
 void	ice_slide(t_data *data);
 void	mirror_slide(t_data *data);
 void	triangles(t_data *data);
@@ -144,5 +144,6 @@ void	warp_movement(t_data *data);
 void	start_screen(t_data *data);
 void	ingame_screen(t_data *data);
 void	set_time(t_data *data);
+void	debug_mode(t_data *data);
 
 #endif

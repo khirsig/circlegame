@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 16:02:11 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:31:54 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int	main(void)
 	data.screen_height = 600;
 	data.seconds_run = 0;
 	data.game_state = INIT;
+	data.debug = FALSE;
 	data.hiscore = LoadStorageValue(STORAGE_POSITION_HISCORE);
 	InitWindow(data.screen_width, data.screen_height, "circlegame");
-	SetTargetFPS(60);
+	SetTargetFPS(63);
 	while (!WindowShouldClose())
 	{
+		debug_mode(&data);
 		set_time(&data);
 		if (data.game_state == INIT)
 			init_data(&data);

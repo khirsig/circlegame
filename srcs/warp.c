@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:32:14 by khirsig           #+#    #+#             */
-/*   Updated: 2021/11/10 00:03:41 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:43:22 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,32 @@ static void	warp_get_dir(t_data *data)
 }
 void	warp_movement(t_data *data)
 {
+	int	warp_speed;
+
 	warp_get_dir(data);
+	warp_speed = 80;
 	if (data->player.warp_power >= 50)
 	{
-		data->player.warp_power = 0;
-		if (data->player.warp_direction == LEFT)
-			data->player.position.x -= 80;
-		if (data->player.warp_direction == RIGHT)
-			data->player.position.x += 80;
-		if (data->player.warp_direction == UP)
-			data->player.position.y -= 80;
-		if (data->player.warp_direction == DOWN)
-			data->player.position.y += 80;
+		if (data->player.warp_direction == LEFT && data->player.position.x - warp_speed >= data->player.size)
+		{
+			data->player.position.x -= warp_speed;
+			data->player.warp_power = 0;
+		}
+		if (data->player.warp_direction == RIGHT && data->player.position.x + warp_speed <= data->screen_width - data->player.size)
+		{
+			data->player.position.x += warp_speed;
+			data->player.warp_power = 0;
+		}
+		if (data->player.warp_direction == UP && data->player.position.y - warp_speed >= data->player.size)
+		{
+			data->player.position.y -= warp_speed;
+			data->player.warp_power = 0;
+		}
+		if (data->player.warp_direction == DOWN && data->player.position.y + warp_speed <= data->screen_height - data->player.size)
+		{
+			data->player.position.y += warp_speed;
+			data->player.warp_power = 0;
+		}
 	}
 	else
 		data->player.warp_power += 1;

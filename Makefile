@@ -10,6 +10,7 @@ OBJDIR = ./objs/
 OBJECTS = $(OBJDIR)/*.o
 
 SRC =	./srcs/main.c									\
+		./srcs/debug.c									\
 		./srcs/init.c									\
 		./srcs/movement.c								\
 		./srcs/modes.c									\

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:22:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/02/15 15:29:08 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/02/16 11:37:46 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	start_screen(t_data *data)
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 	circles(data);
-	DrawText("Press Enter", 250, 250, 50, BLUE);
+	DrawText("CIRCLEGAME", 230, 250, 50, BLUE);
+	DrawText("Press Enter to Play the Game!", 235, 300, 20, DARKGRAY);
+	DrawText("alpha v0.1", data->screen_width - 105, data->screen_height - 30, 20, DARKGRAY);
 	EndDrawing();
 	if (IsKeyPressed(KEY_ENTER))
 	{
@@ -42,7 +44,7 @@ void	ingame_screen(t_data *data)
 		// 	triangles(&data);
 		text_gui(data);
 		EndDrawing();
-		circle_collision(data);
+		// circle_collision(data);
 	}
 	else
 	{
