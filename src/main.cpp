@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/16 10:36:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/16 12:43:45 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ int	main(void)
 {
 	Data data;
 
-while (!data.getWindow().ShouldClose())
+	SetTargetFPS(SCREEN_FPS);
+	while (!(data.window.ShouldClose()))
 	{
-		switch (data.getGameMode())
+		switch (data.gameMode)
+		{
 			case START_SCREEN :
 				startScreen(data);
 				break;
+			case LOADING_SCREEN :
+				loadingScreen(data);
+				break;
+		}
 	}
 	return (0);
 }

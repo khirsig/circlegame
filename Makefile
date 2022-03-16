@@ -10,10 +10,9 @@ OBJECTS = $(OBJDIR)/*.o
 
 SRC =		./src/main.cpp										\
 			./src/startScreen.cpp								\
-			./src/Data.cpp										\
+			./src/loadingScreen.cpp								\
 
 HEADER =	./src/circlegame.hpp								\
-			./src/Data.hpp										\
 			config.hpp											\
 
 all: $(NAME)
