@@ -1,47 +1,36 @@
-CC = gcc
+CC = g++
 
 NAME = circlegame
 
-LIBPATH = ./libs/libft/libft.a
 LFLAGS =  -lraylib
-CFLAGS = -Wall -Werror -Wextra -O2
+CFLAGS = -std=c++0x -O2
 
 OBJDIR = ./objs/
 OBJECTS = $(OBJDIR)/*.o
 
-SRC =	./srcs/main.c									\
-		./srcs/debug.c									\
-		./srcs/init.c									\
-		./srcs/movement.c								\
-		./srcs/modes.c									\
-		./srcs/text_gui.c								\
-		./srcs/player.c									\
-		./srcs/circles.c								\
-		./srcs/triangles.c								\
-		./srcs/collision.c								\
-		./srcs/slide.c									\
-		./srcs/time.c									\
-		./srcs/warp.c									\
-		./srcs/window.c									\
+SRC =		./src/main.cpp										\
+			./src/startScreen.cpp								\
+			./src/Data.cpp										\
+
+HEADER =	./src/circlegame.hpp								\
+			./src/Data.hpp										\
+			config.hpp											\
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@make --directory=./libs/libft
-	@$(CC) $(OBJECTS) $(LFLAGS) $(CFLAGS) -o $(NAME) $(LIBPATH)
+	@$(CC) $(OBJECTS) $(LFLAGS) $(CFLAGS) -o $(NAME)
 
-$(OBJECTS): $(SRC)
+$(OBJECTS): $(SRC) $(HEADER)
 	@$(CC) -c $(CFLAGS) $(SRC)
 	@rm -rf ./objs; mkdir ./objs
 	@mv *.o $(OBJDIR)
 
 clean:
-	@make clean --directory=./libs/libft
 	@rm -f $(OBJECTS)
 	@rm -rf ./objs
 
 fclean: clean
-	@make fclean --directory=./libs/libft
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)
