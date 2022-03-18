@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/16 13:59:35 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/16 16:42:12 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ const static std::string menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.1"
 };
 
+const static int	menuTextSize[] {
+	SCREEN_HEIGHT / 14, SCREEN_HEIGHT / 28, SCREEN_HEIGHT / 36
+};
+
 const static int	menuTextLen[] {
-	MeasureText(menuText[0]., SCREEN_HEIGHT / 4), MeasureText(menuText[1], SCREEN_HEIGHT / 8), MeasureText(menuText[2], SCREEN_HEIGHT / 10)
+	MeasureText(menuText[0].c_str(), menuTextSize[0]), MeasureText(menuText[1].c_str(), menuTextSize[1]), MeasureText(menuText[2].c_str(), menuTextSize[2])
 };
 
 struct Data {
