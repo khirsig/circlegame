@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/18 12:14:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/18 14:50:22 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 class Circle {
 	public:
+		Circle();
 		Circle(int screenWidth, int screenHeight);
 		~Circle();
 		void			moveCircle(int screenWidth, int screenHeight);

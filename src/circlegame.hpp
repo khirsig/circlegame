@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/18 12:20:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/18 14:51:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct Data {
 	int	screenFPS = SCREEN_FPS;
 	int	gameMode = START_SCREEN;
 	int	circleAmount = 5;
-	Circle *circle;
+	Circle circle[5];
 };
 
 void	startScreen(Data &data);

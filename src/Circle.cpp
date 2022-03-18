@@ -6,13 +6,19 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/18 12:16:18 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/18 15:03:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Circle.hpp"
 
 int Circle::_circleAmount = 0;
+
+Circle::Circle()
+{
+	this->_pos.x = 0;
+	this->_pos.y = 0;
+}
 
 Circle::Circle(int screenWidth, int screenHeight)
 {
@@ -29,8 +35,12 @@ void	Circle::resetCircle(int screenWidth, int screenHeight)
 {
 	int	size = GetRandomValue(screenWidth / 32, screenWidth / 24);
 	this->_size = size;
-	int	speed = GetRandomValue(screenWidth / 1000 * 5.0, screenWidth / 1000 * 7.5);
+	int	speed = GetRandomValue(screenWidth / 1000 * 3.0, screenWidth / 1000 * 5.0);
 	this->_speed = speed;
+	int colValue = GetRandomValue(70, 130);
+	this->_color.r = colValue;
+	this->_color.g = colValue;
+	this->_color.b = colValue;
 	int	spawnDir = GetRandomValue(0, 3);
 	switch(spawnDir) {
 		case UP :
@@ -55,7 +65,6 @@ void	Circle::resetCircle(int screenWidth, int screenHeight)
 			break;
 			break;
 	}
-	_color = DARKGRAY;
 }
 
 void	Circle::moveCircle(int screenWidth, int screenHeight)
