@@ -11,8 +11,11 @@ OBJECTS = $(OBJDIR)/*.o
 SRC =		./src/main.cpp										\
 			./src/startScreen.cpp								\
 			./src/loadingScreen.cpp								\
+			./src/drawCircle.cpp								\
+			./src/Circle.cpp									\
 
 HEADER =	./src/circlegame.hpp								\
+			./src/Circle.hpp									\
 			config.hpp											\
 
 all: $(NAME)
