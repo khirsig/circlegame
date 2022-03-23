@@ -6,11 +6,12 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/18 15:03:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:22:33 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Circle.hpp"
+#include "circlegame.hpp"
 
 int Circle::_circleAmount = 0;
 
@@ -18,12 +19,7 @@ Circle::Circle()
 {
 	this->_pos.x = 0;
 	this->_pos.y = 0;
-}
-
-Circle::Circle(int screenWidth, int screenHeight)
-{
-	Circle::_circleAmount++;
-	this->resetCircle(screenWidth, screenHeight);
+	this->_active = 0;
 }
 
 Circle::~Circle()
@@ -33,9 +29,11 @@ Circle::~Circle()
 
 void	Circle::resetCircle(int screenWidth, int screenHeight)
 {
-	int	size = GetRandomValue(screenWidth / 32, screenWidth / 24);
+	int	size = GetRandomValue(screenWidth / 42, screenWidth / 24);
+	if (size < 1)
+		size = 1;
 	this->_size = size;
-	int	speed = GetRandomValue(screenWidth / 1000 * 3.0, screenWidth / 1000 * 5.0);
+	double	speed = getRandomNumber(screenWidth / 1000 * 3.0, screenWidth / 1000 * 10.0);
 	this->_speed = speed;
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;
@@ -69,25 +67,51 @@ void	Circle::resetCircle(int screenWidth, int screenHeight)
 
 void	Circle::moveCircle(int screenWidth, int screenHeight)
 {
-	switch(this->_moveDir) {
-		case UP :
-			this->_pos.y -= this->_speed;
-			break;
-		case DOWN :
-			this->_pos.y += this->_speed;
-			break;
-		case RIGHT :
-			this->_pos.x += this->_speed;
-			break;
-		case LEFT :
-			this->_pos.x -= this->_speed;
-			break;
+	if (this->_active)
+	{
+		switch(this->_moveDir) {
+			case UP :
+				this->_pos.y -= this->_speed;
+				break;
+			case DOWN :
+				this->_pos.y += this->_speed;
+				break;
+			case RIGHT :
+				this->_pos.x += this->_speed;
+				break;
+			case LEFT :
+				this->_pos.x -= this->_speed;
+				break;
+
+		}
 	}
-	if (this->_pos.x < -this->_size || this->_pos.x > screenWidth + this->_size || this->_pos.y < -this->_size || this->_pos.y > screenHeight + this->_size)
+	if ((this->_pos.x < -this->_size || this->_pos.x > screenWidth + this->_size || this->_pos.y < -this->_size || this->_pos.y > screenHeight + this->_size)
+		&& this->_active)
 		this->resetCircle(screenWidth, screenHeight);
 }
 
 void	Circle::drawCircle()
 {
-	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
+	if (this->_active)
+		DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
+}
+
+raylib::Vector2	Circle::getCirclePos()
+{
+	return (this->_pos);
+}
+
+double			Circle::getCircleSize()
+{
+	return (this->_size);
+}
+
+void			Circle::activateCircle()
+{
+	this->_active = 1;
+}
+
+void			Circle::deactivateCircle()
+{
+	this->_active = 0;
 }

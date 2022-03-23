@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawCircle.cpp                                     :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 10:44:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/22 15:08:19 by khirsig          ###   ########.fr       */
+/*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
+/*   Updated: 2022/03/22 13:30:50 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 
-void drawCircle(Data &data)
+float getRandomNumber(float min, float max)
 {
-	for (int i = 0; i < data.circleAmount; ++i)
-	{
-		if (!data.gameover)
-			data.circle[i].moveCircle(data.screenWidth, data.screenHeight);
-		data.circle[i].drawCircle();
-	}
+    static std::default_random_engine engine;
+    static std::uniform_real_distribution<> ret(min, max);
+    return ret(engine);
 }

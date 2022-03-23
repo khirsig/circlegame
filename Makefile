@@ -11,19 +11,20 @@ OBJECTS = $(OBJDIR)/*.o
 SRC =		./src/main.cpp										\
 			./src/startScreen.cpp								\
 			./src/loadingScreen.cpp								\
+			./src/ingame.cpp									\
 			./src/drawCircle.cpp								\
+			./src/drawPlayer.cpp								\
 			./src/Circle.cpp									\
-
-HEADER =	./src/circlegame.hpp								\
-			./src/Circle.hpp									\
-			config.hpp											\
+			./src/Player.cpp									\
+			./src/textGUI.cpp									\
+			./src/utils.cpp										\
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@$(CC) $(OBJECTS) $(LFLAGS) $(CFLAGS) -o $(NAME)
 
-$(OBJECTS): $(SRC) $(HEADER)
+$(OBJECTS): $(SRC)
 	@$(CC) -c $(CFLAGS) $(SRC)
 	@rm -rf ./objs; mkdir ./objs
 	@mv *.o $(OBJDIR)

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawCircle.cpp                                     :+:      :+:    :+:   */
+/*   textGUI.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 10:44:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/22 15:08:19 by khirsig          ###   ########.fr       */
+/*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
+/*   Updated: 2022/03/23 12:28:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 
-void drawCircle(Data &data)
+#define MODE_STR modeText[data.player.getMode()].c_str()
+
+void	modeGUI(Data &data)
 {
-	for (int i = 0; i < data.circleAmount; ++i)
-	{
-		if (!data.gameover)
-			data.circle[i].moveCircle(data.screenWidth, data.screenHeight);
-		data.circle[i].drawCircle();
-	}
+	int	modeSize = data.screenHeight / 36;
+
+	DrawText(MODE_STR, data.screenWidth / 2 - MeasureText(MODE_STR, modeSize) / 2, modeSize / 2, modeSize, data.player.getColor());
 }
