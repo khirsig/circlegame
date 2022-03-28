@@ -3,7 +3,7 @@ CC = g++
 NAME = circlegame
 
 LFLAGS =  -lraylib
-CFLAGS = -std=c++0x -O2
+CFLAGS = -O2
 
 OBJDIR = ./objs/
 OBJECTS = $(OBJDIR)/*.o
