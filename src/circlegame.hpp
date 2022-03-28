@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/23 12:19:50 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:50:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ struct Data {
 	const static int	circleAmount = 5;
 	Circle 				circle[circleAmount];
 	Player				player;
+	int					startTime;
+	int					currentTime;
 };
 
 void	startScreen(Data &data);
@@ -53,9 +55,14 @@ void	loadingScreen(Data &data);
 void	ingame(Data &data);
 void	drawCircle(Data &data);
 void	drawPlayer(Data &data);
+void	movePlayer(Data &data);
 float	getRandomNumber(float min, float max);
+void    setStartTime(Data &data);
+void    setCurrentTime(Data &data);
+void    newRound(Data &data);
 
 void	modeGUI(Data &data);
+void	timeGUI(Data &data);
 
 
 #endif

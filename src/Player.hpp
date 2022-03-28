@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/23 12:27:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/23 13:47:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,16 @@ class Player {
 		~Player();
 
 		void			setupPlayer(int screenWidth, int screenHeight);
-		void			movePlayer(int screenWidth, int screenHeight);
+
+		void			movePlayerStandard(int screenWidth, int screenHeight);
+		void			movePlayerIce(int screenWidth, int screenHeight);
+		void			movePlayerMirrorIce(int screenWidth, int screenHeight);
+
 		void			drawPlayer();
 		bool			collisionPlayer(Circle circle);
+
+		void			setMoveDir(int input);
+
 		int				getMode() { return (this->_mode); }
 		raylib::Color	getColor() { return (this->_color); }
 	private:
@@ -45,6 +52,7 @@ class Player {
 		double			_size;
 		double			_speed;
 		int				_mode;
+		int				_moveDir;
 };
 
 

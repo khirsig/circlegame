@@ -14,6 +14,7 @@ SRC =		./src/main.cpp										\
 			./src/ingame.cpp									\
 			./src/drawCircle.cpp								\
 			./src/drawPlayer.cpp								\
+			./src/movePlayer.cpp								\
 			./src/Circle.cpp									\
 			./src/Player.cpp									\
 			./src/textGUI.cpp									\
