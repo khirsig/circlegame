@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:36:25 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 15:33:05 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int	main(void)
 		{
 			case START_SCREEN :
 				startScreen(data);
+				break;
+			case LOADING_SCREEN :
+				loadingScreen(data);
 				break;
 			case IN_GAME :
 				ingame(data);

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:20:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 15:59:11 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,9 @@ void	startScreen(Data &data)
 	EndDrawing();
 	if (IsKeyPressed(KEY_ENTER))
 	{
-		data.gameMode = IN_GAME;
-		for (int i = 0; i < data.circleAmount; ++i)
-		{
-			data.circle[i].activateCircle();
-			data.circle[i].resetCircle();
-		}
-		data.player.setupPlayer();
+		data.gameMode = LOADING_SCREEN;
 		setStartTime(data);
 		setCurrentTime(data);
-    	data.modeTime = data.currentTime;
+		data.player.setupPlayer();
 	}
 }

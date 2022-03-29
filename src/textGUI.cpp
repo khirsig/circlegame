@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:19:55 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 16:04:27 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	modeGUI(Data &data)
 void	timeGUI(Data &data)
 {
 	int	timeSize = screenHeight / 30;
-	std::string timeText = "Score: " + std::to_string(data.currentTime - data.startTime);
+	std::string timeText;
+	if (data.gameMode == IN_GAME)
+		timeText = "Score: " + std::to_string(data.currentTime - data.startTime);
+	else
+		timeText = "Score: 0";
 	int	timeLen = MeasureText(timeText.c_str(), timeSize);
 	Color timeCol = (Color){ 0, 121, 241, 255 };
 
