@@ -1,0 +1,29 @@
+#bin/bash
+
+if test -d "/goinfre/$USER/.brew"; 
+then
+	echo "Brew already installed"
+else
+	rm -rf $HOME/.brew &&\
+	git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew &&\
+	echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc &&\
+	source $HOME/.zshrc &&\
+	brew update
+	export PATH=$HOME/goinfre/.brew/bin:$PATH
+	echo "Installing Brew"
+fi
+
+echo 'export C_INCLUDE_PATH="$(brew --prefix)/include:$C_INCLUDE_PATH"' >> ~/.zshrc
+echo 'export LIBRARY_PATH="$(brew --prefix)/lib:$LIBRARY_PATH"' >> ~/.zshrc
+export C_INCLUDE_PATH="$(brew --prefix)/include:$C_INCLUDE_PATH"
+export LIBRARY_PATH="$(brew --prefix)/lib:$LIBRARY_PATH"
+brew install raylib
+echo "Installing raylib"
+make
+echo "Compiling circlegame"
+echo "Launch circlegame ? [y/n]"
+read var
+if [[ $var == "y" ]];
+then
+	make run
+fi

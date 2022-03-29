@@ -40,3 +40,6 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)
+
+run: $(NAME)
+	./$(NAME)
