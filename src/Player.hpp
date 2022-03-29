@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:17:55 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 19:49:38 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ class Player {
 		int				getMode() { return (this->_mode); }
 		void			setMode(int id);
 		raylib::Color	getColor() { return (this->_color); }
+		raylib::Color	getPlayerColor() { return (this->_playerColor); }
 	private:
 		raylib::Vector2	_pos;
 		raylib::Color	_color;
+		raylib::Color	_playerColor;
 		double			_size;
 		double			_speed;
 		int				_mode;

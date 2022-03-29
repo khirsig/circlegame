@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:31:01 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 20:28:57 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	Circle::resetCircle()
 	if (size < 1)
 		size = 1;
 	this->_size = size;
-	double	speed = getRandomNumber(screenWidth / 1000 * 3.0, screenWidth / 1000 * 10.0);
+	double	speed = getRandomNumber(screenWidth / 10 * 3.0, screenWidth / 10 * 7.0);
 	this->_speed = speed;
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;
@@ -70,16 +70,16 @@ void	Circle::moveCircle()
 	{
 		switch(this->_moveDir) {
 			case UP :
-				this->_pos.y -= this->_speed;
+				this->_pos.y -= this->_speed / currentFPS;
 				break;
 			case DOWN :
-				this->_pos.y += this->_speed;
+				this->_pos.y += this->_speed / currentFPS;
 				break;
 			case RIGHT :
-				this->_pos.x += this->_speed;
+				this->_pos.x += this->_speed / currentFPS;
 				break;
 			case LEFT :
-				this->_pos.x -= this->_speed;
+				this->_pos.x -= this->_speed / currentFPS;
 				break;
 
 		}
@@ -100,17 +100,17 @@ raylib::Vector2	Circle::getCirclePos()
 	return (this->_pos);
 }
 
-double			Circle::getCircleSize()
+double	Circle::getCircleSize()
 {
 	return (this->_size);
 }
 
-void			Circle::activateCircle()
+void	Circle::activateCircle()
 {
 	this->_active = 1;
 }
 
-void			Circle::deactivateCircle()
+void	Circle::deactivateCircle()
 {
 	this->_active = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:40:57 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 20:35:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,20 @@ void	Player::setupPlayer()
 {
 	this->_size = screenWidth / 40;
 	this->_growthBase = screenWidth / 40;
-	this->_speed = screenWidth / 1000 * 7.0;
+	this->_speed = screenWidth / 10 * 5.5;
 	this->_pos.x = screenWidth / 2 - (this->_size / 2);
 	this->_pos.y = screenHeight / 2 - (this->_size / 2);
 	this->_mode = STANDARD;
 	setColor(this->_color, this->_mode);
 	this->_moveDir = KEY_RIGHT;
 	this->_growthDir = 1;
+	// this->_playerColor.r = 230;
+	// this->_playerColor.g = 41;
+	// this->_playerColor.b = 55;
+	this->_playerColor.r = 0;
+	this->_playerColor.g = 121;
+	this->_playerColor.b = 242;
+	this->_playerColor.a = 255;
 }
 
 void	Player::setMode(int id)
@@ -70,24 +77,26 @@ void	Player::setMode(int id)
 
 void	Player::drawPlayer()
 {
-	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
+	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
+	DrawCircle(this->_pos.x, this->_pos.y, this->_size * 0.9, this->_color);
 }
 
 void	Player::movePlayerStandard()
 {
-	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && this->_pos.y - this->_speed >= this->_size * 0.90)
-		this->_pos.y -= this->_speed;
-	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && this->_pos.y + this->_speed <= screenHeight - this->_size * 0.90)
-		this->_pos.y += this->_speed;
-	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && this->_pos.x + this->_speed <= screenWidth - this->_size * 0.90)
-		this->_pos.x += this->_speed;
-	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && this->_pos.x - this->_speed >= this->_size * 0.90)
-		this->_pos.x -= this->_speed;
+	double	currentSpeed = this->_speed / currentFPS;
+	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && this->_pos.y - currentSpeed >= this->_size * 0.90)
+		this->_pos.y -= currentSpeed;
+	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && this->_pos.y + currentSpeed <= screenHeight - this->_size * 0.90)
+		this->_pos.y += currentSpeed;
+	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && this->_pos.x + currentSpeed <= screenWidth - this->_size * 0.90)
+		this->_pos.x += currentSpeed;
+	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && this->_pos.x - currentSpeed >= this->_size * 0.90)
+		this->_pos.x -= currentSpeed;
 }
 
 void	Player::movePlayerIce()
 {
-	double	slideSpeed = this->_speed * 0.70;
+	double	slideSpeed = this->_speed * 0.70 / currentFPS;
 
 	if (_moveDir == KEY_UP && this->_pos.y - slideSpeed >= this->_size * 0.90)
 		this->_pos.y -= slideSpeed;
@@ -101,7 +110,7 @@ void	Player::movePlayerIce()
 
 void	Player::movePlayerMirrorIce()
 {
-	double	slideSpeed = this->_speed * 0.70;
+	double	slideSpeed = this->_speed * 0.70 / currentFPS;
 
 	if (_moveDir == KEY_DOWN && this->_pos.y - slideSpeed >= this->_size * 0.90)
 		this->_pos.y -= slideSpeed;
