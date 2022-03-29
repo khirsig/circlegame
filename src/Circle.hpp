@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/22 15:16:12 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:27:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@
 # define RIGHT 3
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
+# include "../config.hpp"
 
 class Circle {
 	public:
 		Circle();
 		~Circle();
 
-		void			moveCircle(int screenWidth, int screenHeight);
+		void			moveCircle();
 		void			drawCircle();
-		void			resetCircle(int screenWidth, int screenHeight);
+		void			resetCircle();
 		void			activateCircle();
 		void			deactivateCircle();
 		static int		getCircleAmount() { return (Circle::_circleAmount); }
@@ -43,5 +44,6 @@ class Circle {
 		bool			_active;
 };
 
+float getRandomNumber(float min, float max);
 
 #endif

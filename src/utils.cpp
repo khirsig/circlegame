@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/28 16:02:59 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:27:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,17 @@ void    newRound(Data &data)
     for (int i = 0; i < data.circleAmount; ++i)
 	{
 		data.circle[i].activateCircle();
-		data.circle[i].resetCircle(data.screenWidth, data.screenHeight);
+		data.circle[i].resetCircle();
 	}
-	data.player.setupPlayer(data.screenWidth, data.screenHeight);
+	data.player.setupPlayer();
 	data.gameMode = START_SCREEN;
 	data.gameover = 0;
     setStartTime(data);
     setCurrentTime(data);
+    data.modeTime = data.currentTime;
+}
+
+void    setFPS(Data &data)
+{
+    currentFPS = GetFPS();
 }

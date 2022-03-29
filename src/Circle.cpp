@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/22 15:22:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:31:01 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Circle.hpp"
-#include "circlegame.hpp"
 
 int Circle::_circleAmount = 0;
 
@@ -27,7 +26,7 @@ Circle::~Circle()
 	Circle::_circleAmount--;
 }
 
-void	Circle::resetCircle(int screenWidth, int screenHeight)
+void	Circle::resetCircle()
 {
 	int	size = GetRandomValue(screenWidth / 42, screenWidth / 24);
 	if (size < 1)
@@ -65,7 +64,7 @@ void	Circle::resetCircle(int screenWidth, int screenHeight)
 	}
 }
 
-void	Circle::moveCircle(int screenWidth, int screenHeight)
+void	Circle::moveCircle()
 {
 	if (this->_active)
 	{
@@ -87,7 +86,7 @@ void	Circle::moveCircle(int screenWidth, int screenHeight)
 	}
 	if ((this->_pos.x < -this->_size || this->_pos.x > screenWidth + this->_size || this->_pos.y < -this->_size || this->_pos.y > screenHeight + this->_size)
 		&& this->_active)
-		this->resetCircle(screenWidth, screenHeight);
+		this->resetCircle();
 }
 
 void	Circle::drawCircle()

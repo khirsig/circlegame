@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawCircle.cpp                                     :+:      :+:    :+:   */
+/*   actionsPlayer.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 10:44:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:21:25 by khirsig          ###   ########.fr       */
+/*   Created: 2022/03/28 16:12:20 by khirsig           #+#    #+#             */
+/*   Updated: 2022/03/29 14:07:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 
-void drawCircle(Data &data)
+void	changeMode(Data &data)
 {
-	for (int i = 0; i < data.circleAmount; ++i)
+	if ((data.currentTime - data.startTime) % 10 == 0 && data.currentTime != data.modeTime)
 	{
-		if (!data.gameover)
-			data.circle[i].moveCircle();
-		data.circle[i].drawCircle();
+		int	newMode, currentMode = data.player.getMode();
+		do
+		{
+			newMode = GetRandomValue(0, 3);
+		} while (newMode == currentMode);
+		data.player.setMode(newMode);
+		data.modeTime = data.currentTime;
 	}
 }

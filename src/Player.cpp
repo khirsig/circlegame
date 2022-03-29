@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/28 10:02:07 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:40:57 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ static void	setColor(raylib::Color &col, const int mode)
 			col.g = 117;
 			col.b = 117;
 			break ;
+		case GROWTH :
+			col.r = 100;
+			col.g = 22;
+			col.b = 255;
+			break ;
 		default :
 			col.r = 190;
 			col.g = 33;
@@ -42,23 +47,33 @@ static void	setColor(raylib::Color &col, const int mode)
 	}
 }
 
-void	Player::setupPlayer(int screenWidth, int screenHeight)
+void	Player::setupPlayer()
 {
 	this->_size = screenWidth / 40;
+	this->_growthBase = screenWidth / 40;
 	this->_speed = screenWidth / 1000 * 7.0;
 	this->_pos.x = screenWidth / 2 - (this->_size / 2);
 	this->_pos.y = screenHeight / 2 - (this->_size / 2);
-	this->_mode = MIRROR_ICE;
+	this->_mode = STANDARD;
 	setColor(this->_color, this->_mode);
 	this->_moveDir = KEY_RIGHT;
+	this->_growthDir = 1;
 }
+
+void	Player::setMode(int id)
+{
+	this->_mode = id;
+	setColor(this->_color, this->_mode);
+	this->_size = screenWidth / 40;
+}
+
 
 void	Player::drawPlayer()
 {
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
 }
 
-void	Player::movePlayerStandard(int screenWidth, int screenHeight)
+void	Player::movePlayerStandard()
 {
 	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && this->_pos.y - this->_speed >= this->_size * 0.90)
 		this->_pos.y -= this->_speed;
@@ -70,7 +85,7 @@ void	Player::movePlayerStandard(int screenWidth, int screenHeight)
 		this->_pos.x -= this->_speed;
 }
 
-void	Player::movePlayerIce(int screenWidth, int screenHeight)
+void	Player::movePlayerIce()
 {
 	double	slideSpeed = this->_speed * 0.70;
 
@@ -84,7 +99,7 @@ void	Player::movePlayerIce(int screenWidth, int screenHeight)
 		this->_pos.x -= slideSpeed;
 }
 
-void	Player::movePlayerMirrorIce(int screenWidth, int screenHeight)
+void	Player::movePlayerMirrorIce()
 {
 	double	slideSpeed = this->_speed * 0.70;
 
@@ -106,4 +121,10 @@ void	Player::setMoveDir(int input)
 bool	Player::collisionPlayer(Circle circle)
 {
 	return (CheckCollisionCircles(this->_pos, this->_size, circle.getCirclePos(), circle.getCircleSize()));
+}
+
+void	Player::modeExec()
+{
+	if (this->_mode == GROWTH)
+		growthMode();
 }

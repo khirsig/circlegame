@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/28 15:50:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:36:22 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ const static int	menuTextSize[] {
 
 struct Data {
 	raylib::Window		window{SCREEN_WIDTH, SCREEN_HEIGHT, "circlegame"};
-	int					screenWidth = SCREEN_WIDTH;
-	int					screenHeight = SCREEN_HEIGHT;
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = START_SCREEN;
 	bool				gameover = 0;
@@ -48,6 +46,7 @@ struct Data {
 	Player				player;
 	int					startTime;
 	int					currentTime;
+	int					modeTime;
 };
 
 void	startScreen(Data &data);
@@ -64,5 +63,7 @@ void    newRound(Data &data);
 void	modeGUI(Data &data);
 void	timeGUI(Data &data);
 
+void	changeMode(Data &data);
+void	setFPS(Data &data);
 
 #endif

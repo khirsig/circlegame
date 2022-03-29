@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/23 13:47:31 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:17:55 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ class Player {
 		Player();
 		~Player();
 
-		void			setupPlayer(int screenWidth, int screenHeight);
-
-		void			movePlayerStandard(int screenWidth, int screenHeight);
-		void			movePlayerIce(int screenWidth, int screenHeight);
-		void			movePlayerMirrorIce(int screenWidth, int screenHeight);
-
+		void			setupPlayer();
+		void			movePlayerStandard();
+		void			movePlayerIce();
+		void			movePlayerMirrorIce();
 		void			drawPlayer();
 		bool			collisionPlayer(Circle circle);
-
 		void			setMoveDir(int input);
+		void			modeExec();
+		void			growthMode();
 
 		int				getMode() { return (this->_mode); }
+		void			setMode(int id);
 		raylib::Color	getColor() { return (this->_color); }
 	private:
 		raylib::Vector2	_pos;
@@ -53,6 +53,8 @@ class Player {
 		double			_speed;
 		int				_mode;
 		int				_moveDir;
+		int				_growthDir;
+		double			_growthBase;
 };
 
 

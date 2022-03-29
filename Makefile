@@ -3,7 +3,7 @@ CC = g++
 NAME = circlegame
 
 LFLAGS =  -lraylib
-CFLAGS = -O2
+CFLAGS = -std=c++0x -O2
 
 OBJDIR = ./objs/
 OBJECTS = $(OBJDIR)/*.o
@@ -15,8 +15,10 @@ SRC =		./src/main.cpp										\
 			./src/drawCircle.cpp								\
 			./src/drawPlayer.cpp								\
 			./src/movePlayer.cpp								\
+			./src/actionsPlayer.cpp								\
 			./src/Circle.cpp									\
 			./src/Player.cpp									\
+			./src/PlayerModes.cpp								\
 			./src/textGUI.cpp									\
 			./src/utils.cpp										\
 

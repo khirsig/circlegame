@@ -6,11 +6,15 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/28 15:57:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/29 14:36:25 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
+
+int		screenWidth = SCREEN_WIDTH;
+int		screenHeight = SCREEN_HEIGHT;
+int		currentFPS;
 
 int	main(void)
 {
@@ -24,12 +28,13 @@ int	main(void)
 	for (int i = 0; i < data.circleAmount; ++i)
 	{
 		data.circle[i].activateCircle();
-		data.circle[i].resetCircle(data.screenWidth, data.screenHeight);
+		data.circle[i].resetCircle();
 	}
-	data.player.setupPlayer(data.screenWidth, data.screenHeight);
+	data.player.setupPlayer();
 	SetTargetFPS(SCREEN_FPS);
 	while (!(data.window.ShouldClose()))
 	{
+		setFPS(data);
 		switch (data.gameMode)
 		{
 			case START_SCREEN :
