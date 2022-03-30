@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:23:51 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:08:19 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,12 @@ class Player {
 		raylib::Color	getColor() { return (this->_color); }
 		raylib::Color	getPlayerColor() { return (this->_playerColor); }
 		raylib::Vector2	getPos() { return (this->_pos); }
-		int				getPowerUpAmount() { return (this->_powerUpAmount); }
 		int				getPowerUpHold() { return (this->_powerUpHold); }
 		void			setPowerUpHold(int powerUpID) { this->_powerUpHold = powerUpID; }
+		int				getShieldTimer() { return (this->_shieldTimer); }
+		void			setShieldTimer(int endTime) { this->_shieldTimer = endTime; }
+		bool			getActiveShield() { return (this->_activeShield); }
+		void			setActiveShield(bool status) { this->_activeShield = status; }
 
 		int				id;
 	private:
@@ -64,8 +67,10 @@ class Player {
 		int				_moveDir;
 		int				_growthDir;
 		double			_growthBase;
-		int				_powerUpAmount;
 		int				_powerUpHold;
+		int				_shieldTimer;
+		bool			_activeShield;
+
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:49:45 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:13:50 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,18 @@ void    usePowerUp(Data &data)
         int powerUpHold = data.player.getPowerUpHold();
         switch (powerUpHold) {
             case SHIELD :
+                data.player.setShieldTimer(data.currentTime + 10);
+                data.player.setActiveShield(1);
+                data.player.setPowerUpHold(NONE);
                 break ;
             case SKIPMODE :
                 data.player.setMode(STANDARD);
                 data.player.setPowerUpHold(NONE);
                 break ;
         }
+    }
+    if (data.player.getShieldTimer() == data.currentTime && data.player.getActiveShield() == 1)
+    {
+        data.player.setActiveShield(0);
     }
 }

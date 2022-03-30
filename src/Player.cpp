@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:19:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:16:29 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	Player::setupPlayer()
 	}
 	this->_playerColor.a = 255;
 	this->_powerUpHold = -1;
+	this->_activeShield = 0;
 }
 
 void	Player::setMode(int id)
@@ -84,6 +85,8 @@ void	Player::setMode(int id)
 
 void	Player::drawPlayer()
 {
+	if (this->_activeShield)
+		DrawCircle(this->_pos.x, this->_pos.y, this->_size * 1.1, LIME);
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size * 0.9, this->_color);
 }
