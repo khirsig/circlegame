@@ -21,6 +21,7 @@ SRC =		./src/main.cpp										\
 			./src/PlayerModes.cpp								\
 			./src/textGUI.cpp									\
 			./src/utils.cpp										\
+			./src/PowerUp.cpp									\
 
 all: $(NAME)
 

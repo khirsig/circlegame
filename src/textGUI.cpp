@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 16:04:27 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 13:44:35 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,25 @@ void	timeGUI(Data &data)
 	Color timeCol = (Color){ 0, 121, 241, 255 };
 
 	DrawText(timeText.c_str(), timeSize, screenHeight - timeSize * 1.5, timeSize, timeCol);
+}
+
+void	powerUpGUI(Data &data)
+{
+	int	powerUpSize = screenHeight / 30;
+	int	powerUpID = data.player.getPowerUpHold();
+
+	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, data.player.getPlayerColor());
+	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize * 0.8, WHITE);
+	if (powerUpID != -1)
+	{
+		switch (powerUpID) {
+			case SKIPMODE :
+				DrawText("SM", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				break ;
+			case SHIELD :
+				DrawText("SH", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				break ;
+		}
+
+	}
 }
