@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 20:35:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 13:19:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,20 @@ void	Player::setupPlayer()
 	setColor(this->_color, this->_mode);
 	this->_moveDir = KEY_RIGHT;
 	this->_growthDir = 1;
-	// this->_playerColor.r = 230;
-	// this->_playerColor.g = 41;
-	// this->_playerColor.b = 55;
-	this->_playerColor.r = 0;
-	this->_playerColor.g = 121;
-	this->_playerColor.b = 242;
+	if (this->id == 0)
+	{
+		this->_playerColor.r = 230;
+		this->_playerColor.g = 41;
+		this->_playerColor.b = 55;
+	}
+	else
+	{
+		this->_playerColor.r = 0;
+		this->_playerColor.g = 121;
+		this->_playerColor.b = 242;
+	}
 	this->_playerColor.a = 255;
+	this->_powerUpHold = -1;
 }
 
 void	Player::setMode(int id)

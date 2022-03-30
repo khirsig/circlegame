@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:36:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 13:49:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../config.hpp"
 # include "Circle.hpp"
 # include "Player.hpp"
+# include "PowerUp.hpp"
 
 # define START_SCREEN 0
 # define LOADING_SCREEN 1
@@ -41,9 +42,11 @@ struct Data {
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = START_SCREEN;
 	bool				gameover = 0;
-	const static int	circleAmount = 5;
+	const static int	circleAmount = 1;
 	Circle 				circle[circleAmount];
 	Player				player;
+	const static int	powerUpAmount = 2;
+	PowerUp				powerUp[powerUpAmount];
 	int					startTime;
 	int					currentTime;
 	int					modeTime;
@@ -62,8 +65,15 @@ void    newRound(Data &data);
 
 void	modeGUI(Data &data);
 void	timeGUI(Data &data);
+void	powerUpGUI(Data &data);
 
 void	changeMode(Data &data);
 void	setFPS(Data &data);
+
+void	powerUpSpawn(Data &data);
+void	powerUpDraw(Data &data);
+void    takePowerUp(Data &data);
+void    usePowerUp(Data &data);
+
 
 #endif

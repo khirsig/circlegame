@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 16:01:11 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 13:33:43 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	loadingScreen(Data &data)
 	movePlayer(data);
 	modeGUI(data);
 	timeGUI(data);
+	powerUpGUI(data);
 	// DrawText(menuText[0].c_str(), screenWidth / 2 - MeasureText(menuText[0].c_str(), menuTextSize[0]) / 2, screenHeight / 4, menuTextSize[0], BLUE);
 	if (data.currentTime - data.startTime == 0)
 		DrawText("3...", screenWidth / 2 - MeasureText("3...", menuTextSize[1]) / 2, screenHeight / 3, menuTextSize[1], data.player.getColor());
@@ -39,6 +40,11 @@ void	loadingScreen(Data &data)
 		}
 		setStartTime(data);
 		setCurrentTime(data);
-    	data.modeTime = data.currentTime;
+		for (int i = 0; i < data.powerUpAmount; ++i)
+   		{
+    		data.powerUp[i].setState(DISABLED);
+			data.powerUp[i].setNextSpawnTime(data.currentTime + GetRandomValue(5, 20));
+    		data.modeTime = data.currentTime;
+		}
 	}
 }
