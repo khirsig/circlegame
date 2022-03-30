@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:50:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:56:50 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ingame(Data &data)
 		powerUpSpawn(data);
 		takePowerUp(data);
 		usePowerUp(data);
+		if (IsKeyPressed(KEY_K))
+			data.player.setMode(3);
 	}
 	BeginDrawing();
 	data.window.ClearBackground(RAYWHITE);

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 14:24:32 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:39:37 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define GAME_OVER 3
 
 const static std::string menuText[] {
-	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.1",
+	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.3",
 	"GAMEOVER", "Press Enter to return to Mainmenu!"
 };
 

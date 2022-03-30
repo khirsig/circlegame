@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:30 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 14:18:24 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 16:00:04 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	PowerUp::drawPowerUp()
 	if (this->_sizeCurrent > 5)
 		DrawText("?", this->_pos.x - this->_sizeCurrent / 4, this->_pos.y - this->_sizeCurrent / 2, this->_sizeCurrent, RAYWHITE);
 	if (this->_state == SPAWNED && this->_sizeCurrent < this->_sizeEnd)
-		this->_sizeCurrent += 0.05;
+		this->_sizeCurrent += 35.0 / currentFPS;
 	if (this->_state == DESPAWNING)
 	{
-		this->_sizeCurrent -= 0.05;
+		this->_sizeCurrent -= 35.0 / currentFPS;
 		if (this->_sizeCurrent <= 0)
 		{
 			this->_state = DESPAWNED;
