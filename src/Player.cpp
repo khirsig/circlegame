@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 14:16:29 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:21:08 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	Player::setMode(int id)
 void	Player::drawPlayer()
 {
 	if (this->_activeShield)
-		DrawCircle(this->_pos.x, this->_pos.y, this->_size * 1.1, LIME);
+		DrawCircle(this->_pos.x, this->_pos.y, this->_size * 1.1, MAGENTA);
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size * 0.9, this->_color);
 }

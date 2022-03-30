@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:30 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:03:57 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:18:24 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	PowerUp::drawPowerUp()
 		this->_sizeCurrent -= 0.05;
 		if (this->_sizeCurrent <= 0)
 		{
-			// std::cout << "Power Up is despawned with state: " << this->_state << std::endl;
 			this->_state = DESPAWNED;
 		}
 	}
