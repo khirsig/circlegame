@@ -1,16 +1,16 @@
 #bin/bash
 
-if test -d "/goinfre/$USER/.brew" || test -d "$HOME/.brew"; 
+if test -d "/goinfre/$USER/.brew" || test -d "$HOME/.brew"
 then
 	echo "Brew already installed"
 else
 	echo "Are you on a 42HNMac ? [y/n]"
 	read var1
-	if [[ $var1 == "y"]]
+	if [[ $var1 == "y" ]]
 	then
 		git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew
 		out=$(cat $HOME/.zshrc | grep '$HOME/goinfre/.brew/bin')
-		if [[ ${out:-not} == "not" ]]
+		if [[ ${out:-not} == "not" ]];
 		then
 			echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc
 			export PATH=$HOME/goinfre/.brew/bin:$PATH
@@ -34,7 +34,7 @@ make
 echo "Compiling circlegame"
 echo "Launch circlegame ? [y/n]"
 read var2
-if [[ $var2 == "y" ]];
+if [[ $var2 == "y" ]]
 then
 	make run
 fi

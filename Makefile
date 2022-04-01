@@ -2,8 +2,9 @@ CC = g++
 
 NAME = circlegame
 
-IFLAGS = -I$$(brew --prefix)/includer
-LFLAGS = -lraylib -L$$(brew --prefix)/lib
+BREW = $(shell brew --prefix)
+IFLAGS = -I $(BREW)/include
+LFLAGS = -L $(BREW)/lib -lraylib
 CFLAGS = -std=c++0x -O2
 
 OBJDIR = ./objs/
@@ -27,7 +28,7 @@ SRC =		./src/main.cpp										\
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) $(LFLAGS) $(CFLAGS) -o $(NAME)
+	@$(CC) $(OBJECTS) $(CFLAGS) -o $(NAME) $(LFLAGS) 
 
 $(OBJECTS): $(SRC)
 	@$(CC) -c $(CFLAGS) $(SRC) $(IFLAGS)
@@ -44,4 +45,4 @@ fclean: clean
 re: fclean $(NAME)
 
 run: $(NAME)
-	./$(NAME)
+	@./$(NAME)
