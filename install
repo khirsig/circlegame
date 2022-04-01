@@ -12,16 +12,16 @@ else
 		out=$(cat $HOME/.zshrc | grep '$HOME/goinfre/.brew/bin')
 		if [[ ${out:-not} == "not" ]]
 		then
-			echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc &&
+			echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc
 			export PATH=$HOME/goinfre/.brew/bin:$PATH
 		fi
 	else
-    	git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
+		git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
 		out = $(grep - '$HOME./brew/bin')
 		if [[ ${out:-not} == "not" ]]
 		then
-    		echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc &&
-    		export PATH=$HOME/.brew/bin:$PATH
+			echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc
+			export PATH=$HOME/.brew/bin:$PATH
 		fi
 	fi
 	echo "Installing Brew"
