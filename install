@@ -17,7 +17,7 @@ else
 		fi
 	else
 		git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
-		out = $(grep - '$HOME./brew/bin')
+		out=$(cat $HOME/.zshrc | grep - '$HOME./brew/bin')
 		if [[ ${out:-not} == "not" ]]
 		then
 			echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc
