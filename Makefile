@@ -2,7 +2,8 @@ CC = g++
 
 NAME = circlegame
 
-LFLAGS =  -lraylib
+IFLAGS = -I$$(brew --prefix)/includer
+LFLAGS = -lraylib -L$$(brew --prefix)/lib
 CFLAGS = -std=c++0x -O2
 
 OBJDIR = ./objs/
@@ -29,7 +30,7 @@ $(NAME): $(OBJECTS)
 	@$(CC) $(OBJECTS) $(LFLAGS) $(CFLAGS) -o $(NAME)
 
 $(OBJECTS): $(SRC)
-	@$(CC) -c $(CFLAGS) $(SRC)
+	@$(CC) -c $(CFLAGS) $(SRC) $(IFLAGS)
 	@rm -rf ./objs; mkdir ./objs
 	@mv *.o $(OBJDIR)
 
