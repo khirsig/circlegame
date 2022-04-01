@@ -4,24 +4,38 @@ if test -d "/goinfre/$USER/.brew" || test -d "$HOME/.brew";
 then
 	echo "Brew already installed"
 else
-	git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew
-	out = $(grep - "./brew/bin")
-	if [ $out ]
+	echo "Are you on a 42HNMac ? [y/n]"
+	read var1
+	if [[ $var1 == "y"]]
 	then
-		echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc &&
-		export PATH=$HOME/goinfre/.brew/bin:$PATH
+		git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew
+		out=$(cat $HOME/.zshrc | grep '$HOME/goinfre/.brew/bin')
+		if [[ ${out:-not} == "not" ]]
+		then
+			echo 'export PATH=$HOME/goinfre/.brew/bin:$PATH' >> $HOME/.zshrc &&
+			export PATH=$HOME/goinfre/.brew/bin:$PATH
+		fi
+	else
+	    $HOME/.brew &&
+    	git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
+		out = $(grep - '$HOME./brew/bin')
+		if [[ ${out:-not} == "not" ]]
+		then
+    		echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc &&
+    		export PATH=$HOME/.brew/bin:$PATH
+		fi
 	fi
-	brew update
 	echo "Installing Brew"
 fi
 
+brew update
 brew install raylib
 echo "Installing raylib"
 make
 echo "Compiling circlegame"
 echo "Launch circlegame ? [y/n]"
-read var
-if [[ $var == "y" ]];
+read var2
+if [[ $var2 == "y" ]];
 then
 	make run
 fi
