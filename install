@@ -16,7 +16,6 @@ else
 			export PATH=$HOME/goinfre/.brew/bin:$PATH
 		fi
 	else
-	    $HOME/.brew &&
     	git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
 		out = $(grep - '$HOME./brew/bin')
 		if [[ ${out:-not} == "not" ]]
