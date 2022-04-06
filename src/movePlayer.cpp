@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:54:00 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 14:20:44 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:34:16 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,42 @@
 static void	setMoveDir(Data &data)
 {
 	int key = GetKeyPressed();
-	if (key == KEY_UP || key == KEY_W)
-		data.player.setMoveDir(KEY_UP);
-	if (key == KEY_DOWN || key == KEY_S)
-		data.player.setMoveDir(KEY_DOWN);
-	if (key == KEY_LEFT || key == KEY_A)
-		data.player.setMoveDir(KEY_LEFT);
-	if (key == KEY_RIGHT || key == KEY_D)
-		data.player.setMoveDir(KEY_RIGHT);
+	if (key == KEY_W)
+		data.player[0].setMoveDir(KEY_UP);
+	if (key == KEY_S)
+		data.player[0].setMoveDir(KEY_DOWN);
+	if (key == KEY_A)
+		data.player[0].setMoveDir(KEY_LEFT);
+	if (key == KEY_D)
+		data.player[0].setMoveDir(KEY_RIGHT);
+	if (data.playerAmount > 1)
+	{
+		if (key == KEY_UP)
+			data.player[1].setMoveDir(KEY_UP);
+		if (key == KEY_DOWN)
+			data.player[1].setMoveDir(KEY_DOWN);
+		if (key == KEY_LEFT)
+			data.player[1].setMoveDir(KEY_LEFT);
+		if (key == KEY_RIGHT)
+			data.player[1].setMoveDir(KEY_RIGHT);
+	}
 }
 
 void	movePlayer(Data &data)
 {
 	setMoveDir(data);
-	switch (data.player.getMode()) {
-		case ICE :
-			data.player.movePlayerIce();
-			break ;
-		case MIRROR_ICE :
-			data.player.movePlayerMirrorIce();
-			break ;
-		default :
-			data.player.movePlayerStandard();
-			break ;
+	for (int i = 0; i < data.playerAmount; ++i)
+	{
+		switch (data.player[i].getMode()) {
+			case ICE :
+				data.player[i].movePlayerIce();
+				break ;
+			case MIRROR_ICE :
+				data.player[i].movePlayerMirrorIce();
+				break ;
+			default :
+				data.player[i].movePlayerStandard();
+				break ;
+		}
 	}
 }

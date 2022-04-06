@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:22:06 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:55:09 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void    newRound(Data &data)
 		data.circle[i].activateCircle();
 		data.circle[i].resetCircle();
 	}
-	data.player.setupPlayer();
+    for (int i = 0; i < data.playerAmount; ++i)
+	    data.player[i].setupPlayer();
 	data.gameMode = START_SCREEN;
 	data.gameover = 0;
     setStartTime(data);
@@ -84,42 +85,53 @@ void    powerUpDraw(Data &data)
 
 void    takePowerUp(Data &data)
 {
-    for (int i = 0; i < data.powerUpAmount; ++i)
+    for (int j = 0; j < data.playerAmount; ++j)
     {
-        if (data.powerUp[i].getState() != DISABLED && CheckCollisionCircles(data.player.getPos(), data.player.getSize(), data.powerUp[i].getPos(), data.powerUp[i].getSize()))
+        for (int i = 0; i < data.powerUpAmount; ++i)
         {
-            data.player.setPowerUpHold(data.powerUp[i].getID());
-            data.powerUp[i].setState(DISABLED);
-            data.powerUp[i].setNextSpawnTime(currentTime + GetRandomValue(8, 20));
+            if (data.powerUp[i].getState() != DISABLED && CheckCollisionCircles(data.player[j].getPos(), data.player[j].getSize(), data.powerUp[i].getPos(), data.powerUp[i].getSize()))
+            {
+                data.player[j].setPowerUpHold(data.powerUp[i].getID());
+                data.powerUp[i].setState(DISABLED);
+                data.powerUp[i].setNextSpawnTime(currentTime + GetRandomValue(8, 20));
+            }
         }
+    }
+}
+
+static void playerUsePowerUp(Data &data, Player &player)
+{
+    int powerUpHold = player.getPowerUpHold();
+     switch (powerUpHold) {
+        case SHIELD :
+            player.setShieldTimer(currentTime + 10);
+            player.setActiveShield(1);
+            player.setPowerUpHold(NONE);
+            break ;
+        case SKIPMODE :
+            player.setMode(STANDARD);
+            player.setPowerUpHold(NONE);
+            break ;
+        case RANDOMDIR :
+            for (int i = 0; i < data.circleAmount; ++i)
+                data.circle[i].setMoveDir(GetRandomValue(0, 3));
+            player.setPowerUpHold(NONE);
+            break ;
     }
 }
 
 void    usePowerUp(Data &data)
 {
     if (IsKeyPressed(KEY_SPACE))
+        playerUsePowerUp(data, data.player[0]);
+    if (IsKeyPressed(KEY_RIGHT_CONTROL) && data.playerAmount > 1)
+        playerUsePowerUp(data, data.player[1]);
+    for (int i = 0; i < data.playerAmount; ++i)
     {
-        int powerUpHold = data.player.getPowerUpHold();
-        switch (powerUpHold) {
-            case SHIELD :
-                data.player.setShieldTimer(currentTime + 10);
-                data.player.setActiveShield(1);
-                data.player.setPowerUpHold(NONE);
-                break ;
-            case SKIPMODE :
-                data.player.setMode(STANDARD);
-                data.player.setPowerUpHold(NONE);
-                break ;
-            case RANDOMDIR :
-                for (int i = 0; i < data.circleAmount; ++i)
-                    data.circle[i].setMoveDir(GetRandomValue(0, 3));
-                data.player.setPowerUpHold(NONE);
-                break ;
+        if (data.player[i].getShieldTimer() == currentTime && data.player[i].getActiveShield() == 1)
+        {
+            data.player[i].setActiveShield(0);
         }
-    }
-    if (data.player.getShieldTimer() == currentTime && data.player.getActiveShield() == 1)
-    {
-        data.player.setActiveShield(0);
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/31 11:53:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:51:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ingame(Data &data)
 	{
 		setCurrentTime(data);
 		changeMode(data);
-		data.player.modeExec();
+		for (int i = 0; i < data.playerAmount; ++i)
+			data.player[i].modeExec();
 		powerUpSpawn(data);
 		takePowerUp(data);
 		usePowerUp(data);
