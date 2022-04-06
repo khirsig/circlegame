@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 15:39:37 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:16:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct Data {
 	const static int	circleAmount = 4;
 	Circle 				circle[circleAmount];
 	Player				player;
-	const static int	powerUpAmount = 2;
+	const static int	powerUpAmount = 3;
 	PowerUp				powerUp[powerUpAmount];
 	int					startTime;
 	int					currentTime;
@@ -74,6 +74,8 @@ void	powerUpSpawn(Data &data);
 void	powerUpDraw(Data &data);
 void    takePowerUp(Data &data);
 void    usePowerUp(Data &data);
+
+void    increaseCircleSpeed(Data &data);
 
 
 #endif

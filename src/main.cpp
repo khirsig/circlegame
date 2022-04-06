@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 15:34:14 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:22:27 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		screenWidth = SCREEN_WIDTH;
 int		screenHeight = SCREEN_HEIGHT;
 int		currentFPS;
+int		currentTime;
+int		startTime;
 
 int	main(void)
 {

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:30 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 16:00:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:17:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PowerUp::PowerUp()
 
 void	PowerUp::resetPowerUp()
 {
-	this->_id = GetRandomValue(0, 1);
+	this->_id = GetRandomValue(0, 2);
 	this->_state = SPAWNED;
 	this->_sizeEnd = screenWidth / 42;
 	this->_sizeCurrent = 1;
@@ -42,14 +42,4 @@ void	PowerUp::drawPowerUp()
 			this->_state = DESPAWNED;
 		}
 	}
-}
-
-void	PowerUp::activatePowerUp()
-{
-
-}
-
-void	PowerUp::passivePowerUp()
-{
-
 }

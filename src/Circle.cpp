@@ -6,13 +6,18 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 20:28:57 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:03:51 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Circle.hpp"
+#include <iostream>
 
-int Circle::_circleAmount = 0;
+
+int		Circle::_circleAmount = 0;
+double	Circle::_modMinSpeed = 2.0;
+double	Circle::_modMaxSpeed = 5.0;
+int		Circle::_increaseTime = 0;
 
 Circle::Circle()
 {
@@ -32,7 +37,8 @@ void	Circle::resetCircle()
 	if (size < 1)
 		size = 1;
 	this->_size = size;
-	double	speed = getRandomNumber(screenWidth / 10 * 3.0, screenWidth / 10 * 7.0);
+	double	speed = getRandomNumber(screenWidth / 10 * Circle::_modMinSpeed, screenWidth / 10 * Circle::_modMaxSpeed);
+	std::cout << "Min: " << speed << std::endl;
 	this->_speed = speed;
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;

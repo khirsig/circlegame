@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:00:34 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 15:58:45 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:25:59 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 extern int		screenWidth;
 extern int		screenHeight;
 extern int		currentFPS;
+extern int		currentTime;
+extern int		startTime;
 
 #endif

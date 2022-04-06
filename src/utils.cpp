@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 14:13:50 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:22:06 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ float getRandomNumber(float min, float max)
 
 void    setCurrentTime(Data &data)
 {
-    data.currentTime = GetTime();
+    currentTime = GetTime();
 }
 
 void    setStartTime(Data &data)
 {
-    data.startTime = GetTime();
+    startTime = GetTime();
 }
 
 void    newRound(Data &data)
@@ -41,7 +41,7 @@ void    newRound(Data &data)
 	data.gameover = 0;
     setStartTime(data);
     setCurrentTime(data);
-    data.modeTime = data.currentTime;
+    data.modeTime = currentTime;
 }
 
 void    setFPS(Data &data)
@@ -53,9 +53,9 @@ void    powerUpSpawn(Data &data)
 {
     for (int i = 0; i < data.powerUpAmount; ++i)
     {
-        if (data.powerUp[i].getState() == DISABLED && data.powerUp[i].getNextSpawnTime() == data.currentTime)
+        if (data.powerUp[i].getState() == DISABLED && data.powerUp[i].getNextSpawnTime() == currentTime)
         {
-            data.powerUp[i].setSpawnTime(data.currentTime);
+            data.powerUp[i].setSpawnTime(currentTime);
             data.powerUp[i].resetPowerUp();
         }
     }
@@ -68,7 +68,7 @@ void    powerUpDraw(Data &data)
         int powerUpState = data.powerUp[i].getState();
         if (powerUpState == SPAWNED || powerUpState == DESPAWNING)
         {
-            if (data.currentTime - data.powerUp[i].getSpawnTime() > 7)
+            if (currentTime - data.powerUp[i].getSpawnTime() > 7)
             {
                 data.powerUp[i].setState(DESPAWNING);
             }
@@ -77,7 +77,7 @@ void    powerUpDraw(Data &data)
         if (powerUpState == DESPAWNED)
         {
             data.powerUp[i].setState(DISABLED);
-            data.powerUp[i].setNextSpawnTime(data.currentTime + GetRandomValue(8, 20));
+            data.powerUp[i].setNextSpawnTime(currentTime + GetRandomValue(8, 20));
         }
     }
 }
@@ -90,7 +90,7 @@ void    takePowerUp(Data &data)
         {
             data.player.setPowerUpHold(data.powerUp[i].getID());
             data.powerUp[i].setState(DISABLED);
-            data.powerUp[i].setNextSpawnTime(data.currentTime + GetRandomValue(8, 20));
+            data.powerUp[i].setNextSpawnTime(currentTime + GetRandomValue(8, 20));
         }
     }
 }
@@ -102,7 +102,7 @@ void    usePowerUp(Data &data)
         int powerUpHold = data.player.getPowerUpHold();
         switch (powerUpHold) {
             case SHIELD :
-                data.player.setShieldTimer(data.currentTime + 10);
+                data.player.setShieldTimer(currentTime + 10);
                 data.player.setActiveShield(1);
                 data.player.setPowerUpHold(NONE);
                 break ;
@@ -110,10 +110,25 @@ void    usePowerUp(Data &data)
                 data.player.setMode(STANDARD);
                 data.player.setPowerUpHold(NONE);
                 break ;
+            case RANDOMDIR :
+                for (int i = 0; i < data.circleAmount; ++i)
+                    data.circle[i].setMoveDir(GetRandomValue(0, 3));
+                data.player.setPowerUpHold(NONE);
+                break ;
         }
     }
-    if (data.player.getShieldTimer() == data.currentTime && data.player.getActiveShield() == 1)
+    if (data.player.getShieldTimer() == currentTime && data.player.getActiveShield() == 1)
     {
         data.player.setActiveShield(0);
+    }
+}
+
+void    increaseCircleSpeed(Data &data)
+{
+    if (data.circle->getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
+    {
+        data.circle->setIncreaseTime(currentTime);
+        data.circle->addMinSpeed(1000.0);
+        data.circle->addMaxSpeed(1000.0);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:49:24 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:17:10 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define NONE -1
 # define SKIPMODE 0
 # define SHIELD 1
+# define RANDOMDIR 2
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include "../config.hpp"

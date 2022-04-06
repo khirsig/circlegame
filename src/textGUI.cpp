@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 13:44:35 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:17:49 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	modeGUI(Data &data)
 	int	modeSize = screenHeight / 36;
 
 	DrawText(MODE_STR, screenWidth / 2 - MeasureText(MODE_STR, modeSize) / 2, modeSize / 2, modeSize, data.player.getColor());
-	if ((data.currentTime - data.startTime) % 10 == 7 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 7 && !data.gameover)
 		DrawText("Changing MODE in 3...", screenWidth / 2 - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player.getColor());
-	if ((data.currentTime - data.startTime) % 10 == 8 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 8 && !data.gameover)
 		DrawText("Changing MODE in 2...", screenWidth / 2 - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player.getColor());
-	if ((data.currentTime - data.startTime) % 10 == 9 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 9 && !data.gameover)
 		DrawText("Changing MODE in 1...", screenWidth / 2 - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player.getColor());
 
 }
@@ -33,7 +33,7 @@ void	timeGUI(Data &data)
 	int	timeSize = screenHeight / 30;
 	std::string timeText;
 	if (data.gameMode == IN_GAME)
-		timeText = "Score: " + std::to_string(data.currentTime - data.startTime);
+		timeText = "Score: " + std::to_string(currentTime - startTime);
 	else
 		timeText = "Score: 0";
 	int	timeLen = MeasureText(timeText.c_str(), timeSize);
@@ -58,6 +58,10 @@ void	powerUpGUI(Data &data)
 			case SHIELD :
 				DrawText("SH", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
 				break ;
+			case RANDOMDIR :
+				DrawText("RD", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				break ;
+
 		}
 
 	}
