@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/29 16:07:27 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 13:50:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	startScreen(Data &data)
 			data.circle[i].activateCircle();
 			data.circle[i].resetCircle();
 		}
-		data.player.setupPlayer();
+		for (int i = 0; i < data.playerAmount; ++i)
+			data.player[i].setupPlayer();
 	}
 }

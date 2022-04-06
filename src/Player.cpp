@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/03/30 14:44:28 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/06 14:16:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	Player::setupPlayer()
 	this->_size = screenWidth / 40;
 	this->_growthBase = screenWidth / 40;
 	this->_speed = screenWidth / 10 * 5.5;
-	this->_pos.x = screenWidth / 2 - (this->_size / 2);
 	this->_pos.y = screenHeight / 2 - (this->_size / 2);
 	this->_mode = STANDARD;
 	setColor(this->_color, this->_mode);
@@ -60,12 +59,14 @@ void	Player::setupPlayer()
 	this->_growthDir = 1;
 	if (this->id == 0)
 	{
+		this->_pos.x = screenWidth / 4 - (this->_size / 2);
 		this->_playerColor.r = 230;
 		this->_playerColor.g = 41;
 		this->_playerColor.b = 55;
 	}
 	else
 	{
+		this->_pos.x = screenWidth / 4 * 3 - (this->_size / 2);
 		this->_playerColor.r = 0;
 		this->_playerColor.g = 121;
 		this->_playerColor.b = 242;
@@ -87,20 +88,20 @@ void	Player::drawPlayer()
 {
 	if (this->_activeShield)
 		DrawCircle(this->_pos.x, this->_pos.y, this->_size * 1.1, MAGENTA);
-	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
-	DrawCircle(this->_pos.x, this->_pos.y, this->_size * 0.9, this->_color);
+	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
+	DrawCircle(this->_pos.x, this->_pos.y, this->_size * 0.8, this->_playerColor);
 }
 
 void	Player::movePlayerStandard()
 {
 	double	currentSpeed = this->_speed / currentFPS;
-	if ((IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) && this->_pos.y - currentSpeed >= this->_size * 0.90)
+	if (((IsKeyDown(KEY_W) && this->id == 0) || (IsKeyDown(KEY_UP) && this->id == 1)) && this->_pos.y - currentSpeed >= this->_size * 0.90)
 		this->_pos.y -= currentSpeed;
-	if ((IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) && this->_pos.y + currentSpeed <= screenHeight - this->_size * 0.90)
+	if (((IsKeyDown(KEY_S) && this->id == 0) || (IsKeyDown(KEY_DOWN) && this->id == 1)) && this->_pos.y + currentSpeed <= screenHeight - this->_size * 0.90)
 		this->_pos.y += currentSpeed;
-	if ((IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) && this->_pos.x + currentSpeed <= screenWidth - this->_size * 0.90)
+	if (((IsKeyDown(KEY_D) && this->id == 0) || (IsKeyDown(KEY_RIGHT) && this->id == 1)) && this->_pos.x + currentSpeed <= screenWidth - this->_size * 0.90)
 		this->_pos.x += currentSpeed;
-	if ((IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) && this->_pos.x - currentSpeed >= this->_size * 0.90)
+	if (((IsKeyDown(KEY_A) && this->id == 0) || (IsKeyDown(KEY_LEFT) && this->id == 1)) && this->_pos.x - currentSpeed >= this->_size * 0.90)
 		this->_pos.x -= currentSpeed;
 }
 
