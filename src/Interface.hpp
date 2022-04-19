@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 16:33:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:15:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define INTERFACE_HPP
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
+# include <vector>
 
 class Interface {
 	public:
 		Interface();
 		~Interface();
 
-		raylib::Texture		powerupImg[1] = { raylib::Texture("./resources/powerup00.png") };
+		std::vector<raylib::Texture>	powerupImg;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 12:41:16 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:24:11 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 # include "PowerUp.hpp"
 # include "Interface.hpp"
 
-# define START_SCREEN 0
-# define LOADING_SCREEN 1
-# define IN_GAME 2
-# define GAME_OVER 3
+# define PRE_START 0
+# define START_SCREEN 1
+# define LOADING_SCREEN 2
+# define IN_GAME 3
+# define GAME_OVER 4
 
 const static std::string menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.3",
@@ -41,7 +42,7 @@ const static int	menuTextSize[] {
 struct Data {
 	raylib::Window		window{SCREEN_WIDTH, SCREEN_HEIGHT, "circlegame"};
 	int					screenFPS = SCREEN_FPS;
-	int					gameMode = START_SCREEN;
+	int					gameMode = PRE_START;
 	bool				gameover = 0;
 	const static int	circleAmount = 2;
 	Circle 				circle[circleAmount];
@@ -79,6 +80,8 @@ void    takePowerUp(Data &data);
 void    usePowerUp(Data &data);
 
 void    increaseCircleSpeed(Data &data);
+
+void	loadResources(Data &data);
 
 
 #endif

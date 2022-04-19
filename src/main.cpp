@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 15:45:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:20:57 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(void)
 		setFPS(data);
 		switch (data.gameMode)
 		{
+			case PRE_START :
+				loadResources(data);
 			case START_SCREEN :
 				startScreen(data);
 				break;
