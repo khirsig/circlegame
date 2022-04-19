@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 15:46:55 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:41:16 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct Data {
 	bool				gameover = 0;
 	const static int	circleAmount = 2;
 	Circle 				circle[circleAmount];
-	const static int	playerAmount = 1;
+	const static int	playerAmount = PLAYER_COUNT;
 	Player				player[playerAmount];
 	const static int	powerUpAmount = 3;
 	PowerUp				powerUp[powerUpAmount];

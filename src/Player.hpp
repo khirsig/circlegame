@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 11:34:19 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 15:25:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ class Player {
 		void			setActiveShield(bool status) { this->_activeShield = status; }
 
 		int				id;
-		raylib::Texture	shieldImg = raylib::Texture("./resources/shield01.png");
-		raylib::Texture	modeImgP1[5] = { raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png") };
-		raylib::Texture	modeImgP2[5] = { raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png") };
+		raylib::Texture	shieldImg = raylib::Texture("./resources/shield.png");
+		raylib::Texture	modeImgP1[5] = { raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode003.png"), raylib::Texture("./resources/mode000.png"), raylib::Texture("./resources/mode000.png") };
+		raylib::Texture	modeImgP2[5] = { raylib::Texture("./resources/mode100.png"), raylib::Texture("./resources/mode100.png"), raylib::Texture("./resources/mode103.png"), raylib::Texture("./resources/mode100.png"), raylib::Texture("./resources/mode100.png") };
 	private:
 		raylib::Vector2	_pos;
 		raylib::Color	_color;
