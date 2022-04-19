@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:17:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:36:29 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ class PowerUp {
 		raylib::Vector2	getPos() { return (this->_pos); }
 		int				getSize() { return (this->_sizeCurrent); }
 		int				getID() { return (this->_id); }
-
 	private:
 		int					_id;
 		int					_state;

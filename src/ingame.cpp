@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:51:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:35:08 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ingame(Data &data)
 		takePowerUp(data);
 		usePowerUp(data);
 		increaseCircleSpeed(data);
-		// if (IsKeyPressed(KEY_K))
+		if (IsKeyPressed(KEY_K))
+			data.player[0].setPowerUpHold(SHIELD);
 		// 	data.player.setMode(3);
 	}
 	BeginDrawing();

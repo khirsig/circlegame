@@ -24,11 +24,12 @@ SRC =		./src/main.cpp										\
 			./src/textGUI.cpp									\
 			./src/utils.cpp										\
 			./src/PowerUp.cpp									\
+			./src/Interface.cpp									\
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) $(CFLAGS) -o $(NAME) $(LFLAGS) 
+	@$(CC) $(OBJECTS) $(CFLAGS) -o $(NAME) $(LFLAGS)
 
 $(OBJECTS): $(SRC)
 	@$(CC) -c $(CFLAGS) $(SRC) $(IFLAGS)

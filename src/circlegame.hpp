@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 14:52:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:46:55 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "Circle.hpp"
 # include "Player.hpp"
 # include "PowerUp.hpp"
+# include "Interface.hpp"
 
 # define START_SCREEN 0
 # define LOADING_SCREEN 1
@@ -44,13 +45,14 @@ struct Data {
 	bool				gameover = 0;
 	const static int	circleAmount = 2;
 	Circle 				circle[circleAmount];
-	const static int	playerAmount = 2;
+	const static int	playerAmount = 1;
 	Player				player[playerAmount];
 	const static int	powerUpAmount = 3;
 	PowerUp				powerUp[powerUpAmount];
 	int					startTime;
 	int					currentTime;
 	int					modeTime;
+	Interface			interface;
 };
 
 void	startScreen(Data &data);

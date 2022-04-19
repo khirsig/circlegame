@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 14:44:51 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/07 16:53:08 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	powerUpGUI(Data &data)
 
 	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, data.player[0].getPlayerColor());
 	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize * 0.8, WHITE);
+	// DrawRectangle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, powerUpSize, data.player[0].getPlayerColor());
+	float scale = (float)powerUpSize * 0.8 / 2048;
+	raylib::Vector2 offset(powerUpSize * 0.8, powerUpSize * 0.8);
 	if (powerUpID != -1)
 	{
 		switch (powerUpID) {
@@ -70,7 +73,7 @@ void	powerUpGUI(Data &data)
 				DrawText("SM", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
 				break ;
 			case SHIELD :
-				DrawText("SH", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				data.interface.powerupImg[0].Draw(offset, 0, scale, WHITE);
 				break ;
 			case RANDOMDIR :
 				DrawText("RD", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
