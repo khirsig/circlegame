@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 16:53:47 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 22:40:59 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ class Player {
 		bool			getActiveShield() { return (this->_activeShield); }
 		void			setActiveShield(bool status) { this->_activeShield = status; }
 
-		int								id;
-		raylib::Texture					shieldImg = raylib::Texture("./resources/shield.png");
-		std::vector<raylib::Texture>	modeImg[2];
+		int										id;
+		raylib::Texture							shieldImg = raylib::Texture("./resources/shield.png");
+		static std::vector<raylib::Texture>		modeImg[2];
 	private:
 		raylib::Vector2	_pos;
 		raylib::Color	_color;

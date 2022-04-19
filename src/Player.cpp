@@ -6,11 +6,13 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 17:12:52 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/19 22:42:59 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.hpp"
+
+std::vector<raylib::Texture> Player::modeImg[2];
 
 Player::Player()
 {
