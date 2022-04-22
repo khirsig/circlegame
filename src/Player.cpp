@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 11:38:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/21 13:35:08 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ void	Player::drawPlayer()
 
 	float scale = this->_size * 0.7 / 2048 ;
 	raylib::Vector2 offset(this->_pos.x - scale * 4096 / 2, this->_pos.y - scale * 4096 / 2);
-	if (this->id == 0)
-		this->modeImgP1[this->_mode].Draw(offset, 0, scale, WHITE);
-	else
-		this->modeImgP2[this->_mode].Draw(offset, 0, scale, WHITE);
+	this->modeImg[this->_mode].Draw(offset, 0, scale, WHITE);
 	if (this->_activeShield)
 	{
 		scale = this->_size * 1.1 / 2048 ;

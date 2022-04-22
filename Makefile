@@ -13,6 +13,7 @@ OBJECTS = $(OBJDIR)/*.o
 SRC =		./src/main.cpp										\
 			./src/startScreen.cpp								\
 			./src/loadingScreen.cpp								\
+			./src/loadResources.cpp								\
 			./src/ingame.cpp									\
 			./src/drawCircle.cpp								\
 			./src/drawPlayer.cpp								\

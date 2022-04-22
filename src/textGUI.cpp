@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 16:53:08 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:21:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,34 @@
 #define MODE_STR_P1 modeText[data.player[0].getMode()].c_str()
 #define MODE_STR_P2 modeText[data.player[1].getMode()].c_str()
 
-void	modeGUI(Data &data)
+static void	modeGUIText(Data &data, int playerID, const char *modeText)
 {
 	int	modeSize = screenHeight / 36;
-	int	playerOneOffset;
-	if (data.playerAmount == 1)
-		playerOneOffset = screenWidth / 2;
+	int	offset;
+	if (data.playerAmount == 1 && playerID == 0)
+		offset = screenWidth / 2;
+	else if (playerID == 1)
+		offset = screenWidth / 4 * 3;
 	else
-		playerOneOffset = screenWidth / 4;
-	DrawText(MODE_STR_P1, playerOneOffset - MeasureText(MODE_STR_P1, modeSize) / 2, modeSize / 2, modeSize, data.player[0].getColor());
+		offset = screenWidth / 4;
+	DrawText(modeText, offset - MeasureText(modeText, modeSize) / 2, modeSize / 2, modeSize, data.player[playerID].getColor());
+
 	if ((currentTime - startTime) % 10 == 7 && !data.gameover)
-		DrawText("Changing MODE in 3...", playerOneOffset - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[0].getColor());
+		DrawText("Changing MODE in 3...", offset - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
 	if ((currentTime - startTime) % 10 == 8 && !data.gameover)
-		DrawText("Changing MODE in 2...", playerOneOffset - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[0].getColor());
+		DrawText("Changing MODE in 2...", offset - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
 	if ((currentTime - startTime) % 10 == 9 && !data.gameover)
-		DrawText("Changing MODE in 1...", playerOneOffset - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[0].getColor());
-	if (data.playerAmount > 1)
+		DrawText("Changing MODE in 1...", offset - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
+}
+
+void	modeGUI(Data &data)
+{
+	if (data.playerAmount == 1)
+		modeGUIText(data, 0, modeText[data.player[0].getMode()].c_str());
+	else
 	{
-		DrawText(MODE_STR_P2, screenWidth / 4 * 3 - MeasureText(MODE_STR_P2, modeSize) / 2, modeSize / 2, modeSize, data.player[1].getColor());
-		if ((currentTime - startTime) % 10 == 7 && !data.gameover)
-			DrawText("Changing MODE in 3...", screenWidth / 4 * 3 - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[1].getColor());
-		if ((currentTime - startTime) % 10 == 8 && !data.gameover)
-			DrawText("Changing MODE in 2...", screenWidth / 4 * 3 - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[1].getColor());
-		if ((currentTime - startTime) % 10 == 9 && !data.gameover)
-			DrawText("Changing MODE in 1...", screenWidth / 4 * 3 - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[1].getColor());
+		modeGUIText(data, 0, modeText[data.player[0].getMode()].c_str());
+		modeGUIText(data, 1, modeText[data.player[1].getMode()].c_str());
 	}
 }
 
