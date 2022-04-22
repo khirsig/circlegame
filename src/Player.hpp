@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 22:40:59 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/21 13:32:30 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ class Player {
 
 		int										id;
 		raylib::Texture							shieldImg = raylib::Texture("./resources/shield.png");
-		static std::vector<raylib::Texture>		modeImg[2];
+		std::vector<raylib::Texture>			modeImg;
 	private:
 		raylib::Vector2	_pos;
 		raylib::Color	_color;
