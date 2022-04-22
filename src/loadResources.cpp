@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 10:19:51 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/22 10:43:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ std::string	getModePath(int i, int pNbr)
 
 void	loadResources(Data &data)
 {
-	int	xStart = screenWidth / 10 * 1, xEnd = screenWidth / 10 * 9;
-	int	yStart = screenHeight / 10 * 8, yEnd = screenHeight / 10 * 9;
-	int	maxWidth = xEnd - xStart;
-	int	actualWidth, maxGraphics;
+	unsigned int	loadingStep = 0, currentGraphic = 0;
+	int				xStart = screenWidth / 10 * 1, xEnd = screenWidth / 10 * 9;
+	int				yStart = screenHeight / 10 * 8, yEnd = screenHeight / 10 * 9;
+	int				maxWidth = xEnd - xStart;
+	int				actualWidth, maxGraphics;
 
-	for (unsigned int loadingStep = 0; loadingStep < 100; loadingStep += 1)
+	while (loadingStep < 11)
 	{
-		actualWidth = maxWidth / 100 * loadingStep;
+		actualWidth = maxWidth / 11 * loadingStep;
 		if (actualWidth > maxWidth)
 			actualWidth = maxWidth;
 
@@ -57,21 +58,22 @@ void	loadResources(Data &data)
 				data.interface.powerupImg.push_back(raylib::Texture("./resources/powerup00.png"));
 				break ;
 
-			case 25:
+			case 1:
 				maxGraphics = 5;
-				for (unsigned int i = 0; i < maxGraphics; ++i)
-					data.player[0].modeImg.push_back(raylib::Texture(getModePath(i, 0)));
+				data.player[0].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 0)));
 				break ;
 
-			case 50:
+			case 6:
 				if (data.playerAmount > 1)
 				{
+					if (currentGraphic >= 5)
+						currentGraphic = 0;
 					maxGraphics = 5;
-					for (unsigned int i = 0; i < maxGraphics; ++i)
-						data.player[1].modeImg.push_back(raylib::Texture(getModePath(i, 1)));
+					data.player[1].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 1)));
 				}
 				break ;
 		}
+		loadingStep++;
 	}
 	data.gameMode = START_SCREEN;
 }
