@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 10:43:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:17:06 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,44 @@ std::string	getModePath(int i, int pNbr)
 	return (texLink);
 }
 
+std::string	getPubPath(int i)
+{
+	std::string texLink = "./resources/pub";
+
+	texLink += std::to_string(i);
+	texLink += ".png";
+	return (texLink);
+}
+
+std::string	getPowerUpPath(int i)
+{
+	std::string texLink = "./resources/powerup";
+
+	if (i < 10)
+	{
+		texLink += "0";
+		texLink += std::to_string(i);
+		texLink += ".png";
+	}
+	else
+	{
+		texLink += std::to_string(i);
+		texLink += ".png";
+	}
+	return (texLink);
+}
+
 void	loadResources(Data &data)
 {
 	unsigned int	loadingStep = 0, currentGraphic = 0;
 	int				xStart = screenWidth / 10 * 1, xEnd = screenWidth / 10 * 9;
 	int				yStart = screenHeight / 10 * 8, yEnd = screenHeight / 10 * 9;
 	int				maxWidth = xEnd - xStart;
-	int				actualWidth, maxGraphics;
+	int				actualWidth;
 
-	while (loadingStep < 11)
+	while (loadingStep < 15)
 	{
-		actualWidth = maxWidth / 11 * loadingStep;
+		actualWidth = maxWidth / 15 * loadingStep;
 		if (actualWidth > maxWidth)
 			actualWidth = maxWidth;
 
@@ -53,25 +80,36 @@ void	loadResources(Data &data)
 		DrawRectangle(xStart, yStart, actualWidth, yEnd - yStart, RED);
 		EndDrawing();
 
-		switch (loadingStep) {
-			case 0:
-				data.interface.powerupImg.push_back(raylib::Texture("./resources/powerup00.png"));
-				break ;
-
-			case 1:
-				maxGraphics = 5;
-				data.player[0].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 0)));
-				break ;
-
-			case 6:
-				if (data.playerAmount > 1)
-				{
-					if (currentGraphic >= 5)
-						currentGraphic = 0;
-					maxGraphics = 5;
-					data.player[1].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 1)));
-				}
-				break ;
+		if (loadingStep < 3)
+		{
+			data.interface.powerupImg.push_back(raylib::Texture(getPowerUpPath(currentGraphic)));
+			currentGraphic++;
+			if (loadingStep == 2)
+				currentGraphic = 0;
+		}
+		else if (loadingStep >= 3 && loadingStep < 8)
+		{
+			data.player[0].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 0)));
+			currentGraphic++;
+			if (loadingStep == 7)
+				currentGraphic = 0;
+		}
+		else if (loadingStep >= 8 && loadingStep < 13)
+		{
+			if (data.playerAmount > 1)
+			{
+				data.player[1].modeImg.push_back(raylib::Texture(getModePath(currentGraphic, 1)));
+				currentGraphic++;
+				if (loadingStep == 12)
+					currentGraphic = 0;
+			}
+		}
+		else if (loadingStep >= 13 && loadingStep < 15)
+		{
+			data.interface.pubImg.push_back(raylib::Texture(getPubPath(currentGraphic)));
+			currentGraphic++;
+			if (loadingStep == 14)
+				currentGraphic = 0;
 		}
 		loadingStep++;
 	}

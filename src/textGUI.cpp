@@ -6,14 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 11:21:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:31:41 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
-
-#define MODE_STR_P1 modeText[data.player[0].getMode()].c_str()
-#define MODE_STR_P2 modeText[data.player[1].getMode()].c_str()
 
 static void	modeGUIText(Data &data, int playerID, const char *modeText)
 {
@@ -25,14 +22,14 @@ static void	modeGUIText(Data &data, int playerID, const char *modeText)
 		offset = screenWidth / 4 * 3;
 	else
 		offset = screenWidth / 4;
-	DrawText(modeText, offset - MeasureText(modeText, modeSize) / 2, modeSize / 2, modeSize, data.player[playerID].getColor());
+	DrawText(modeText, offset - MeasureText(modeText, modeSize) / 2, modeSize / 2, modeSize, data.player[playerID].getPlayerColor());
 
 	if ((currentTime - startTime) % 10 == 7 && !data.gameover)
-		DrawText("Changing MODE in 3...", offset - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
+		DrawText("Changing MODE in 3...", offset - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
 	if ((currentTime - startTime) % 10 == 8 && !data.gameover)
-		DrawText("Changing MODE in 2...", offset - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
+		DrawText("Changing MODE in 2...", offset - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
 	if ((currentTime - startTime) % 10 == 9 && !data.gameover)
-		DrawText("Changing MODE in 1...", offset - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getColor());
+		DrawText("Changing MODE in 1...", offset - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
 }
 
 void	modeGUI(Data &data)
@@ -60,50 +57,43 @@ void	timeGUI(Data &data)
 	DrawText(timeText.c_str(), timeSize, screenHeight - timeSize * 1.5, timeSize, timeCol);
 }
 
-void	powerUpGUI(Data &data)
+static void powerUpGUIGraphics(Data &data, int playerID)
 {
-	int	powerUpSize = screenHeight / 30;
-	int	powerUpID = data.player[0].getPowerUpHold();
+	int	powerUpSize = screenHeight / 30.0;
+	raylib::Vector2	pos(0, 0);
+	int	powerUpID = data.player[playerID].getPowerUpHold();
 
-	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, data.player[0].getPlayerColor());
-	DrawCircle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize * 0.8, WHITE);
-	// DrawRectangle(powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, powerUpSize, data.player[0].getPlayerColor());
-	float scale = (float)powerUpSize * 0.8 / 2048;
-	raylib::Vector2 offset(powerUpSize * 0.8, powerUpSize * 0.8);
+	float			scale = (float)powerUpSize * 1.5 / 2048;
+
+	if (playerID == 0)
+		pos.x = powerUpSize;
+	else
+		pos.x = screenWidth - powerUpSize - powerUpSize * 1.5 - scale * 2048;
+	// std::cout << "PosX = " << pos.x << std::endl << "PosY = " << pos.y << " ScreenWidth: " << screenWidth << std::endl;
+	pos.y = powerUpSize;
+
+	raylib::Vector2	offset(pos.x + scale * 1024, pos.y + scale * 1024);
+	DrawTextureEx(data.interface.pubImg[playerID], pos, 0, scale, WHITE);
+
 	if (powerUpID != -1)
 	{
 		switch (powerUpID) {
 			case SKIPMODE :
-				DrawText("SM", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				DrawText("SM", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
 				break ;
 			case SHIELD :
-				data.interface.powerupImg[0].Draw(offset, 0, scale, WHITE);
+				data.interface.powerupImg[powerUpID].Draw(offset, 0, scale * 0.5, WHITE);
 				break ;
 			case RANDOMDIR :
-				DrawText("RD", powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
+				DrawText("RD", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
 				break ;
 		}
 	}
+}
+
+void	powerUpGUI(Data &data)
+{
+	powerUpGUIGraphics(data, 0);
 	if (data.playerAmount > 1)
-	{
-		int	powerUpID = data.player[1].getPowerUpHold();
-
-		DrawCircle(SCREEN_WIDTH - powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize, data.player[1].getPlayerColor());
-		DrawCircle(SCREEN_WIDTH - powerUpSize * 1.5, powerUpSize * 1.5, powerUpSize * 0.8, WHITE);
-		if (powerUpID != -1)
-		{
-			switch (powerUpID) {
-				case SKIPMODE :
-					DrawText("SM", SCREEN_WIDTH - powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
-					break ;
-				case SHIELD :
-					DrawText("SH", SCREEN_WIDTH - powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
-					break ;
-				case RANDOMDIR :
-					DrawText("RD", SCREEN_WIDTH - powerUpSize * 1.2, powerUpSize * 1.2, powerUpSize / 2, DARKGRAY);
-					break ;
-
-			}
-		}
-	}
+		powerUpGUIGraphics(data, 1);
 }
