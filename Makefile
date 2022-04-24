@@ -26,6 +26,7 @@ SRC =		./src/main.cpp										\
 			./src/utils.cpp										\
 			./src/PowerUp.cpp									\
 			./src/Interface.cpp									\
+			./src/Elo.cpp										\
 
 all: $(NAME)
 

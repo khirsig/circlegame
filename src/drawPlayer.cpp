@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:47:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:30:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:19:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void drawPlayer(Data &data)
 						data.player[j].setActiveShield(0);
 					}
 					else
+					{
 						data.gameover = 1;
+					}
 				}
 			}
 		}

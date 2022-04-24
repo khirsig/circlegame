@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 16:24:11 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:06:51 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,18 @@
 # include "Player.hpp"
 # include "PowerUp.hpp"
 # include "Interface.hpp"
+# include "Elo.hpp"
 
 # define PRE_START 0
 # define START_SCREEN 1
 # define LOADING_SCREEN 2
 # define IN_GAME 3
-# define GAME_OVER 4
+# define ELO_SCREEN 4
+# define GAME_OVER 5
 
 const static std::string menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.3",
-	"GAMEOVER", "Press Enter to return to Mainmenu!"
+	"GAMEOVER", "Press Enter to see Elo changes!"
 };
 
 const static int	menuTextSize[] {
@@ -54,6 +56,7 @@ struct Data {
 	int					currentTime;
 	int					modeTime;
 	Interface			interface;
+	Elo					elo;
 };
 
 void	startScreen(Data &data);
@@ -83,5 +86,7 @@ void    increaseCircleSpeed(Data &data);
 
 void	loadResources(Data &data);
 
+void	calcElo(Data &data);
+void	eloScreen(Data &data);
 
 #endif

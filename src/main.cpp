@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 16:20:57 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:27:44 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(void)
 		data.player[i].setupPlayer();
 		data.player[i].id = i;
 	}
+	data.elo.rank = 6;
+	data.elo.points = 50;
 	SetTargetFPS(SCREEN_FPS);
 	while (!(data.window.ShouldClose()))
 	{
@@ -53,6 +55,9 @@ int	main(void)
 				break;
 			case IN_GAME :
 				ingame(data);
+				break;
+			case ELO_SCREEN :
+				eloScreen(data);
 				break;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 14:01:00 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:05:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ingame(Data &data)
 		DrawText(menuText[4].c_str(), screenWidth / 2 - MeasureText(menuText[4].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
 		if (IsKeyPressed(KEY_ENTER))
 		{
-			newRound(data);
+			calcElo(data);
+			data.gameMode = ELO_SCREEN;
 		}
 	}
 	EndDrawing();
