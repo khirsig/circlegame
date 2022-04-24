@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:12:57 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 18:19:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:32:39 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define IMMORTAL3 20
 # define RADIANT 21
 
-const static int eloThreshold[22] = { 0, 3, 5, 10, 12, 15, 20, 25, 30, 35,
-									40, 45, 50, 60, 70, 80, 90, 100, 110,
+const static int eloThreshold[22] = { 3, 5, 8, 10, 12, 13, 15, 17, 20, 25,
+									30, 40, 50, 60, 70, 80, 90, 100, 110,
 									120, 130, 150 };
 const static std::string eloName[22] = { "Iron 1", "Iron 2", "Iron 3", "Bronze 1", "Bronze 2", "Bronze 3",
 										"Silver 1", "Silver 2", "Silver 3", "Gold 1", "Gold 2", "Gold 3",

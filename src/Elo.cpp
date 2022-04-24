@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 18:27:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:41:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	calcElo(Data &data)
 {
 	int	points = currentTime - startTime;
 
-	std::cout << "Rank: " << data.elo.rank << std::endl << "Elo Points: " << data.elo.points << " / 100" << std::endl;
-	std::cout << "Ingame Points: " << points << std::endl;
 	if (points != eloThreshold[data.elo.rank])
 	{
 		data.elo.gain = points - eloThreshold[data.elo.rank];
@@ -38,7 +36,7 @@ void	calcElo(Data &data)
 			data.elo.gain = 25;
 		if (data.elo.gain < -20)
 			data.elo.gain = -20;
-		if (data.elo.points == 0)
+		if (data.elo.points == 0 && data.elo.gain < 0)
 			data.elo.points = -1;
 		else
 		{
@@ -62,4 +60,8 @@ void	calcElo(Data &data)
 			}
 		}
 	}
+	std::cout << "Rank: " << data.elo.rank << std::endl << "Elo Points: " << data.elo.points << " / 100" << std::endl;
+	std::cout << "Ingame Points: " << points << std::endl;
+	SaveStorageValue(0, data.elo.rank);
+	SaveStorageValue(1, data.elo.points);
 }
