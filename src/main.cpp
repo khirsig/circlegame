@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 18:37:52 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:46:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 		data.player[i].setupPlayer();
 		data.player[i].id = i;
 	}
+	data.elo.change = false;
 	data.elo.rank = -1;
 	data.elo.points = -1;
 	data.elo.rank = LoadStorageValue(0);

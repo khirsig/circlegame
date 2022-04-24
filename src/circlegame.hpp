@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 18:06:51 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:17:37 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void    newRound(Data &data);
 void	modeGUI(Data &data);
 void	timeGUI(Data &data);
 void	powerUpGUI(Data &data);
+void	eloGUI(Data &data);
 
 void	changeMode(Data &data);
 void	setFPS(Data &data);

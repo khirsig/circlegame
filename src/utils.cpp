@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 14:34:47 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:47:05 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void    newRound(Data &data)
     setStartTime(data);
     setCurrentTime(data);
     data.modeTime = currentTime;
+    data.elo.change = false;
 }
 
 void    setFPS(Data &data)
