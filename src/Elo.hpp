@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:12:57 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 19:46:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 23:37:11 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct Elo {
 	int		points;
 	int		rank;
 	int		gain;
+	int		trend;
 	bool	change;
 };
 
