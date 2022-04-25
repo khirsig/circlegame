@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elo.cpp                                            :+:      :+:    :+:   */
+/*   Elo.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/25 00:01:16 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/25 13:05:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	eloScreen(Data &data)
 	{
 		if (data.elo.change == true)
 			nbr = "PROMOTED";
-		else;
+		else
 		{
 			nbr = "+";
 			nbr += std::to_string(data.elo.gain);
@@ -103,7 +103,7 @@ void	calcElo(Data &data)
 	if (data.elo.points >= 100 && data.elo.rank < 18)
 	{
 		data.elo.rank++;
-		data.elo.points -= 100;;
+		data.elo.points -= 100;
 		data.elo.change = true;
 	}
 	else if (data.elo.points < 0)
