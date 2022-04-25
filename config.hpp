@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:00:34 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 13:48:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/25 10:27:56 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define SCREEN_FPS 123
 
 //	Define player count
-# define PLAYER_COUNT 2
+# define PLAYER_COUNT 1
 
 extern int		screenWidth;
 extern int		screenHeight;

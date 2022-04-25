@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 14:31:41 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:31:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ void	timeGUI(Data &data)
 	DrawText(timeText.c_str(), timeSize, screenHeight - timeSize * 1.5, timeSize, timeCol);
 }
 
+void	eloGUI(Data &data)
+{
+	int	eloSize = screenHeight / 6.0;
+	raylib::Vector2	pos(0, 0);
+	float scale = (float)eloSize / 300;
+
+	pos.x = screenWidth - scale * 300;
+	pos.y = 0;
+
+	DrawTextureEx(data.interface.eloImg[data.elo.rank], pos, 0, scale, WHITE);
+}
+
 static void powerUpGUIGraphics(Data &data, int playerID)
 {
 	int	powerUpSize = screenHeight / 30.0;
@@ -69,7 +81,6 @@ static void powerUpGUIGraphics(Data &data, int playerID)
 		pos.x = powerUpSize;
 	else
 		pos.x = screenWidth - powerUpSize - powerUpSize * 1.5 - scale * 2048;
-	// std::cout << "PosX = " << pos.x << std::endl << "PosY = " << pos.y << " ScreenWidth: " << screenWidth << std::endl;
 	pos.y = powerUpSize;
 
 	raylib::Vector2	offset(pos.x + scale * 1024, pos.y + scale * 1024);

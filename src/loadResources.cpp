@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/22 14:17:06 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/24 19:18:57 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,24 @@ std::string	getPowerUpPath(int i)
 	return (texLink);
 }
 
+std::string	getEloPath(int i)
+{
+	std::string texLink = "./resources/elo/elo";
+
+	if (i < 10)
+	{
+		texLink += "0";
+		texLink += std::to_string(i);
+		texLink += ".png";
+	}
+	else
+	{
+		texLink += std::to_string(i);
+		texLink += ".png";
+	}
+	return (texLink);
+}
+
 void	loadResources(Data &data)
 {
 	unsigned int	loadingStep = 0, currentGraphic = 0;
@@ -68,9 +86,9 @@ void	loadResources(Data &data)
 	int				maxWidth = xEnd - xStart;
 	int				actualWidth;
 
-	while (loadingStep < 15)
+	while (loadingStep < 34)
 	{
-		actualWidth = maxWidth / 15 * loadingStep;
+		actualWidth = maxWidth / 34 * loadingStep;
 		if (actualWidth > maxWidth)
 			actualWidth = maxWidth;
 
@@ -109,6 +127,13 @@ void	loadResources(Data &data)
 			data.interface.pubImg.push_back(raylib::Texture(getPubPath(currentGraphic)));
 			currentGraphic++;
 			if (loadingStep == 14)
+				currentGraphic = 0;
+		}
+		else if (loadingStep >= 15 && loadingStep < 34)
+		{
+			data.interface.eloImg.push_back(raylib::Texture(getEloPath(currentGraphic)));
+			currentGraphic++;
+			if (loadingStep == 33)
 				currentGraphic = 0;
 		}
 		loadingStep++;
