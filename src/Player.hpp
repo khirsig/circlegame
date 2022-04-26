@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/21 13:32:30 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:25:00 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # define STANDARD 0
 # define ICE 1
 # define MIRROR_ICE 2
-# define GROWTH 3
-# define WARP 4
+# define MIRROR 3
+# define GROWTH 4
 
 const static std::string modeText[] {
 	"Mode: Standard", "Mode: Ice", "Mode: Mirror Ice",
-	"Mode: Growth", "Mode: Warp"
+	"Mode: Mirror", "Mode: Growth"
 };
 
 class Player {
@@ -36,6 +36,7 @@ class Player {
 
 		void			setupPlayer();
 		void			movePlayerStandard();
+		void			movePlayerMirror();
 		void			movePlayerIce();
 		void			movePlayerMirrorIce();
 		void			drawPlayer();

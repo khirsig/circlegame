@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/25 00:06:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:24:45 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,6 @@ Player::Player()
 
 Player::~Player() { }
 
-static void	setColor(raylib::Color &col, const int mode)
-{
-	switch (mode) {
-		case ICE :
-			col.r = 102;
-			col.g = 191;
-			col.b = 255;
-			break ;
-		case MIRROR_ICE :
-			col.r = 0;
-			col.g = 117;
-			col.b = 117;
-			break ;
-		case GROWTH :
-			col.r = 100;
-			col.g = 22;
-			col.b = 255;
-			break ;
-		default :
-			col.r = 190;
-			col.g = 33;
-			col.b = 55;
-			break ;
-
-	}
-}
-
 void	Player::setupPlayer()
 {
 	this->_size = screenWidth / 40;
@@ -54,7 +27,6 @@ void	Player::setupPlayer()
 	this->_speed = screenWidth / 10 * 5.5;
 	this->_pos.y = screenHeight / 2 - (this->_size / 2);
 	this->_mode = STANDARD;
-	setColor(this->_color, this->_mode);
 	this->_moveDir = KEY_RIGHT;
 	this->_growthDir = 1;
 	if (this->id == 0)
@@ -79,14 +51,12 @@ void	Player::setupPlayer()
 void	Player::setMode(int id)
 {
 	this->_mode = id;
-	setColor(this->_color, this->_mode);
 	this->_size = screenWidth / 40;
 }
 
 
 void	Player::drawPlayer()
 {
-	// DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_color);
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
 
 	float scale = this->_size * 0.7 / 2048;
@@ -113,6 +83,19 @@ void	Player::movePlayerStandard()
 	if (((IsKeyDown(KEY_D) && this->id == 0) || (IsKeyDown(KEY_RIGHT) && this->id == 1)) && this->_pos.x + currentSpeed <= screenWidth - this->_size * 0.90)
 		this->_pos.x += currentSpeed;
 	if (((IsKeyDown(KEY_A) && this->id == 0) || (IsKeyDown(KEY_LEFT) && this->id == 1)) && this->_pos.x - currentSpeed >= this->_size * 0.90)
+		this->_pos.x -= currentSpeed;
+}
+
+void	Player::movePlayerMirror()
+{
+	double	currentSpeed = this->_speed / currentFPS;
+	if (((IsKeyDown(KEY_S) && this->id == 0) || (IsKeyDown(KEY_DOWN) && this->id == 1)) && this->_pos.y - currentSpeed >= this->_size * 0.90)
+		this->_pos.y -= currentSpeed;
+	if (((IsKeyDown(KEY_W) && this->id == 0) || (IsKeyDown(KEY_UP) && this->id == 1)) && this->_pos.y + currentSpeed <= screenHeight - this->_size * 0.90)
+		this->_pos.y += currentSpeed;
+	if (((IsKeyDown(KEY_A) && this->id == 0) || (IsKeyDown(KEY_LEFT) && this->id == 1)) && this->_pos.x + currentSpeed <= screenWidth - this->_size * 0.90)
+		this->_pos.x += currentSpeed;
+	if (((IsKeyDown(KEY_D) && this->id == 0) || (IsKeyDown(KEY_RIGHT) && this->id == 1)) && this->_pos.x - currentSpeed >= this->_size * 0.90)
 		this->_pos.x -= currentSpeed;
 }
 

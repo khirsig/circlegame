@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:12:20 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:31:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:25:27 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	changeMode(Data &data)
 			int	newMode, currentMode = data.player[i].getMode();
 			do
 			{
-				newMode = GetRandomValue(0, 3);
+				newMode = GetRandomValue(0, 4);
 			} while (newMode == currentMode);
 			data.player[i].setMode(newMode);
 		}

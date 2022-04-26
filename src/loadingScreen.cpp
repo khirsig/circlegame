@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 19:24:01 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:53:51 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	loadingScreen(Data &data)
 	movePlayer(data);
 	modeGUI(data);
 	timeGUI(data);
-	eloGUI(data);
+	if (data.playerAmount == 1)
+		eloGUI(data);
 	powerUpGUI(data);
 	if (currentTime - startTime == 0)
 		DrawText("3...", screenWidth / 2 - MeasureText("3...", menuTextSize[1]) / 2, screenHeight / 3, menuTextSize[1], data.player[0].getColor());

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:50:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 14:11:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	startScreen(Data &data)
 	DrawText(menuText[1].c_str(), screenWidth / 2 - MeasureText(menuText[1].c_str(), menuTextSize[1]) / 2, screenHeight / 3, menuTextSize[1], DARKGRAY);
 	DrawText(menuText[2].c_str(), screenWidth - MeasureText(menuText[2].c_str(), menuTextSize[2]) * 1.2, screenHeight - menuTextSize[2] * 1.5, menuTextSize[2], DARKGRAY);
 	EndDrawing();
+
+
 	if (IsKeyPressed(KEY_ENTER))
 	{
 		data.gameMode = LOADING_SCREEN;

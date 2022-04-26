@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:54:00 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/06 13:34:16 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:26:46 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	movePlayer(Data &data)
 				break ;
 			case MIRROR_ICE :
 				data.player[i].movePlayerMirrorIce();
+				break ;
+			case MIRROR :
+				data.player[i].movePlayerMirror();
 				break ;
 			default :
 				data.player[i].movePlayerStandard();
