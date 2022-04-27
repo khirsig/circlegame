@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 16:24:47 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:36:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,21 @@
 # define ELO_SCREEN 4
 # define GAME_OVER 5
 
-const static std::string menuText[] {
-	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.3",
-	"GAMEOVER", "Press Enter to see Elo changes!"
-};
-
-const static int	menuTextSize[] {
-	SCREEN_HEIGHT / 14, SCREEN_HEIGHT / 28, SCREEN_HEIGHT / 36,
-	SCREEN_HEIGHT / 16, SCREEN_HEIGHT / 28
-};
+# define NOGAME -1
+# define NORMALGAME 0
+# define RANKEDGAME 1
+# define SPLITSCREEN 2
 
 struct Data {
 	raylib::Window		window{SCREEN_WIDTH, SCREEN_HEIGHT, "circlegame"};
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = PRE_START;
+	int					gameType = NOGAME;
 	bool				gameover = 0;
 	const static int	circleAmount = 4;
 	Circle 				circle[circleAmount];
-	const static int	playerAmount = PLAYER_COUNT;
-	Player				player[playerAmount];
+	int					playerAmount = 1;
+	Player				player[2];
 	const static int	powerUpAmount = 3;
 	PowerUp				powerUp[powerUpAmount];
 	int					startTime;
@@ -94,5 +90,6 @@ void	calcElo(Data &data);
 void	eloScreen(Data &data);
 void    loginServerRequest(Data &data);
 void    setEloServer(Data &data);
+void    loginHandler(Data &data);
 
 #endif

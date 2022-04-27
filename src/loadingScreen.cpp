@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 14:33:43 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:38:56 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	loadingScreen(Data &data)
 	movePlayer(data);
 	modeGUI(data);
 	timeGUI(data);
-	if (data.playerAmount == 1)
+	if (data.gameType == RANKEDGAME)
 		eloGUI(data);
 	powerUpGUI(data);
 	if (currentTime - startTime == 0)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Elo.cpp                                            :+:      :+:    :+:   */
+/*   elo.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 16:09:56 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:50:50 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	eloScreen(Data &data)
 {
 	if (IsKeyPressed(KEY_ENTER))
+	{
+			data.gameType = NOGAME;
 			newRound(data);
+	}
 
 	int	eloSize = screenHeight / 4.0;
 	raylib::Vector2	pos(0, 0);
