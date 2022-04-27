@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:03:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:17:24 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    newRound(Data &data)
     setStartTime(data);
     setCurrentTime(data);
     data.modeTime = currentTime;
-    data.elo.change = false;
+    data.user.elo.change = false;
 }
 
 void    setFPS(Data &data)
@@ -173,14 +173,34 @@ void    loginServerRequest(Data &data)
       curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
       curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
       curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-      const char *input = prettyJson.c_str();
-      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, input);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, prettyJson.c_str());
       res = curl_easy_perform(curl);
       if (readBuffer == "{\"success\":false}")
         exit(EXIT_FAILURE);
       JS::ParseContext context(readBuffer);
       context.parseTo(data.user);
-      std::cout << data.user.username << std::endl << data.user.password << std::endl << data.user.elo.rank << std::endl << data.user.elo.points << std::endl;
+      std::cout << data.user.username << std::endl << data.user.password << std::endl
+                << data.user.elo.rank << std::endl << data.user.elo.points << std::endl << data.user.elo.trend << std::endl;
+    }
+    curl_easy_cleanup(curl);
+}
+
+void    setEloServer(Data &data)
+{
+    CURL *curl;
+    CURLcode res;
+    curl = curl_easy_init();
+    if(curl) {
+      curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_easy_setopt(curl, CURLOPT_URL, "https://khirsig.de/sethighscore");
+      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+      curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+      struct curl_slist *headers = NULL;
+	  std::string prettyJson = JS::serializeStruct(data.user);
+      headers = curl_slist_append(headers, "Content-Type: application/json");
+      curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, prettyJson.c_str());
+      res = curl_easy_perform(curl);
     }
     curl_easy_cleanup(curl);
 }

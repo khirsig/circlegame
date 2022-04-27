@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 10:55:21 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:06:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ingame(Data &data)
 			data.player[1].setPowerUpHold(SHIELD);
 		}
 		if (IsKeyPressed(KEY_P))
-			data.elo.rank = 10;
+			data.user.elo.rank = 10;
 	}
 	BeginDrawing();
 	data.window.ClearBackground(RAYWHITE);

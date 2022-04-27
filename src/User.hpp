@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:31:56 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:04:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:07:09 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 struct User {
 	std::string	username;
 	std::string	password;
-	Elo			&elo;
+	Elo			elo;
 
 	JS_OBJ(username, password, elo);
 };

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 14:55:58 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:06:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	main(void)
 		data.player[i].setupPlayer();
 		data.player[i].id = i;
 	}
-	data.elo.change = false;
-	data.elo.trend = 0;
+	data.user.elo.change = false;
+	data.user.elo.trend = 0;
 	SetTargetFPS(SCREEN_FPS);
 	while (!(data.window.ShouldClose()))
 	{
