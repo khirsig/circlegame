@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 18:49:12 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:58:19 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <vector>
 # include "../config.hpp"
 
-const static std::string	mainMenuText[] { "Normal Game (1 Player)", "Ranked Game (1 Player)", "Split Screen (2 Players)", "Exit" };
+const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Exit" };
 
 const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
