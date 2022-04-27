@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 11:06:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:15:15 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string>
 # include <iostream>
 # include <random>
+# include "../include/json_struct.h"
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include "../config.hpp"
 # include "Circle.hpp"
@@ -23,6 +24,7 @@
 # include "PowerUp.hpp"
 # include "Interface.hpp"
 # include "Elo.hpp"
+# include "User.hpp"
 
 # define PRE_START 0
 # define START_SCREEN 1
@@ -57,6 +59,7 @@ struct Data {
 	int					modeTime;
 	Interface			interface;
 	Elo					elo;
+	User				user;
 };
 
 void	startScreen(Data &data);
@@ -89,5 +92,7 @@ void	loadResources(Data &data);
 
 void	calcElo(Data &data);
 void	eloScreen(Data &data);
+void    loginServerRequest(Data &data);
+void    setEloServer(Data &data);
 
 #endif

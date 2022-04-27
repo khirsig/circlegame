@@ -6,11 +6,12 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 19:47:05 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:17:24 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
+#include <curl/curl.h>
 
 float getRandomNumber(float min, float max)
 {
@@ -43,7 +44,7 @@ void    newRound(Data &data)
     setStartTime(data);
     setCurrentTime(data);
     data.modeTime = currentTime;
-    data.elo.change = false;
+    data.user.elo.change = false;
 }
 
 void    setFPS(Data &data)
@@ -144,4 +145,62 @@ void    increaseCircleSpeed(Data &data)
         data.circle->addMinSpeed(1000.0);
         data.circle->addMaxSpeed(1000.0);
     }
+}
+
+static size_t WriteCallback(char *contents, size_t size, size_t nmemb, void *userp)
+{
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+void    loginServerRequest(Data &data)
+{
+	std::string prettyJson = JS::serializeStruct(data.user);
+
+    CURL *curl;
+    CURLcode res;
+    std::string readBuffer;
+
+    curl = curl_easy_init();
+
+    if(curl) {
+      curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_easy_setopt(curl, CURLOPT_URL, "https://khirsig.de/login");
+      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+      curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+      struct curl_slist *headers = NULL;
+      headers = curl_slist_append(headers, "Content-Type: application/json");
+      curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+      curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, prettyJson.c_str());
+      res = curl_easy_perform(curl);
+      if (readBuffer == "{\"success\":false}")
+        exit(EXIT_FAILURE);
+      JS::ParseContext context(readBuffer);
+      context.parseTo(data.user);
+      std::cout << data.user.username << std::endl << data.user.password << std::endl
+                << data.user.elo.rank << std::endl << data.user.elo.points << std::endl << data.user.elo.trend << std::endl;
+    }
+    curl_easy_cleanup(curl);
+}
+
+void    setEloServer(Data &data)
+{
+    CURL *curl;
+    CURLcode res;
+    curl = curl_easy_init();
+    if(curl) {
+      curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
+      curl_easy_setopt(curl, CURLOPT_URL, "https://khirsig.de/sethighscore");
+      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+      curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+      struct curl_slist *headers = NULL;
+	  std::string prettyJson = JS::serializeStruct(data.user);
+      headers = curl_slist_append(headers, "Content-Type: application/json");
+      curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, prettyJson.c_str());
+      res = curl_easy_perform(curl);
+    }
+    curl_easy_cleanup(curl);
 }

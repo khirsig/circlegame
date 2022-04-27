@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/24 19:31:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:06:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	eloGUI(Data &data)
 	pos.x = screenWidth - scale * 300;
 	pos.y = 0;
 
-	DrawTextureEx(data.interface.eloImg[data.elo.rank], pos, 0, scale, WHITE);
+	DrawTextureEx(data.interface.eloImg[data.user.elo.rank], pos, 0, scale, WHITE);
 }
 
 static void powerUpGUIGraphics(Data &data, int playerID)
