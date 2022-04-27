@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:15:15 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:24:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ struct Data {
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = PRE_START;
 	bool				gameover = 0;
-	const static int	circleAmount = 2;
+	const static int	circleAmount = 4;
 	Circle 				circle[circleAmount];
 	const static int	playerAmount = PLAYER_COUNT;
 	Player				player[playerAmount];

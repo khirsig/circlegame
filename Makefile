@@ -5,7 +5,7 @@ NAME = circlegame
 BREW = $(shell brew --prefix)
 IFLAGS = -I $(BREW)/include
 LFLAGS = -L $(BREW)/lib -lraylib -lcurl
-CFLAGS = -std=c++0x -O2
+CFLAGS = -std=c++0x -O3
 
 OBJDIR = ./objs/
 OBJECTS = $(OBJDIR)/*.o

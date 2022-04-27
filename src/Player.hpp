@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:22:27 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:05:33 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define STANDARD 0
 # define ICE 1
 # define MIRROR_ICE 2
-# define MIRROR
+# define MIRROR 3
 # define GROWTH 4
 
 const static std::string modeText[] {
