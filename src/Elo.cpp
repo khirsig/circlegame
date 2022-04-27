@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/25 13:05:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:03:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void	editTrend(Data &data)
 
 void	calcElo(Data &data)
 {
+    std::cout << data.user.username << std::endl << data.user.password << std::endl << data.user.elo.rank << std::endl << data.user.elo.points << std::endl;
 	int	points = currentTime - startTime;
 
 	data.elo.gain = points - eloThreshold[data.elo.rank];
@@ -120,8 +121,4 @@ void	calcElo(Data &data)
 			data.elo.change = true;
 		}
 	}
-
-	SaveStorageValue(0, data.elo.rank);
-	SaveStorageValue(1, data.elo.points);
-	SaveStorageValue(2, data.elo.trend);
 }

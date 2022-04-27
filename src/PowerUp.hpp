@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 11:14:05 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/26 14:13:09 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define NONE -1
 # define SKIPMODE 0
 # define SHIELD 1
-# define SHOCKWAVE 2
+# define RANDOMDIR 2
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include "../config.hpp"
