@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:06:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:38:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ingame(Data &data)
 	drawPlayer(data);
 	modeGUI(data);
 	timeGUI(data);
-	if (data.playerAmount == 1)
+	if (data.gameType == RANKEDGAME)
 		eloGUI(data);
 	powerUpGUI(data);
 	if (data.gameover)
@@ -52,13 +52,17 @@ void	ingame(Data &data)
 		DrawText(menuText[4].c_str(), screenWidth / 2 - MeasureText(menuText[4].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
 		if (IsKeyPressed(KEY_ENTER))
 		{
-			if (data.playerAmount == 1)
+			if (data.gameType == RANKEDGAME)
 			{
 				calcElo(data);
 				data.gameMode = ELO_SCREEN;
 			}
 			else
+			{
+				data.playerAmount = 1;
+				data.gameType = NOGAME;
 				newRound(data);
+			}
 		}
 	}
 	EndDrawing();

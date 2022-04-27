@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:17:24 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:42:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,10 @@ void    loginServerRequest(Data &data)
       curl_easy_setopt(curl, CURLOPT_POSTFIELDS, prettyJson.c_str());
       res = curl_easy_perform(curl);
       if (readBuffer == "{\"success\":false}")
-        exit(EXIT_FAILURE);
+      {
+          data.gameType = NOGAME;
+          data.gameMode = START_SCREEN;
+      }
       JS::ParseContext context(readBuffer);
       context.parseTo(data.user);
       std::cout << data.user.username << std::endl << data.user.password << std::endl
@@ -203,4 +206,47 @@ void    setEloServer(Data &data)
       res = curl_easy_perform(curl);
     }
     curl_easy_cleanup(curl);
+}
+
+void    loginHandler(Data &data)
+{
+    int		loginStep = 0;
+	char	inputChar;
+	int		inputKey;
+	std::string inputString;
+	while (loginStep < 2)
+	{
+		inputKey = GetKeyPressed();
+		if ((inputChar = GetCharPressed()) && isalnum(inputChar) && inputString.length() < 12)
+			inputString.push_back(inputChar);
+		if (inputKey == KEY_BACKSPACE && inputString.length() > 0)
+			inputString.pop_back();
+		if (inputKey == KEY_ESCAPE)
+			exit(EXIT_SUCCESS);
+		if (inputKey == KEY_ENTER && inputString.length() >= 3)
+		{
+			if (loginStep == 0)
+				data.user.username = inputString;
+			if (loginStep == 1)
+				data.user.password = inputString;
+			inputString.clear();
+			loginStep++;
+		}
+
+		BeginDrawing();
+		data.window.ClearBackground(RAYWHITE);
+		DrawRectangle(screenWidth / 3, screenHeight / 3 * 2, screenWidth / 3, screenHeight / 14, BLACK);
+		DrawText(inputString.c_str(), screenWidth / 3 + screenHeight / 40, screenHeight / 3 * 2 + screenHeight / 36, menuTextSize[1], WHITE);
+		switch (loginStep) {
+			case 0 :
+				DrawText("Please enter your name:", screenWidth / 2 - MeasureText("Please enter your name:", menuTextSize[1]) / 2, screenHeight / 2, menuTextSize[1], BLACK);
+				break ;
+			case 1 :
+				DrawText("Please enter your password:", screenWidth / 2 - MeasureText("Please enter your password:", menuTextSize[1]) / 2, screenHeight / 2, menuTextSize[1], BLACK);
+				break ;
+		}
+		EndDrawing();
+	}
+	loginServerRequest(data);
+    data.user.loggedIn = true;
 }
