@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:42:08 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/27 19:53:13 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,15 @@ void	startScreen(Data &data)
 		data.gameType = RANKEDGAME;
 	if (drawMenuText(mainMenuText[2].c_str(), screenWidth / 2 - MeasureText(mainMenuText[2].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 5, menuTextSize[1], 2))
 		data.gameType = SPLITSCREEN;
-	drawMenuText(mainMenuText[3].c_str(), screenWidth / 2 - MeasureText(mainMenuText[3].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 6, menuTextSize[1], 3);
+	if (drawMenuText(mainMenuText[3].c_str(), screenWidth / 2 - MeasureText(mainMenuText[3].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 6, menuTextSize[1], 3))
+		exit(EXIT_SUCCESS);
 	EndDrawing();
 
 
 	if (data.gameType != NOGAME)
 	{
+		if (data.gameType == RANKEDGAME && !data.user.loggedIn)
+			loginHandler(data);
 		data.gameMode = LOADING_SCREEN;
 		setStartTime(data);
 		setCurrentTime(data);
@@ -69,7 +72,5 @@ void	startScreen(Data &data)
 			data.player[1].setupPlayer();
 			data.playerAmount = 2;
 		}
-		if (data.gameType == RANKEDGAME && !data.user.loggedIn)
-			loginHandler(data);
 	}
 }
