@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:03:38 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/28 09:51:02 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,19 @@ int	main(void)
 				loadResources(data);
 			case START_SCREEN :
 				startScreen(data);
-				break;
+				break ;
 			case LOADING_SCREEN :
 				loadingScreen(data);
-				break;
+				break ;
 			case IN_GAME :
 				ingame(data);
-				break;
+				break ;
 			case ELO_SCREEN :
 				eloScreen(data);
-				break;
+				break ;
+			case OPTIONS :
+				optionsScreen(data);
+				break ;
 		}
 	}
 	return (0);

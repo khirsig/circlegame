@@ -6,12 +6,13 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:36:52 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/28 15:59:07 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CIRCLEGAME_HPP
 # define CIRCLEGAME_HPP
+
 
 # include <string>
 # include <iostream>
@@ -26,12 +27,14 @@
 # include "Elo.hpp"
 # include "User.hpp"
 
+
 # define PRE_START 0
 # define START_SCREEN 1
 # define LOADING_SCREEN 2
 # define IN_GAME 3
 # define ELO_SCREEN 4
-# define GAME_OVER 5
+# define OPTIONS 5
+# define GAME_OVER 6
 
 # define NOGAME -1
 # define NORMALGAME 0
@@ -50,6 +53,7 @@ struct Data {
 	Player				player[2];
 	const static int	powerUpAmount = 3;
 	PowerUp				powerUp[powerUpAmount];
+	int					dyingPlayer = 0;
 	int					startTime;
 	int					currentTime;
 	int					modeTime;
@@ -91,5 +95,9 @@ void	eloScreen(Data &data);
 void    loginServerRequest(Data &data);
 void    setEloServer(Data &data);
 void    loginHandler(Data &data);
+
+void			optionsScreen(Data &data);
+bool			drawMenuText(const char *text, int posX, int posY, int textSize);
+raylib::Color	getMenuTextColor(int x, int y, int width, int height);
 
 #endif

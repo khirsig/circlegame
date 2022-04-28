@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:58:19 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/28 16:03:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 # include <vector>
 # include "../config.hpp"
 
-const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Exit" };
+const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Options", "Exit" };
+
+const static std::string	optionsText[] { "Return", "Resolution" };
 
 const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
-	"GAMEOVER", "Press Enter to see Elo changes!"
+	"GAMEOVER", "Press Enter to see Elo changes!", "Press Enter to return to Main Menu!",
+	"BLUE WON", "RED WON"
 };
 
 const static int	menuTextSize[] {

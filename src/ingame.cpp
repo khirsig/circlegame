@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/28 09:12:20 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/28 09:58:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,24 @@ void	ingame(Data &data)
 	powerUpGUI(data);
 	if (data.gameover)
 	{
-		DrawText(menuText[3].c_str(), screenWidth / 2 - MeasureText(menuText[3].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], RED);
-		DrawText(menuText[4].c_str(), screenWidth / 2 - MeasureText(menuText[4].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
+		if (data.gameType == RANKEDGAME)
+		{
+			DrawText(menuText[3].c_str(), screenWidth / 2 - MeasureText(menuText[3].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], RED);
+			DrawText(menuText[4].c_str(), screenWidth / 2 - MeasureText(menuText[4].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
+		}
+		else if (data.gameType == NORMALGAME)
+		{
+			DrawText(menuText[3].c_str(), screenWidth / 2 - MeasureText(menuText[3].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], RED);
+			DrawText(menuText[5].c_str(), screenWidth / 2 - MeasureText(menuText[5].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
+		}
+		else if (data.gameType == SPLITSCREEN)
+		{
+			if (data.dyingPlayer == 0)
+				DrawText(menuText[6].c_str(), screenWidth / 2 - MeasureText(menuText[6].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], data.player[1].getPlayerColor());
+			else
+				DrawText(menuText[7].c_str(), screenWidth / 2 - MeasureText(menuText[7].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], data.player[0].getPlayerColor());
+			DrawText(menuText[5].c_str(), screenWidth / 2 - MeasureText(menuText[5].c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
+		}
 		if (IsKeyPressed(KEY_ENTER))
 		{
 			if (data.gameType == RANKEDGAME)
