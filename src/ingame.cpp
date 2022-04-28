@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:50:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/28 09:12:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	ingame(Data &data)
 		takePowerUp(data);
 		usePowerUp(data);
 		increaseCircleSpeed(data);
-		if (IsKeyPressed(KEY_K))
+		if (IsKeyPressed(KEY_K) && (data.user.username == "tester" || data.gameType != RANKEDGAME))
 		{
 			data.player[0].setPowerUpHold(SHIELD);
 			data.player[1].setPowerUpHold(SHIELD);
 		}
-		if (IsKeyPressed(KEY_P))
+		if (IsKeyPressed(KEY_P) && data.user.username == "tester" && data.gameType == RANKEDGAME)
 			data.user.elo.rank = 10;
 	}
 	BeginDrawing();
