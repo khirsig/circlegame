@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 17:18:58 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 21:00:06 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,16 +255,19 @@ void    updateWindow(Data &data)
 {
 	menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
 	SetWindowSize(screenWidth, screenHeight);
+	data.interface.heightStr = std::to_string(screenHeight);
+	data.interface.widthStr = std::to_string(screenWidth);
+
 }
 
 static void    newSettings(Data &data)
 {
     std::ofstream settings;
     settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
-    settings << "width=" << "1920" << std::endl;
-    screenWidth = 1920;
-    settings << "height=" << "1080" << std::endl;
-    screenHeight = 1080;
+    settings << "width=" << "1408" << std::endl;
+    screenWidth = 1408;
+    settings << "height=" << "792" << std::endl;
+    screenHeight = 792;
     updateWindow(data);
     settings.close();
 }
