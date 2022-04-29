@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:58:19 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 20:50:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 # include <vector>
 # include "../config.hpp"
 
-const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Exit" };
+const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Options", "Exit" };
+
+const static std::string	optionsText[] { "Return", "Resolution" };
 
 const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
-	"GAMEOVER", "Press Enter to see Elo changes!"
+	"GAMEOVER", "Press Enter to see Elo changes!", "Press Enter to return to Main Menu!",
+	"BLUE WON", "RED WON"
 };
 
-const static int	menuTextSize[] {
-	screenHeight / 8, screenHeight / 24, screenHeight / 36,
-	screenHeight / 16, screenHeight / 28
-};
+extern std::vector<int>	menuTextSize;
 
 class Interface {
 	public:
@@ -37,6 +37,11 @@ class Interface {
 		std::vector<raylib::Texture>	powerupImg;
 		std::vector<raylib::Texture>	pubImg;
 		std::vector<raylib::Texture>	eloImg;
+
+		bool		resButton[2] = { false, false };
+		bool		*onButton = nullptr;
+		std::string	widthStr = std::to_string(screenWidth);
+		std::string	heightStr = std::to_string(screenHeight);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:42:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 21:14:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,6 @@ void    loginServerRequest(Data &data)
       }
       JS::ParseContext context(readBuffer);
       context.parseTo(data.user);
-      std::cout << data.user.username << std::endl << data.user.password << std::endl
-                << data.user.elo.rank << std::endl << data.user.elo.points << std::endl << data.user.elo.trend << std::endl;
     }
     curl_easy_cleanup(curl);
 }
@@ -249,4 +247,64 @@ void    loginHandler(Data &data)
 	}
 	loginServerRequest(data);
     data.user.loggedIn = true;
+}
+
+void    updateWindow(Data &data)
+{
+	menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
+	SetWindowSize(screenWidth, screenHeight);
+	data.interface.heightStr = std::to_string(screenHeight);
+	data.interface.widthStr = std::to_string(screenWidth);
+
+}
+
+static void    newSettings(Data &data)
+{
+    std::ofstream settings;
+    settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
+    settings << "width=" << "1408" << std::endl;
+    screenWidth = 1408;
+    settings << "height=" << "792" << std::endl;
+    screenHeight = 792;
+    updateWindow(data);
+    settings.close();
+}
+
+void    saveSettings(Data &data)
+{
+    std::ofstream settings;
+    settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
+    settings << "width=" << screenWidth << std::endl;
+    settings << "height=" << screenHeight << std::endl;
+    settings.close();
+}
+
+void    loadSettings(Data &data)
+{
+    std::ifstream settings;
+    std::string line;
+
+    settings.open("./cfg/settings.cfg");
+    std::getline(settings, line);
+    if (line.substr(0, 6) == "width=")
+    {
+        screenWidth = stoi(line.substr(6, line.length()));
+    }
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    std::getline(settings, line);
+    if (line.substr(0, 7) == "height=")
+        screenHeight = stoi(line.substr(7, line.length()));
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    updateWindow(data);
+    settings.close();
 }

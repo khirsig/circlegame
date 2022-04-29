@@ -6,13 +6,13 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:53:13 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 09:57:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 
-static raylib::Color	getMenuTextColor(int x, int y, int width, int height)
+raylib::Color	getMenuTextColor(int x, int y, int width, int height)
 {
 	raylib::Color ret;
 	raylib::Vector2 cursor = GetMousePosition();
@@ -27,7 +27,7 @@ static raylib::Color	getMenuTextColor(int x, int y, int width, int height)
 	return (ret);
 }
 
-bool	drawMenuText(const char *text, int posX, int posY, int textSize, int id)
+bool	drawMenuText(const char *text, int posX, int posY, int textSize)
 {
 	raylib::Color col(getMenuTextColor(posX, posY, MeasureText(text, textSize), textSize));
 	DrawText(text, posX, posY, textSize, col);
@@ -43,13 +43,15 @@ void	startScreen(Data &data)
 	data.window.ClearBackground(RAYWHITE);
 	drawCircle(data);
 	DrawText(menuText[0].c_str(), screenWidth / 2 - MeasureText(menuText[0].c_str(), menuTextSize[0]) / 2, screenHeight / 8, menuTextSize[0], BLUE);
-	if (drawMenuText(mainMenuText[0].c_str(), screenWidth / 2 - MeasureText(mainMenuText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 3, menuTextSize[1], 0))
+	if (drawMenuText(mainMenuText[0].c_str(), screenWidth / 2 - MeasureText(mainMenuText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 3, menuTextSize[1]))
 		data.gameType = NORMALGAME;
-	if (drawMenuText(mainMenuText[1].c_str(), screenWidth / 2 - MeasureText(mainMenuText[1].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 4, menuTextSize[1], 1))
+	if (drawMenuText(mainMenuText[1].c_str(), screenWidth / 2 - MeasureText(mainMenuText[1].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 4, menuTextSize[1]))
 		data.gameType = RANKEDGAME;
-	if (drawMenuText(mainMenuText[2].c_str(), screenWidth / 2 - MeasureText(mainMenuText[2].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 5, menuTextSize[1], 2))
+	if (drawMenuText(mainMenuText[2].c_str(), screenWidth / 2 - MeasureText(mainMenuText[2].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 5, menuTextSize[1]))
 		data.gameType = SPLITSCREEN;
-	if (drawMenuText(mainMenuText[3].c_str(), screenWidth / 2 - MeasureText(mainMenuText[3].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 6, menuTextSize[1], 3))
+	if (drawMenuText(mainMenuText[3].c_str(), screenWidth / 2 - MeasureText(mainMenuText[3].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 6, menuTextSize[1]))
+		data.gameMode = OPTIONS;
+	if (drawMenuText(mainMenuText[4].c_str(), screenWidth / 2 - MeasureText(mainMenuText[4].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 7, menuTextSize[1]))
 		exit(EXIT_SUCCESS);
 	EndDrawing();
 
