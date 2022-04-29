@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/28 15:59:07 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 17:12:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 # include <string>
 # include <iostream>
+# include <fstream>
+# include <sstream>
 # include <random>
 # include "../include/json_struct.h"
 # include "../raylib-cpp/include/raylib-cpp.hpp"
@@ -42,7 +44,7 @@
 # define SPLITSCREEN 2
 
 struct Data {
-	raylib::Window		window{SCREEN_WIDTH, SCREEN_HEIGHT, "circlegame"};
+	raylib::Window		window{screenWidth, screenHeight, "circlegame"};
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = PRE_START;
 	int					gameType = NOGAME;
@@ -99,5 +101,8 @@ void    loginHandler(Data &data);
 void			optionsScreen(Data &data);
 bool			drawMenuText(const char *text, int posX, int posY, int textSize);
 raylib::Color	getMenuTextColor(int x, int y, int width, int height);
+void			saveSettings(Data &data);
+void			loadSettings(Data &data);
+void			updateWindow(Data &data);
 
 #endif

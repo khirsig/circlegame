@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 13:54:25 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 16:07:56 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ const static std::string	menuText[] {
 	"BLUE WON", "RED WON"
 };
 
-const static int	menuTextSize[] {
+static std::vector<int>	menuTextSize = {
 	screenHeight / 8, screenHeight / 24, screenHeight / 36,
 	screenHeight / 16, screenHeight / 28
 };
@@ -41,10 +41,10 @@ class Interface {
 		std::vector<raylib::Texture>	pubImg;
 		std::vector<raylib::Texture>	eloImg;
 
-		bool	resButton[2] = { false, false };
-		bool	*onButton = nullptr;
-		std::string widthStr = std::to_string(screenWidth);
-		std::string heightStr = std::to_string(screenHeight);
+		bool		resButton[2] = { false, false };
+		bool		*onButton = nullptr;
+		std::string	widthStr = std::to_string(screenWidth);
+		std::string	heightStr = std::to_string(screenHeight);
 };
 
 #endif

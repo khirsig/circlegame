@@ -6,27 +6,28 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/28 09:51:02 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 17:03:01 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 
-int		screenWidth = SCREEN_WIDTH;
-int		screenHeight = SCREEN_HEIGHT;
+int		screenWidth;
+int		screenHeight;
 int		currentFPS;
 int		currentTime;
 int		startTime;
 
 int	main(void)
 {
-	if ((double)SCREEN_WIDTH / 16 != (double)SCREEN_HEIGHT / 9)
+	if ((double)screenWidth / 16 != (double)screenHeight / 9)
 	{
 		std::cout << "Error: Use 16x9 width/height ratio." << std::endl;
 		return (1);
 	}
 	Data data;
 
+	loadSettings(data);
 	for (int i = 0; i < data.circleAmount; ++i)
 	{
 		data.circle[i].activateCircle();

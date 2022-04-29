@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:42:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 17:18:58 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,4 +249,64 @@ void    loginHandler(Data &data)
 	}
 	loginServerRequest(data);
     data.user.loggedIn = true;
+}
+
+void    updateWindow(Data &data)
+{
+	menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
+	SetWindowSize(screenWidth, screenHeight);
+}
+
+static void    newSettings(Data &data)
+{
+    std::ofstream settings;
+    settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
+    settings << "width=" << "1920" << std::endl;
+    screenWidth = 1920;
+    settings << "height=" << "1080" << std::endl;
+    screenHeight = 1080;
+    updateWindow(data);
+    settings.close();
+}
+
+void    saveSettings(Data &data)
+{
+    std::ofstream settings;
+    settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
+    settings << "width=" << screenWidth << std::endl;
+    settings << "height=" << screenHeight << std::endl;
+    settings.close();
+}
+
+void    loadSettings(Data &data)
+{
+    std::ifstream settings;
+    std::string line;
+
+    settings.open("./cfg/settings.cfg");
+    std::getline(settings, line);
+    std::cout << line << std::endl;
+    std::cout << line.substr(0, 6) << std::endl << line.substr(7, line.length()) << std::endl;
+    if (line.substr(0, 6) == "width=")
+    {
+        screenWidth = stoi(line.substr(6, line.length()));
+    }
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    std::getline(settings, line);
+    std::cout << line << std::endl;
+    if (line.substr(0, 7) == "height=")
+        screenHeight = stoi(line.substr(7, line.length()));
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    updateWindow(data);
+    settings.close();
 }

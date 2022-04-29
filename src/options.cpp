@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 13:54:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 17:13:42 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,36 @@ static void cursorOnButton(Data &data, bool &button, int x, int y, int width, in
 			button = false;
 		else
 		{
-			if (onButton != nullptr)
-				*onButton = false;
+			if (data.interface.onButton != nullptr)
+				*data.interface.onButton = false;
+			data.interface.onButton = &button;
 			button = true;
 		}
+	}
+}
+
+static void	changeWidth(Data &data)
+{
+	char		inputChar;
+	int			inputKey;
+
+	inputKey = GetKeyPressed();
+	if ((inputChar = GetCharPressed()) && isnumber(inputChar) && data.interface.widthStr.length() < 4)
+		data.interface.widthStr.push_back(inputChar);
+	if (inputKey == KEY_BACKSPACE && data.interface.widthStr.length() > 0)
+		data.interface.widthStr.pop_back();
+	if (inputKey == KEY_ENTER && data.interface.widthStr.length() > 2)
+	{
+		int	newWidth = std::stoi(data.interface.widthStr);
+		newWidth = newWidth / 16 * 16;
+		int	newHeight = newWidth / 16 * 9;
+		screenWidth = newWidth;
+		screenHeight = newHeight;
+		data.interface.widthStr = std::to_string(screenWidth);
+		data.interface.heightStr = std::to_string(screenHeight);
+		menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
+		saveSettings(data);
+		SetWindowSize(screenWidth, screenHeight);
 	}
 }
 
@@ -34,12 +60,16 @@ void	optionsScreen(Data &data)
 	cursorOnButton(data, data.interface.resButton[0], screenWidth / 5 * 0.7, screenHeight / 5, screenWidth / 16, screenHeight / 24);
 	cursorOnButton(data, data.interface.resButton[1], screenWidth / 5 * 1.1, screenHeight / 5, screenWidth / 16, screenHeight / 24);
 
+	if (data.interface.resButton[0])
+		changeWidth(data);
+
+
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 	if (drawMenuText(optionsText[0].c_str(), screenWidth / 2 - MeasureText(optionsText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 7, menuTextSize[1]))
 	{
-		if (onButton != nullptr)
-			*onButton = false;
+		if (data.interface.onButton != nullptr)
+			*data.interface.onButton = false;
 		data.gameMode = START_SCREEN;
 	}
 
