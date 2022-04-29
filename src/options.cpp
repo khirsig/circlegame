@@ -6,17 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 13:45:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 13:54:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
-
-static void	turnOffButtons(Data &data)
-{
-	data.interface.resButton[0] = false;
-	data.interface.resButton[1] = false;
-}
 
 static void cursorOnButton(Data &data, bool &button, int x, int y, int width, int height)
 {
@@ -28,7 +22,8 @@ static void cursorOnButton(Data &data, bool &button, int x, int y, int width, in
 			button = false;
 		else
 		{
-			turnOffButtons(data);
+			if (onButton != nullptr)
+				*onButton = false;
 			button = true;
 		}
 	}
@@ -43,7 +38,8 @@ void	optionsScreen(Data &data)
 	ClearBackground(RAYWHITE);
 	if (drawMenuText(optionsText[0].c_str(), screenWidth / 2 - MeasureText(optionsText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 7, menuTextSize[1]))
 	{
-		turnOffButtons(data);
+		if (onButton != nullptr)
+			*onButton = false;
 		data.gameMode = START_SCREEN;
 	}
 
@@ -53,18 +49,17 @@ void	optionsScreen(Data &data)
 		col = RED;
 	else
 		col = BLACK;
-	std::string str = std::to_string(screenWidth);
-	DrawText(str.c_str(), screenWidth / 5 * 0.7 + MeasureText(str.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
+	DrawText(data.interface.widthStr.c_str(), screenWidth / 5 * 0.7 + MeasureText(data.interface.widthStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
 
 	DrawRectangle(screenWidth / 5 * 1.1, screenHeight / 5, screenWidth / 16, screenHeight / 24, LIGHTGRAY);
 	if (data.interface.resButton[1])
 		col = RED;
 	else
 		col = BLACK;
-	str = std::to_string(screenHeight);
-		DrawText(str.c_str(), screenWidth / 5 * 1.1 + MeasureText(str.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
+		DrawText(data.interface.heightStr.c_str(), screenWidth / 5 * 1.1 + MeasureText(data.interface.heightStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
 
 
 	DrawText(optionsText[1].c_str(), screenWidth / 5 * 0.2, screenHeight / 5 + menuTextSize[2] * 0.5, menuTextSize[2], BLUE);
+
 	EndDrawing();
 }
