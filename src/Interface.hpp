@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/28 16:03:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 10:03:04 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ class Interface {
 		std::vector<raylib::Texture>	powerupImg;
 		std::vector<raylib::Texture>	pubImg;
 		std::vector<raylib::Texture>	eloImg;
+
+		bool	resButton[2] = { false, false };
 };
 
 #endif
