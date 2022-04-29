@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 16:07:56 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 20:50:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ const static std::string	menuText[] {
 	"BLUE WON", "RED WON"
 };
 
-static std::vector<int>	menuTextSize = {
-	screenHeight / 8, screenHeight / 24, screenHeight / 36,
-	screenHeight / 16, screenHeight / 28
-};
+extern std::vector<int>	menuTextSize;
 
 class Interface {
 	public:
