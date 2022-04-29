@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 17:13:42 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 21:11:23 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,31 @@ static void	changeWidth(Data &data)
 	}
 }
 
+static void	changeHeight(Data &data)
+{
+	char		inputChar;
+	int			inputKey;
+
+	inputKey = GetKeyPressed();
+	if ((inputChar = GetCharPressed()) && isnumber(inputChar) && data.interface.heightStr.length() < 4)
+		data.interface.heightStr.push_back(inputChar);
+	if (inputKey == KEY_BACKSPACE && data.interface.heightStr.length() > 0)
+		data.interface.heightStr.pop_back();
+	if (inputKey == KEY_ENTER && data.interface.heightStr.length() > 2)
+	{
+		int	newHeight = std::stoi(data.interface.heightStr);
+		newHeight = newHeight / 9 * 9;
+		int	newWidth = newHeight / 9 * 16;
+		screenWidth = newWidth;
+		screenHeight = newHeight;
+		data.interface.widthStr = std::to_string(screenWidth);
+		data.interface.heightStr = std::to_string(screenHeight);
+		menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
+		saveSettings(data);
+		SetWindowSize(screenWidth, screenHeight);
+	}
+}
+
 void	optionsScreen(Data &data)
 {
 	cursorOnButton(data, data.interface.resButton[0], screenWidth / 5 * 0.7, screenHeight / 5, screenWidth / 16, screenHeight / 24);
@@ -62,7 +87,8 @@ void	optionsScreen(Data &data)
 
 	if (data.interface.resButton[0])
 		changeWidth(data);
-
+	if (data.interface.resButton[1])
+		changeHeight(data);
 
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
@@ -79,14 +105,14 @@ void	optionsScreen(Data &data)
 		col = RED;
 	else
 		col = BLACK;
-	DrawText(data.interface.widthStr.c_str(), screenWidth / 5 * 0.7 + MeasureText(data.interface.widthStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
+	DrawText(data.interface.widthStr.c_str(), screenWidth / 5 * 0.7 + screenWidth / 32 - MeasureText(data.interface.widthStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
 
 	DrawRectangle(screenWidth / 5 * 1.1, screenHeight / 5, screenWidth / 16, screenHeight / 24, LIGHTGRAY);
 	if (data.interface.resButton[1])
 		col = RED;
 	else
 		col = BLACK;
-		DrawText(data.interface.heightStr.c_str(), screenWidth / 5 * 1.1 + MeasureText(data.interface.heightStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
+		DrawText(data.interface.heightStr.c_str(), screenWidth / 5 * 1.1 + screenWidth / 32 - MeasureText(data.interface.heightStr.c_str(), menuTextSize[2]) / 2, screenHeight / 5 + screenHeight / 48 - menuTextSize[2] / 2, menuTextSize[2], col);
 
 
 	DrawText(optionsText[1].c_str(), screenWidth / 5 * 0.2, screenHeight / 5 + menuTextSize[2] * 0.5, menuTextSize[2], BLUE);

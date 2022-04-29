@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 21:00:06 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/04/29 21:14:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,6 @@ void    loginServerRequest(Data &data)
       }
       JS::ParseContext context(readBuffer);
       context.parseTo(data.user);
-      std::cout << data.user.username << std::endl << data.user.password << std::endl
-                << data.user.elo.rank << std::endl << data.user.elo.points << std::endl << data.user.elo.trend << std::endl;
     }
     curl_easy_cleanup(curl);
 }
@@ -288,8 +286,6 @@ void    loadSettings(Data &data)
 
     settings.open("./cfg/settings.cfg");
     std::getline(settings, line);
-    std::cout << line << std::endl;
-    std::cout << line.substr(0, 6) << std::endl << line.substr(7, line.length()) << std::endl;
     if (line.substr(0, 6) == "width=")
     {
         screenWidth = stoi(line.substr(6, line.length()));
@@ -301,7 +297,6 @@ void    loadSettings(Data &data)
         return ;
     }
     std::getline(settings, line);
-    std::cout << line << std::endl;
     if (line.substr(0, 7) == "height=")
         screenHeight = stoi(line.substr(7, line.length()));
     else
