@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 09:13:11 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 12:33:13 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 int		Circle::_circleAmount = 0;
-double	Circle::_modMinSpeed = 2.0;
-double	Circle::_modMaxSpeed = 5.0;
+double	Circle::_modMinSpeed;
+double	Circle::_modMaxSpeed;
 int		Circle::_increaseTime = 0;
 
 Circle::Circle()
@@ -38,7 +38,6 @@ void	Circle::resetCircle()
 		size = 1;
 	this->_size = size;
 	double	speed = GetRandomValue((float)screenWidth / 10 * Circle::_modMinSpeed, (float)screenWidth / 10 * Circle::_modMaxSpeed);
-	std::cout << (float)screenWidth / 10 * Circle::_modMinSpeed << " < " << speed << " < " << (float)screenWidth / 10 * Circle::_modMaxSpeed << std::endl;
 	this->_speed = speed;
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;

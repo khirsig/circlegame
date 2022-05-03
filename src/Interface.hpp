@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 20:50:14 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 10:35:54 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Options", "Exit" };
 
-const static std::string	optionsText[] { "Return", "Resolution" };
+const static std::string	optionsText[] { "Return", "Resolution", "Difficulty (Unranked)" };
 
 const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
@@ -39,7 +39,10 @@ class Interface {
 		std::vector<raylib::Texture>	eloImg;
 
 		bool		resButton[2] = { false, false };
+		bool		difButton = false;
 		bool		*onButton = nullptr;
+
+		raylib::Vector2 difCircPos;
 		std::string	widthStr = std::to_string(screenWidth);
 		std::string	heightStr = std::to_string(screenHeight);
 };
