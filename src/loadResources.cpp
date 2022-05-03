@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:07:51 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 13:06:42 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	loadResources(Data &data)
 		data.window.ClearBackground(RAYWHITE);
 		DrawRectangle(xStart, yStart, maxWidth, yEnd - yStart, GRAY);
 		DrawRectangle(xStart, yStart, actualWidth, yEnd - yStart, RED);
-		EndDrawing();
 
 		if (loadingStep < 3)
 		{
@@ -132,6 +131,8 @@ void	loadResources(Data &data)
 			if (loadingStep == 33)
 				currentGraphic = 0;
 		}
+		EndDrawing();
+
 		loadingStep++;
 	}
 	data.gameMode = START_SCREEN;

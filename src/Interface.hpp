@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 10:35:54 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 12:42:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
 	"GAMEOVER", "Press Enter to see Elo changes!", "Press Enter to return to Main Menu!",
 	"BLUE WON", "RED WON"
+};
+
+const static std::string	tutorialText[] {
+	"How to Play", "This is you:", "Move your player with"
+
+};
+
+const static std::string	loadingText[] {
+	"Loading Powerup Textures...", "Loading Player 1 Mode Textures...", "Loading Player 2 Mode Textures...",
+	"Loading Misc Textures...", "Loading Elo Images..."
 };
 
 extern std::vector<int>	menuTextSize;
