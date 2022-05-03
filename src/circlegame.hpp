@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 09:52:45 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 15:28:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ void    setEloServer(Data &data);
 void    loginHandler(Data &data);
 
 void			optionsScreen(Data &data);
-bool			drawMenuText(const char *text, int posX, int posY, int textSize);
-raylib::Color	getMenuTextColor(int x, int y, int width, int height);
+bool			drawMenuText(Data &data, int id, const char *text, int posX, int posY, int textSize);
 void			saveSettings(Data &data);
 void			loadSettings(Data &data);
 void			updateWindow(Data &data);

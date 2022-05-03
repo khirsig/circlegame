@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 12:42:18 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 15:17:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Interface {
 		bool		resButton[2] = { false, false };
 		bool		difButton = false;
 		bool		*onButton = nullptr;
+		int			mainMenuButton = -1;
 
 		raylib::Vector2 difCircPos;
 		std::string	widthStr = std::to_string(screenWidth);
