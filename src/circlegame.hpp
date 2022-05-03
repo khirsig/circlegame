@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 09:18:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 09:52:45 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fstream>
 # include <sstream>
 # include <random>
+# include <tgmath.h>
 # include "../include/json_struct.h"
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include "../config.hpp"

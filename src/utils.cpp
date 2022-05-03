@@ -6,12 +6,14 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 09:14:42 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 10:44:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
 #include <curl/curl.h>
+
+static void    newSettings(Data &data);
 
 float getRandomNumber(float min, float max)
 {
@@ -253,10 +255,14 @@ void    loginHandler(Data &data)
 void    updateWindow(Data &data)
 {
 	menuTextSize = { screenHeight / 8, screenHeight / 24, screenHeight / 36, screenHeight / 16, screenHeight / 28 };
+    if ((double)screenWidth / 16 != (double)screenHeight / 9)
+        newSettings(data);
 	SetWindowSize(screenWidth, screenHeight);
 	data.interface.heightStr = std::to_string(screenHeight);
 	data.interface.widthStr = std::to_string(screenWidth);
-
+    if (data.difficulty > 18 || data.difficulty < 0)
+        newSettings(data);
+	data.interface.difCircPos.x = screenWidth / 5 * 3.3 + (screenWidth / 4 / 19) * data.difficulty + (screenWidth / 4 / 19 * 0.5);
 }
 
 static void    newSettings(Data &data)
@@ -267,6 +273,8 @@ static void    newSettings(Data &data)
     screenWidth = 1408;
     settings << "height=" << "792" << std::endl;
     screenHeight = 792;
+    settings << "difficulty=" << "5" << std::endl;
+    data.difficulty = 5;
     updateWindow(data);
     settings.close();
 }
@@ -277,6 +285,7 @@ void    saveSettings(Data &data)
     settings.open("./cfg/settings.cfg", std::ofstream::out | std::ofstream::trunc);
     settings << "width=" << screenWidth << std::endl;
     settings << "height=" << screenHeight << std::endl;
+    settings << "difficulty=" << data.difficulty << std::endl;
     settings.close();
 }
 
@@ -300,6 +309,15 @@ void    loadSettings(Data &data)
     std::getline(settings, line);
     if (line.substr(0, 7) == "height=")
         screenHeight = stoi(line.substr(7, line.length()));
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    std::getline(settings, line);
+    if (line.substr(0, 11) == "difficulty=")
+        data.difficulty = stoi(line.substr(11, line.length()));
     else
     {
         settings.close();
