@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 21:14:18 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 09:14:42 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ float getRandomNumber(float min, float max)
 {
     static std::default_random_engine engine;
     static std::uniform_real_distribution<> ret(min, max);
-    return ret(engine);
+    float test = ret(engine);
+    return test;
 }
 
 void    setCurrentTime(Data &data)
@@ -142,8 +143,8 @@ void    increaseCircleSpeed(Data &data)
     if (data.circle->getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
     {
         data.circle->setIncreaseTime(currentTime);
-        data.circle->addMinSpeed(1000.0);
-        data.circle->addMaxSpeed(1000.0);
+        data.circle->addMinSpeed(10.0);
+        data.circle->addMaxSpeed(10.0);
     }
 }
 

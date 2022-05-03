@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/19 19:06:03 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 09:13:11 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	Circle::resetCircle()
 	if (size < 1)
 		size = 1;
 	this->_size = size;
-	double	speed = getRandomNumber(screenWidth / 10 * Circle::_modMinSpeed, screenWidth / 10 * Circle::_modMaxSpeed);
+	double	speed = GetRandomValue((float)screenWidth / 10 * Circle::_modMinSpeed, (float)screenWidth / 10 * Circle::_modMaxSpeed);
+	std::cout << (float)screenWidth / 10 * Circle::_modMinSpeed << " < " << speed << " < " << (float)screenWidth / 10 * Circle::_modMaxSpeed << std::endl;
 	this->_speed = speed;
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;

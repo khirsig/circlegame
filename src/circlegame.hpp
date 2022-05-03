@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 17:12:40 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 09:18:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ struct Data {
 	int					startTime;
 	int					currentTime;
 	int					modeTime;
+	int					difficulty;
 	Interface			interface;
 	Elo					elo;
 	User				user;
