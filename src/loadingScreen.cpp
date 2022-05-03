@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:38:56 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 12:15:55 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ void	loadingScreen(Data &data)
 	if (currentTime - startTime == 3)
 	{
 		data.gameMode = IN_GAME;
+		if (data.gameType != RANKEDGAME)
+		{
+			data.circle[0].setMinSpeed(eloSpeed[data.difficulty]);
+			data.circle[0].setMaxSpeed(eloSpeed[data.difficulty] + 1.0f);
+		}
+		else
+		{
+			data.circle[0].setMinSpeed(eloSpeed[data.user.elo.rank]);
+			data.circle[0].setMaxSpeed(eloSpeed[data.user.elo.rank] + 1.0f);
+		}
 		for (int i = 0; i < data.circleAmount; ++i)
 		{
 			data.circle[i].activateCircle();
@@ -41,13 +51,11 @@ void	loadingScreen(Data &data)
 		}
 		setStartTime(data);
 		setCurrentTime(data);
-		data.circle->setMinSpeed(2.0);
-        data.circle->setMaxSpeed(5.0);
 		for (int i = 0; i < data.powerUpAmount; ++i)
-   		{
-    		data.powerUp[i].setState(DISABLED);
+		{
+			data.powerUp[i].setState(DISABLED);
 			data.powerUp[i].setNextSpawnTime(currentTime + GetRandomValue(5, 20));
-    		data.modeTime = currentTime;
+			data.modeTime = currentTime;
 		}
 	}
 }

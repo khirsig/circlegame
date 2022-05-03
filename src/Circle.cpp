@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 09:13:11 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 11:06:55 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 int		Circle::_circleAmount = 0;
-double	Circle::_modMinSpeed = 2.0;
-double	Circle::_modMaxSpeed = 5.0;
+double	Circle::_modMinSpeed;
+double	Circle::_modMaxSpeed;
 int		Circle::_increaseTime = 0;
 
 Circle::Circle()

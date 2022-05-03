@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 10:44:40 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/03 12:11:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void    newRound(Data &data)
     setCurrentTime(data);
     data.modeTime = currentTime;
     data.user.elo.change = false;
+    updateWindow(data);
 }
 
 void    setFPS(Data &data)
@@ -145,8 +146,8 @@ void    increaseCircleSpeed(Data &data)
     if (data.circle->getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
     {
         data.circle->setIncreaseTime(currentTime);
-        data.circle->addMinSpeed(10.0);
-        data.circle->addMaxSpeed(10.0);
+        data.circle->addMinSpeed(0.2f);
+        data.circle->addMaxSpeed(0.2f);
     }
 }
 
@@ -263,6 +264,18 @@ void    updateWindow(Data &data)
     if (data.difficulty > 18 || data.difficulty < 0)
         newSettings(data);
 	data.interface.difCircPos.x = screenWidth / 5 * 3.3 + (screenWidth / 4 / 19) * data.difficulty + (screenWidth / 4 / 19 * 0.5);
+    if (data.gameType != RANKEDGAME)
+    {
+        data.circle[0].setMinSpeed(eloSpeed[data.difficulty]);
+        data.circle[0].setMaxSpeed(eloSpeed[data.difficulty] + 1.0f);
+    }
+    else
+    {
+        data.circle[0].setMinSpeed(eloSpeed[data.user.elo.rank]);
+        data.circle[0].setMaxSpeed(eloSpeed[data.user.elo.rank] + 1.0f);
+    }
+    for (int i = 0; i < data.circleAmount; ++i)
+		data.circle[i].resetCircle();
 }
 
 static void    newSettings(Data &data)
@@ -287,6 +300,7 @@ void    saveSettings(Data &data)
     settings << "height=" << screenHeight << std::endl;
     settings << "difficulty=" << data.difficulty << std::endl;
     settings.close();
+    updateWindow(data);
 }
 
 void    loadSettings(Data &data)
