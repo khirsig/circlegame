@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 10:26:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 13:57:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ class Circle {
 		void			setIncreaseTime(int increaseTime) { Circle::_increaseTime = increaseTime; }
 		void			setMoveDir(int moveDir) { Circle::_moveDir = moveDir; }
 
+		void			setDirection(int spawnDir);
+		raylib::Vector2	direction;
 	private:
 		static int		_circleAmount;
 		raylib::Vector2	_pos;

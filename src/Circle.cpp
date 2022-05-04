@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 10:55:41 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:17:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,31 @@ void	Circle::updateSpeed()
 	this->_speed = speed;
 }
 
+void	Circle::setDirection(int spawnDir)
+{
+	if (spawnDir == UP)
+	{
+		this->direction.x = GetRandomValue(0, screenWidth) - this->_pos.x;
+		this->direction.y = GetRandomValue(screenHeight / 4, screenHeight) - this->_pos.y;
+	}
+	if (spawnDir == DOWN)
+	{
+		this->direction.x = GetRandomValue(0, screenWidth) - this->_pos.x;
+		this->direction.y = GetRandomValue(0, screenHeight / 4 * 3) - this->_pos.y;
+	}
+	if (spawnDir == RIGHT)
+	{
+		this->direction.x = GetRandomValue(0, screenWidth  / 4 * 3) - this->_pos.x;
+		this->direction.y = GetRandomValue(0, screenHeight) - this->_pos.y;
+	}
+	if (spawnDir == LEFT)
+	{
+		this->direction.x = GetRandomValue(screenWidth / 4, screenWidth) - this->_pos.x;
+		this->direction.y = GetRandomValue(0, screenHeight) - this->_pos.y;
+	}
+	this->direction = Vector2Normalize(this->direction);
+}
+
 void	Circle::resetCircle()
 {
 	int	size = GetRandomValue(screenWidth / 42, screenWidth / 24);
@@ -53,23 +78,22 @@ void	Circle::resetCircle()
 		case UP :
 			this->_pos.x = GetRandomValue(this->_size, screenWidth - this->_size);
 			this->_pos.y = -this->_size;
-			this->_moveDir = DOWN;
+			setDirection(spawnDir);
 			break;
 		case DOWN :
 			this->_pos.x = GetRandomValue(this->_size, screenWidth - this->_size);
 			this->_pos.y = screenHeight + this->_size;
-			this->_moveDir = UP;
+			setDirection(spawnDir);
 			break;
 		case RIGHT :
 			this->_pos.x = screenWidth + this->_size;
 			this->_pos.y = GetRandomValue(this->_size, screenHeight - this->_size);
-			this->_moveDir = LEFT;
+			setDirection(spawnDir);
 			break;
 		case LEFT :
 			this->_pos.x = -this->_size;
 			this->_pos.y = GetRandomValue(this->_size, screenHeight - this->_size);
-			this->_moveDir = RIGHT;
-			break;
+			setDirection(spawnDir);
 			break;
 	}
 }
@@ -78,21 +102,8 @@ void	Circle::moveCircle()
 {
 	if (this->_active)
 	{
-		switch(this->_moveDir) {
-			case UP :
-				this->_pos.y -= this->_speed / currentFPS;
-				break;
-			case DOWN :
-				this->_pos.y += this->_speed / currentFPS;
-				break;
-			case RIGHT :
-				this->_pos.x += this->_speed / currentFPS;
-				break;
-			case LEFT :
-				this->_pos.x -= this->_speed / currentFPS;
-				break;
-
-		}
+		this->_pos.x += this->_speed * this->direction.x / currentFPS;
+		this->_pos.y += this->_speed * this->direction.y / currentFPS;
 	}
 	if ((this->_pos.x < -this->_size || this->_pos.x > screenWidth + this->_size || this->_pos.y < -this->_size || this->_pos.y > screenHeight + this->_size)
 		&& this->_active)
