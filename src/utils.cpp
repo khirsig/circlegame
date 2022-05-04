@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:06:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:37:10 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,4 +309,19 @@ void    loadSettings(Data &data)
     }
     updateWindow(data);
     settings.close();
+}
+
+void	checkCircleCollision(Data &data)
+{
+	for (int i = 0; i < data.circleAmount; ++i)
+	{
+		for (int j = i + 1; j < data.circleAmount; ++j)
+		{
+			if (CheckCollisionCircles(data.circle[i].getCirclePos(), data.circle[i].getCircleSize(), data.circle[j].getCirclePos(), data.circle[j].getCircleSize()))
+			{
+				// std::cout << i << " & " << j << std::endl;
+
+			}
+		}
+	}
 }

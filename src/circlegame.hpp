@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:40:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:24:35 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	startScreen(Data &data);
 void	loadingScreen(Data &data);
 void	ingame(Data &data);
 void	drawCircle(Data &data);
+void	checkCircleCollision(Data &data);
 void	drawPlayer(Data &data);
 void	movePlayer(Data &data);
 void	impulseHit(Data &data);
