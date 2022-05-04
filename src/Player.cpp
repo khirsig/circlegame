@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 10:24:45 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 13:34:14 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	Player::setupPlayer()
 	this->_playerColor.a = 255;
 	this->_powerUpHold = -1;
 	this->_activeShield = 0;
+	this->activeImpulse = false;
 }
 
 void	Player::setMode(int id)
@@ -54,9 +55,23 @@ void	Player::setMode(int id)
 	this->_size = screenWidth / 40;
 }
 
-
 void	Player::drawPlayer()
 {
+	if (this->activeImpulse)
+	{
+		this->impulsePos.x = this->_pos.x;
+		this->impulsePos.y = this->_pos.y;
+		if (this->impulseStatus == 0)
+			this->impulseRadius += 1.0f;
+		if (this->impulseRadius >= this->_size * 3.0)
+			this->impulseStatus = 1;
+		if (this->impulseStatus == 1)
+			this->impulseColor.a -= 1;
+		if (this->impulseColor.a <= 0)
+			this->activeImpulse = false;
+		DrawCircle(this->impulsePos.x, this->impulsePos.y, this->impulseRadius, this->impulseColor);
+	}
+
 	DrawCircle(this->_pos.x, this->_pos.y, this->_size, this->_playerColor);
 
 	float scale = this->_size * 0.7 / 2048;

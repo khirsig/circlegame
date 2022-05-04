@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 12:11:20 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:06:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,49 +105,18 @@ void    takePowerUp(Data &data)
     }
 }
 
-static void playerUsePowerUp(Data &data, Player &player)
-{
-    int powerUpHold = player.getPowerUpHold();
-     switch (powerUpHold) {
-        case SHIELD :
-            player.setShieldTimer(currentTime + 10);
-            player.setActiveShield(1);
-            player.setPowerUpHold(NONE);
-            break ;
-        case SKIPMODE :
-            player.setMode(STANDARD);
-            player.setPowerUpHold(NONE);
-            break ;
-        case RANDOMDIR :
-            for (int i = 0; i < data.circleAmount; ++i)
-                data.circle[i].setMoveDir(GetRandomValue(0, 3));
-            player.setPowerUpHold(NONE);
-            break ;
-    }
-}
-
-void    usePowerUp(Data &data)
-{
-    if (IsKeyPressed(KEY_SPACE))
-        playerUsePowerUp(data, data.player[0]);
-    if (IsKeyPressed(KEY_RIGHT_CONTROL) && data.playerAmount > 1)
-        playerUsePowerUp(data, data.player[1]);
-    for (int i = 0; i < data.playerAmount; ++i)
-    {
-        if (data.player[i].getShieldTimer() == currentTime && data.player[i].getActiveShield() == 1)
-        {
-            data.player[i].setActiveShield(0);
-        }
-    }
-}
-
 void    increaseCircleSpeed(Data &data)
 {
     if (data.circle->getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
     {
+        float mod;
+        if (currentTime - startTime <= 30)
+            mod = 0.2f;
+        else
+            mod = 0.5f;
         data.circle->setIncreaseTime(currentTime);
-        data.circle->addMinSpeed(0.2f);
-        data.circle->addMaxSpeed(0.2f);
+        data.circle->addMinSpeed(mod);
+        data.circle->addMaxSpeed(mod);
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 12:33:13 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:55:41 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ Circle::~Circle()
 	Circle::_circleAmount--;
 }
 
+void	Circle::updateSpeed()
+{
+	double	speed = GetRandomValue((float)screenWidth / 10 * Circle::_modMinSpeed, (float)screenWidth / 10 * Circle::_modMaxSpeed);
+	this->_speed = speed;
+}
+
 void	Circle::resetCircle()
 {
 	int	size = GetRandomValue(screenWidth / 42, screenWidth / 24);
 	if (size < 1)
 		size = 1;
 	this->_size = size;
-	double	speed = GetRandomValue((float)screenWidth / 10 * Circle::_modMinSpeed, (float)screenWidth / 10 * Circle::_modMaxSpeed);
-	this->_speed = speed;
+	Circle::updateSpeed();
 	int colValue = GetRandomValue(70, 130);
 	this->_color.r = colValue;
 	this->_color.g = colValue;

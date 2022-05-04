@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 15:06:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 13:33:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,15 @@ static void powerUpGUIGraphics(Data &data, int playerID)
 	{
 		switch (powerUpID) {
 			case SKIPMODE :
-				DrawText("SM", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
+				data.interface.powerupImg[powerUpID].Draw(offset, 0, scale * 0.5, WHITE);
+				// DrawText("STD", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
 				break ;
 			case SHIELD :
 				data.interface.powerupImg[powerUpID].Draw(offset, 0, scale * 0.5, WHITE);
 				break ;
-			case RANDOMDIR :
-				DrawText("RD", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
+			case IMPULSE :
+				data.interface.powerupImg[powerUpID].Draw(offset, 0, scale * 0.5, WHITE);
+				// DrawText("IMP", offset.x, offset.y, powerUpSize / 2, DARKGRAY);
 				break ;
 		}
 	}

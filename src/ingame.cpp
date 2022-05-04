@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/28 09:58:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:28:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ingame(Data &data)
 		takePowerUp(data);
 		usePowerUp(data);
 		increaseCircleSpeed(data);
+		data.circle[0].updateSpeed();
 		if (IsKeyPressed(KEY_K) && (data.user.username == "tester" || data.gameType != RANKEDGAME))
 		{
 			data.player[0].setPowerUpHold(SHIELD);

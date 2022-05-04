@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 11:01:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:26:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Circle {
 		static int		getCircleAmount() { return (Circle::_circleAmount); }
 		raylib::Vector2	getCirclePos();
 		double			getCircleSize();
+		void			updateSpeed();
 		void			addMinSpeed(double minSpeed) { Circle::_modMinSpeed += minSpeed; }
 		void			addMaxSpeed(double maxSpeed) { Circle::_modMaxSpeed += maxSpeed; }
 		void			setMinSpeed(double minSpeed) { Circle::_modMinSpeed = minSpeed; }

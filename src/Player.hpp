@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 16:05:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:35:02 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class Player {
 		void			modeExec();
 		void			growthMode();
 
+		int				getMoveDir() { return (this->_moveDir); }
 		int				getSize() { return (this->_size); }
 		int				getMode() { return (this->_mode); }
 		void			setMode(int id);
@@ -61,6 +62,11 @@ class Player {
 		int										id;
 		raylib::Texture							shieldImg = raylib::Texture("./resources/shield.png");
 		std::vector<raylib::Texture>			modeImg;
+		float									impulseRadius;
+		int										impulseStatus = 0;
+		raylib::Vector2							impulsePos;
+		bool									activeImpulse = false;
+		raylib::Color							impulseColor = SKYBLUE;
 	private:
 		raylib::Vector2	_pos;
 		raylib::Color	_color;
