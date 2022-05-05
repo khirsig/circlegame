@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:26:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 13:34:14 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:03:58 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,19 @@ void	Player::drawPlayer()
 {
 	if (this->activeImpulse)
 	{
-		this->impulsePos.x = this->_pos.x;
-		this->impulsePos.y = this->_pos.y;
-		if (this->impulseStatus == 0)
-			this->impulseRadius += 1.0f;
-		if (this->impulseRadius >= this->_size * 3.0)
-			this->impulseStatus = 1;
-		if (this->impulseStatus == 1)
-			this->impulseColor.a -= 1;
-		if (this->impulseColor.a <= 0)
-			this->activeImpulse = false;
+		if (!gameover)
+		{
+			this->impulsePos.x = this->_pos.x;
+			this->impulsePos.y = this->_pos.y;
+			if (this->impulseStatus == 0)
+				this->impulseRadius += 1.0f;
+			if (this->impulseRadius >= this->_size * 3.0)
+				this->impulseStatus = 1;
+			if (this->impulseStatus == 1)
+				this->impulseColor.a -= 1;
+			if (this->impulseColor.a <= 0)
+				this->activeImpulse = false;
+		}
 		DrawCircle(this->impulsePos.x, this->impulsePos.y, this->impulseRadius, this->impulseColor);
 	}
 
@@ -149,7 +152,7 @@ void	Player::setMoveDir(int input)
 
 bool	Player::collisionPlayer(Circle circle)
 {
-	return (CheckCollisionCircles(this->_pos, this->_size, circle.getCirclePos(), circle.getCircleSize()));
+	return (CheckCollisionCircles(this->_pos, this->_size, circle.pos, circle.getCircleSize()));
 }
 
 void	Player::modeExec()

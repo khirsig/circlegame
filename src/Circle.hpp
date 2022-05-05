@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 15:24:40 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:04:01 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ class Circle {
 		void			deactivateCircle();
 
 		static int		getCircleAmount() { return (Circle::_circleAmount); }
-		raylib::Vector2	getCirclePos();
 		double			getCircleSize();
 		void			updateSpeed();
 		void			addMinSpeed(double minSpeed) { Circle::_modMinSpeed += minSpeed; }
@@ -46,12 +45,12 @@ class Circle {
 
 		void			setDirection(int spawnDir);
 		raylib::Vector2	direction;
+		double			speed;
+		raylib::Vector2	pos;
 	private:
 		static int		_circleAmount;
-		raylib::Vector2	_pos;
 		raylib::Color	_color;
 		double			_size;
-		double			_speed;
 		int				_moveDir;
 		bool			_active;
 		static double	_modMinSpeed;

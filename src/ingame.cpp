@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 15:30:37 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:43:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ingame(Data &data)
 {
-	if (!data.gameover)
+	if (!gameover)
 	{
 		setCurrentTime(data);
 		changeMode(data);
@@ -37,7 +37,7 @@ void	ingame(Data &data)
 	data.window.ClearBackground(RAYWHITE);
 	drawCircle(data);
 	checkCircleCollision(data);
-	if (!data.gameover)
+	if (!gameover)
 	{
 		powerUpDraw(data);
 		movePlayer(data);
@@ -48,7 +48,7 @@ void	ingame(Data &data)
 	if (data.gameType == RANKEDGAME)
 		eloGUI(data);
 	powerUpGUI(data);
-	if (data.gameover)
+	if (gameover)
 	{
 		if (data.gameType == RANKEDGAME)
 		{
