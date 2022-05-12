@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 13:33:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:43:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	modeGUIText(Data &data, int playerID, const char *modeText)
 		offset = screenWidth / 4;
 	DrawText(modeText, offset - MeasureText(modeText, modeSize) / 2, modeSize / 2, modeSize, data.player[playerID].getPlayerColor());
 
-	if ((currentTime - startTime) % 10 == 7 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 7 && !gameover)
 		DrawText("Changing MODE in 3...", offset - MeasureText("Changing MODE in 3...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
-	if ((currentTime - startTime) % 10 == 8 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 8 && !gameover)
 		DrawText("Changing MODE in 2...", offset - MeasureText("Changing MODE in 2...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
-	if ((currentTime - startTime) % 10 == 9 && !data.gameover)
+	if ((currentTime - startTime) % 10 == 9 && !gameover)
 		DrawText("Changing MODE in 1...", offset - MeasureText("Changing MODE in 1...", modeSize) / 2, modeSize * 2, modeSize, data.player[playerID].getPlayerColor());
 }
 

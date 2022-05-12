@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/29 20:50:19 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:43:23 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		screenHeight;
 int		currentFPS;
 int		currentTime;
 int		startTime;
+bool	gameover = false;
+
 std::vector<int>	menuTextSize = {
 	screenHeight / 8, screenHeight / 24, screenHeight / 36,
 	screenHeight / 16, screenHeight / 28

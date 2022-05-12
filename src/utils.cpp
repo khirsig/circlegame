@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:06:53 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:25:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    newRound(Data &data)
     for (int i = 0; i < data.playerAmount; ++i)
 	    data.player[i].setupPlayer();
 	data.gameMode = START_SCREEN;
-	data.gameover = 0;
+	gameover = 0;
     setStartTime(data);
     setCurrentTime(data);
     data.modeTime = currentTime;
@@ -309,4 +309,31 @@ void    loadSettings(Data &data)
     }
     updateWindow(data);
     settings.close();
+}
+
+void	checkCircleCollision(Data &data)
+{
+	for (int a = 0; a < data.circleAmount; ++a)
+	{
+		for (int b = a + 1; b < data.circleAmount; ++b)
+		{
+			if (CheckCollisionCircles(data.circle[a].pos, data.circle[a].getCircleSize(), data.circle[b].pos, data.circle[b].getCircleSize()))
+			{
+				raylib::Vector2 speedA, speedB, axis, speedAPara, speedBPara, speedAOrtho, speedBOrtho;
+                speedA = Vector2Scale(data.circle[a].direction, data.circle[a].speed);
+                speedB = Vector2Scale(data.circle[b].direction, data.circle[b].speed);
+                axis = Vector2Normalize(Vector2Subtract(data.circle[a].pos, data.circle[b].pos));
+                speedAPara = Vector2Scale(axis, Vector2DotProduct(axis, speedA));
+                speedBPara = Vector2Scale(axis, Vector2DotProduct(axis, speedB));
+                speedAOrtho = Vector2Subtract(speedA, speedAPara);
+                speedBOrtho = Vector2Subtract(speedB, speedBPara);
+                speedA = Vector2Add(speedBPara, speedAOrtho);
+                speedB = Vector2Add(speedAPara, speedBOrtho);
+                data.circle[a].speed = Vector2Length(speedA);
+                data.circle[b].speed = Vector2Length(speedB);
+                data.circle[a].direction = Vector2Normalize(speedA);
+                data.circle[b].direction = Vector2Normalize(speedB);
+			}
+		}
+	}
 }

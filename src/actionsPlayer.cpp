@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:12:20 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:40:32 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:03:58 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	impulseHit(Data &data)
 		{
 			for (int i = 0; i < data.circleAmount; ++i)
 			{
-				if (CheckCollisionCircles(data.circle[i].getCirclePos(), data.circle[i].getCircleSize(), data.player[j].impulsePos, data.player[j].impulseRadius))
+				if (CheckCollisionCircles(data.circle[i].pos, data.circle[i].getCircleSize(), data.player[j].impulsePos, data.player[j].impulseRadius))
 				{
 					data.circle[i].resetCircle();
 				}

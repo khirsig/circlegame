@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 15:31:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:30:48 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	startScreen(Data &data)
 	BeginDrawing();
 	data.window.ClearBackground(RAYWHITE);
 	drawCircle(data);
+	checkCircleCollision(data);
 	DrawText(menuText[0].c_str(), screenWidth / 2 - MeasureText(menuText[0].c_str(), menuTextSize[0]) / 2, screenHeight / 8, menuTextSize[0], BLUE);
 	if (drawMenuText(data, 0, mainMenuText[0].c_str(), screenWidth / 2 - MeasureText(mainMenuText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 3, menuTextSize[1]))
 		data.gameType = NORMALGAME;

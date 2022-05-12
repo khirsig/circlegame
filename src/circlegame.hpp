@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:40:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:30:28 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ struct Data {
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = PRE_START;
 	int					gameType = NOGAME;
-	bool				gameover = 0;
 	const static int	circleAmount = 4;
 	Circle 				circle[circleAmount];
 	int					playerAmount = 1;
@@ -70,6 +69,7 @@ void	startScreen(Data &data);
 void	loadingScreen(Data &data);
 void	ingame(Data &data);
 void	drawCircle(Data &data);
+void	checkCircleCollision(Data &data);
 void	drawPlayer(Data &data);
 void	movePlayer(Data &data);
 void	impulseHit(Data &data);
