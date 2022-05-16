@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 11:04:01 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/13 12:21:12 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ class Circle {
 		void			addMaxSpeed(double maxSpeed) { Circle::_modMaxSpeed += maxSpeed; }
 		void			setMinSpeed(double minSpeed) { Circle::_modMinSpeed = minSpeed; }
 		void			setMaxSpeed(double maxSpeed) { Circle::_modMaxSpeed = maxSpeed; }
+		double			getMinSpeed() { return (this->_modMinSpeed); }
+		double			getMaxSpeed() { return (this->_modMaxSpeed); }
+		int				getColInt() { return (this->_color.r); }
 		int				getIncreaseTime() { return (Circle::_increaseTime); }
 		void			setIncreaseTime(int increaseTime) { Circle::_increaseTime = increaseTime; }
 		void			setMoveDir(int moveDir) { Circle::_moveDir = moveDir; }
@@ -47,11 +50,12 @@ class Circle {
 		raylib::Vector2	direction;
 		double			speed;
 		raylib::Vector2	pos;
+		bool			justSpawned;
 	private:
 		static int		_circleAmount;
-		raylib::Color	_color;
 		double			_size;
 		int				_moveDir;
+		raylib::Color	_color;
 		bool			_active;
 		static double	_modMinSpeed;
 		static double	_modMaxSpeed;

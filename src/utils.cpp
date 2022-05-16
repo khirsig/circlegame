@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 11:25:52 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/13 12:46:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,21 +319,44 @@ void	checkCircleCollision(Data &data)
 		{
 			if (CheckCollisionCircles(data.circle[a].pos, data.circle[a].getCircleSize(), data.circle[b].pos, data.circle[b].getCircleSize()))
 			{
-				raylib::Vector2 speedA, speedB, axis, speedAPara, speedBPara, speedAOrtho, speedBOrtho;
-                speedA = Vector2Scale(data.circle[a].direction, data.circle[a].speed);
-                speedB = Vector2Scale(data.circle[b].direction, data.circle[b].speed);
-                axis = Vector2Normalize(Vector2Subtract(data.circle[a].pos, data.circle[b].pos));
-                speedAPara = Vector2Scale(axis, Vector2DotProduct(axis, speedA));
-                speedBPara = Vector2Scale(axis, Vector2DotProduct(axis, speedB));
-                speedAOrtho = Vector2Subtract(speedA, speedAPara);
-                speedBOrtho = Vector2Subtract(speedB, speedBPara);
-                speedA = Vector2Add(speedBPara, speedAOrtho);
-                speedB = Vector2Add(speedAPara, speedBOrtho);
-                data.circle[a].speed = Vector2Length(speedA);
-                data.circle[b].speed = Vector2Length(speedB);
-                data.circle[a].direction = Vector2Normalize(speedA);
-                data.circle[b].direction = Vector2Normalize(speedB);
+                if (data.circle[a].justSpawned == true)
+                {
+                    data.circle[a].resetCircle();
+                    a = 0;
+                    b = a + 1;
+                }
+                else if (data.circle[b].justSpawned == true)
+                {
+                    data.circle[b].resetCircle();
+                    a = 0;
+                    b = a + 1;
+                }
+                else
+                {
+				    raylib::Vector2 speedA, speedB, axis, speedAPara, speedBPara, speedAOrtho, speedBOrtho, speedAParaWithMass, speedBParaWithMass;
+                    double          massA, massB;
+
+                    massA = data.circle[a].getCircleSize() / (data.circle[a].getColInt() + 200);
+                    massB = data.circle[b].getCircleSize() / (data.circle[b].getColInt() + 200);
+                    speedA = Vector2Scale(data.circle[a].direction, data.circle[a].speed);
+                    speedB = Vector2Scale(data.circle[b].direction, data.circle[b].speed);
+                    axis = Vector2Normalize(Vector2Subtract(data.circle[a].pos, data.circle[b].pos));
+                    speedAPara = Vector2Scale(axis, Vector2DotProduct(axis, speedA));
+                    speedBPara = Vector2Scale(axis, Vector2DotProduct(axis, speedB));
+                    speedAOrtho = Vector2Subtract(speedA, speedAPara);
+                    speedBOrtho = Vector2Subtract(speedB, speedBPara);
+                    speedAParaWithMass = (speedAPara * massA + speedBPara * massB) * 2 / (massA + massB) - speedAPara;
+                    speedBParaWithMass = (speedAPara * massA + speedBPara * massB) * 2 / (massA + massB) - speedBPara;
+                    speedA = speedAParaWithMass + speedAOrtho;
+                    speedB = speedBParaWithMass + speedBOrtho;
+                    data.circle[a].speed = Vector2Length(speedA);
+                    data.circle[b].speed = Vector2Length(speedB);
+                    data.circle[a].direction = Vector2Normalize(speedA);
+                    data.circle[b].direction = Vector2Normalize(speedB);
+                }
 			}
 		}
 	}
+    for (int c = 0; c < data.circleAmount; ++c)
+        data.circle[c].justSpawned = false;
 }

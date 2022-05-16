@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 11:04:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/13 12:46:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Circle::Circle()
 	this->pos.x = 0;
 	this->pos.y = 0;
 	this->_active = 0;
+	this->justSpawned = true;
 }
 
 Circle::~Circle()
@@ -64,12 +65,13 @@ void	Circle::setDirection(int spawnDir)
 
 void	Circle::resetCircle()
 {
+	this->justSpawned = true;
 	int	size = GetRandomValue(screenWidth / 42, screenWidth / 24);
 	if (size < 1)
 		size = 1;
 	this->_size = size;
 	Circle::updateSpeed();
-	int colValue = GetRandomValue(70, 130);
+	int colValue = GetRandomValue(30, 150);
 	this->_color.r = colValue;
 	this->_color.g = colValue;
 	this->_color.b = colValue;
