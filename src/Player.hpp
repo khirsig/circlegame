@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:35:02 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:53:12 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_HPP
-# define PLAYER_HPP
+#pragma once
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include "Circle.hpp"
@@ -82,6 +81,3 @@ class Player {
 		bool			_activeShield;
 
 };
-
-
-#endif

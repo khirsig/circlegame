@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:00:34 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 10:42:58 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:53:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_HPP
-# define CONFIG_HPP
+#pragma once
 
 //	Define screen FPS
 # define SCREEN_FPS 123
@@ -22,5 +21,3 @@ extern int		currentFPS;
 extern int		currentTime;
 extern int		startTime;
 extern bool		gameover;
-
-#endif

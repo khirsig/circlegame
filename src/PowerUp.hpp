@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 11:27:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:53:23 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POWERUP_HPP
-# define POWERUP_HPP
+#pragma once
 
 # define DISABLED -1
 # define SPAWNED 0
@@ -60,5 +59,3 @@ class PowerUp {
 		double				_sizeEnd;
 		double				_sizeCurrent;
 };
-
-#endif

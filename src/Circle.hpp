@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/13 12:21:12 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:52:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CIRCLE_HPP
-# define CIRCLE_HPP
+#pragma once
 
 # define UP 0
 # define LEFT 1
@@ -63,6 +62,3 @@ class Circle {
 };
 
 float getRandomNumber(float min, float max);
-
-
-#endif

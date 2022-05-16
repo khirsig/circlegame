@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/13 12:33:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:52:46 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CIRCLEGAME_HPP
-# define CIRCLEGAME_HPP
+#pragma once
 
 
 # include <string>
@@ -106,5 +105,3 @@ bool			drawMenuText(Data &data, int id, const char *text, int posX, int posY, in
 void			saveSettings(Data &data);
 void			loadSettings(Data &data);
 void			updateWindow(Data &data);
-
-#endif

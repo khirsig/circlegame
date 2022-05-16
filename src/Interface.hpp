@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 15:17:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:53:02 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERFACE_HPP
-# define INTERFACE_HPP
+#pragma once
 
 # include "../raylib-cpp/include/raylib-cpp.hpp"
 # include <vector>
@@ -57,5 +56,3 @@ class Interface {
 		std::string	widthStr = std::to_string(screenWidth);
 		std::string	heightStr = std::to_string(screenHeight);
 };
-
-#endif

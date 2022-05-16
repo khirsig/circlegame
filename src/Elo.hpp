@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:12:57 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 12:20:33 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:52:53 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELO_HPP
-# define ELO_HPP
+#pragma once
 
 const static int eloThreshold[19] = { 5, 5, 5, 10, 10, 10, 15, 15, 15, 20,
 									20, 20, 25, 25, 25, 30, 30, 30, 30 };
@@ -33,5 +32,3 @@ struct Elo {
 
 	JS_OBJ(points, rank, trend);
 };
-
-#endif
