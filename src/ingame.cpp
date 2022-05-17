@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:17:26 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 11:09:21 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 12:03:40 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ingame(Data &data)
 		{
 			if (data.gameType == RANKEDGAME)
 			{
+				data.circleAmount = data.cfgCircleAmount;
 				calcElo(data);
 				data.gameMode = ELO_SCREEN;
 			}

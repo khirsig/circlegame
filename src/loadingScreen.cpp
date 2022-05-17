@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 12:15:55 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 12:03:18 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ void	loadingScreen(Data &data)
 		{
 			data.circle[0].setMinSpeed(eloSpeed[data.user.elo.rank]);
 			data.circle[0].setMaxSpeed(eloSpeed[data.user.elo.rank] + 1.0f);
+			data.cfgCircleAmount = data.circleAmount;
+			data.circleAmount = 4;
+			data.circle.clear();
+			for (int i = 0; i < data.circleAmount; ++i)
+			{
+				Circle temp;
+				data.circle.push_back(temp);
+			}
 		}
 		for (int i = 0; i < data.circleAmount; ++i)
 		{
