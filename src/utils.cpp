@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 11:31:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:41:38 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void    updateWindow(Data &data)
 	SetWindowSize(screenWidth, screenHeight);
 	data.interface.heightStr = std::to_string(screenHeight);
 	data.interface.widthStr = std::to_string(screenWidth);
-    if (data.difficulty > 18 || data.difficulty < 0)
+    if (data.difficulty > 18 || data.difficulty < 0 || data.circleAmount < 1 || data.circleAmount > 8)
         newSettings(data);
 	data.interface.difCircPos.x = screenWidth / 5 * 3.3 + (screenWidth / 4 / 19) * data.difficulty + (screenWidth / 4 / 19 * 0.5);
     if (data.gameType != RANKEDGAME)
