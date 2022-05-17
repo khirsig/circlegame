@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/13 12:46:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:31:04 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,16 @@ void    takePowerUp(Data &data)
 
 void    increaseCircleSpeed(Data &data)
 {
-    if (data.circle->getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
+    if (data.circle[0].getIncreaseTime() != currentTime && (currentTime - startTime) % 10 == 0)
     {
         float mod;
         if (currentTime - startTime <= 30)
             mod = 0.2f;
         else
             mod = 0.5f;
-        data.circle->setIncreaseTime(currentTime);
-        data.circle->addMinSpeed(mod);
-        data.circle->addMaxSpeed(mod);
+        data.circle[0].setIncreaseTime(currentTime);
+        data.circle[0].addMinSpeed(mod);
+        data.circle[0].addMaxSpeed(mod);
     }
 }
 
@@ -243,8 +243,18 @@ void    updateWindow(Data &data)
         data.circle[0].setMinSpeed(eloSpeed[data.user.elo.rank]);
         data.circle[0].setMaxSpeed(eloSpeed[data.user.elo.rank] + 1.0f);
     }
+	data.interface.circAmtCircPos.x = screenWidth / 5 * 3.3 + (screenWidth / 4 / 8) * (data.circleAmount - 1) + (screenWidth / 4 / 8 * 0.5);
+    data.circle.clear();
     for (int i = 0; i < data.circleAmount; ++i)
-		data.circle[i].resetCircle();
+    {
+        Circle temp;
+        data.circle.push_back(temp);
+    }
+    for (int i = 0; i < data.circleAmount; ++i)
+    {
+		data.circle[i].activateCircle();
+        data.circle[i].resetCircle();
+    }
 }
 
 static void    newSettings(Data &data)
@@ -257,6 +267,8 @@ static void    newSettings(Data &data)
     screenHeight = 792;
     settings << "difficulty=" << "5" << std::endl;
     data.difficulty = 5;
+    settings << "circle_amount=" << "4" << std::endl;
+    data.circleAmount = 4;
     updateWindow(data);
     settings.close();
 }
@@ -268,6 +280,7 @@ void    saveSettings(Data &data)
     settings << "width=" << screenWidth << std::endl;
     settings << "height=" << screenHeight << std::endl;
     settings << "difficulty=" << data.difficulty << std::endl;
+    settings << "circle_amount=" << data.circleAmount << std::endl;
     settings.close();
     updateWindow(data);
 }
@@ -307,8 +320,27 @@ void    loadSettings(Data &data)
         newSettings(data);
         return ;
     }
+    std::getline(settings, line);
+    if (line.substr(0, 14) == "circle_amount=")
+        data.circleAmount = stoi(line.substr(14, line.length()));
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
     updateWindow(data);
     settings.close();
+}
+
+bool	moveThroughMenuMouse(int x, int y, int width, int height)
+{
+	raylib::Vector2 cursor = GetMousePosition();
+	if (cursor.x >= x && cursor.x <= x + width && cursor.y >= y && cursor.y <= y + height)
+		return true;
+	else
+		return false;
+
 }
 
 void	checkCircleCollision(Data &data)

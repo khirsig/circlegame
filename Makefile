@@ -1,52 +1,74 @@
-CC = g++
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/10 09:02:38 by tjensen           #+#    #+#              #
+#    Updated: 2022/05/17 10:11:33 by khirsig          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME = circlegame
+# **************************************************************************** #
+#	PROJECT SPECIFIC														   #
+# **************************************************************************** #
+
+NAME			:= circlegame
+
+CC				:= g++
+CFLAGS			:= -std=c++0x -O3
+
+SRCS			:= 		main.cpp									\
+						startScreen.cpp								\
+						loadingScreen.cpp							\
+						loadResources.cpp							\
+						ingame.cpp									\
+						drawCircle.cpp								\
+						drawPlayer.cpp								\
+						movePlayer.cpp								\
+						actionsPlayer.cpp							\
+						Circle.cpp									\
+						Player.cpp									\
+						PlayerModes.cpp								\
+						textGUI.cpp									\
+						utils.cpp									\
+						PowerUp.cpp									\
+						Interface.cpp								\
+						Elo.cpp										\
+						options.cpp									\
+
+
+SDIR			:= src
+ODIR			:= obj
+OBJS			:= $(addprefix $(ODIR)/, $(SRCS:.cpp=.o))
 
 BREW = $(shell brew --prefix)
-IFLAGS = -I $(BREW)/include
-LFLAGS = -L $(BREW)/lib -lraylib -lcurl
-CFLAGS = -std=c++0x -O3
+LDFLAGS			:= -L $(BREW)/lib -lraylib -lcurl
+CFLAGS			+= -I $(BREW)/include
 
-OBJDIR = ./objs/
-OBJECTS = $(OBJDIR)/*.o
+# **************************************************************************** #
+#	RULES																	   #
+# **************************************************************************** #
 
-SRC =		./src/main.cpp										\
-			./src/startScreen.cpp								\
-			./src/loadingScreen.cpp								\
-			./src/loadResources.cpp								\
-			./src/ingame.cpp									\
-			./src/drawCircle.cpp								\
-			./src/drawPlayer.cpp								\
-			./src/movePlayer.cpp								\
-			./src/actionsPlayer.cpp								\
-			./src/Circle.cpp									\
-			./src/Player.cpp									\
-			./src/PlayerModes.cpp								\
-			./src/textGUI.cpp									\
-			./src/utils.cpp										\
-			./src/PowerUp.cpp									\
-			./src/Interface.cpp									\
-			./src/Elo.cpp										\
-			./src/options.cpp									\
+all:
+	@make $(NAME) -j8
 
-all: $(NAME)
+$(NAME): $(ODIR) $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
+	@echo "\033[1;32mCirclegame compiled and linked.\033[0m"
 
-$(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) $(CFLAGS) -o $(NAME) $(LFLAGS)
+$(ODIR)/%.o: $(SDIR)/%.cpp $(SDIR)/*.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJECTS): $(SRC)
-	@$(CC) -c $(CFLAGS) $(SRC) $(IFLAGS)
-	@rm -rf ./objs; mkdir ./objs
-	@mv *.o $(OBJDIR)
+$(ODIR):
+	mkdir -p $(ODIR)
 
 clean:
-	@rm -f $(OBJECTS)
-	@rm -rf ./objs
+	$(RM) -r $(ODIR)
 
 fclean: clean
-	@rm -rf $(NAME)
+	$(RM) -r *.dSYM $(SDIR)/*.dSYM
+	$(RM) $(NAME)
 
-re: fclean $(NAME)
-
-run: $(NAME)
-	@./$(NAME)
+re: fclean all

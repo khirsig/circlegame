@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/16 13:53:02 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 10:51:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Options", "Exit" };
 
-const static std::string	optionsText[] { "Return", "Resolution", "Difficulty (Unranked)" };
+const static std::string	optionsText[] { "Return", "Resolution", "Difficulty", "Circle Amount" };
 
 const static std::string	menuText[] {
 	"CIRCLEGAME", "Press Enter to Play the Game!", "alpha v0.5",
@@ -49,10 +49,12 @@ class Interface {
 
 		bool		resButton[2] = { false, false };
 		bool		difButton = false;
+		bool		circAmtButton = false;
 		bool		*onButton = nullptr;
 		int			mainMenuButton = -1;
 
 		raylib::Vector2 difCircPos;
+		raylib::Vector2 circAmtCircPos;
 		std::string	widthStr = std::to_string(screenWidth);
 		std::string	heightStr = std::to_string(screenHeight);
 };

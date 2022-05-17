@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/16 13:52:46 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:31:33 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ struct Data {
 	int					screenFPS = SCREEN_FPS;
 	int					gameMode = PRE_START;
 	int					gameType = NOGAME;
-	const static int	circleAmount = 4;
-	Circle 				circle[circleAmount];
+	int					circleAmount;
+	std::vector<Circle>	circle;
 	int					playerAmount = 1;
 	Player				player[2];
 	const static int	powerUpAmount = 3;
@@ -60,7 +60,6 @@ struct Data {
 	int					modeTime;
 	int					difficulty;
 	Interface			interface;
-	Elo					elo;
 	User				user;
 };
 
@@ -102,6 +101,7 @@ void    loginHandler(Data &data);
 
 void			optionsScreen(Data &data);
 bool			drawMenuText(Data &data, int id, const char *text, int posX, int posY, int textSize);
+bool			moveThroughMenuMouse(int x, int y, int width, int height);
 void			saveSettings(Data &data);
 void			loadSettings(Data &data);
 void			updateWindow(Data &data);

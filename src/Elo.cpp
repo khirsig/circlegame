@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elo.cpp                                            :+:      :+:    :+:   */
+/*   Elo.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/27 19:50:50 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:17:56 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,17 @@ void	eloScreen(Data &data)
 
 	int	eloSize = screenHeight / 4.0;
 	raylib::Vector2	pos(0, 0);
-	float scale = (float)eloSize / 300;
-	pos.x = screenWidth / 2 - scale * 150;
+	float scale;
+	if (data.user.elo.rank <= 2)
+	{
+		scale = (float)eloSize / 4096;
+		pos.x = screenWidth / 2 - scale * 2048;
+	}
+	else
+	{
+		scale = (float)eloSize / 300;
+		pos.x = screenWidth / 2 - scale * 150;
+	}
 	pos.y = 0;
 
 	BeginDrawing();
@@ -31,7 +40,8 @@ void	eloScreen(Data &data)
 	data.window.ClearBackground(RAYWHITE);
 	DrawText(eloName[data.user.elo.rank].c_str(), screenWidth / 2 - MeasureText(eloName[data.user.elo.rank].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], eloColor[data.user.elo.rank]);
 	std::string nbr(std::to_string(data.user.elo.points));
-	nbr += " / 100";
+	if (data.user.elo.rank < 18)
+		nbr += " / 100";
 	DrawText(nbr.c_str(), screenWidth / 2 - MeasureText(nbr.c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
 	if (data.user.elo.gain > 0)
 	{

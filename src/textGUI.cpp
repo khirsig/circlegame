@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 10:43:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:16:10 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,18 @@ void	eloGUI(Data &data)
 {
 	int	eloSize = screenHeight / 6.0;
 	raylib::Vector2	pos(0, 0);
-	float scale = (float)eloSize / 300;
+	float	scale;
+	if (data.user.elo.rank <= 2)
+	{
+		scale = (float)eloSize / 4096;
+		pos.x = screenWidth - scale * 4096;
+	}
+	else
+	{
+		scale = (float)eloSize / 300;
+		pos.x = screenWidth - scale * 300;
+	}
 
-	pos.x = screenWidth - scale * 300;
 	pos.y = 0;
 
 	DrawTextureEx(data.interface.eloImg[data.user.elo.rank], pos, 0, scale, WHITE);

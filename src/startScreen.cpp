@@ -6,21 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/04 15:30:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:30:55 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circlegame.hpp"
-
-static bool	moveThroughMenuMouse(int x, int y, int width, int height)
-{
-	raylib::Vector2 cursor = GetMousePosition();
-	if (cursor.x >= x && cursor.x <= x + width && cursor.y >= y && cursor.y <= y + height)
-		return true;
-	else
-		return false;
-
-}
 
 static void	moveThroughMenu(Data &data)
 {
