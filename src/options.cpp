@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 11:34:48 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 09:33:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ static void	changeHeight(Data &data)
 static void	drawDifficultyGUI(Data &data)
 {
 	raylib::Vector2 barPos;
-	barPos.x = screenWidth / 5 * 3.3;
-	barPos.y = screenHeight / 5 + menuTextSize[2] * 0.5;
-	int	barWidth = screenWidth / 4;
-	int	barHeight = screenHeight / 100;
+	barPos.x = (float)screenWidth / 5 * 3.3;
+	int	circRadius = (float)screenWidth / 150;
+	barPos.y = (float)screenHeight / 5 + circRadius;
+	int	barWidth = (float)screenWidth / 4;
+	int	barHeight = (float)screenHeight / 100;
 
 	DrawRectangle(barPos.x, barPos.y, barWidth, barHeight, DARKGRAY);
 	data.interface.difCircPos.y = barPos.y + 6;
@@ -129,14 +130,14 @@ static void	drawDifficultyGUI(Data &data)
 	data.difficulty = (data.interface.difCircPos.x - barPos.x) / (barWidth / 19);
 	if (data.difficulty > 18)
 		data.difficulty = 18;
-	DrawCircle(data.interface.difCircPos.x, data.interface.difCircPos.y, 12, col);
+	DrawCircle(data.interface.difCircPos.x, data.interface.difCircPos.y, circRadius, col);
 	DrawText(eloName[data.difficulty].c_str(), barPos.x + barWidth / 2 - MeasureText(eloName[data.difficulty].c_str(), menuTextSize[2]) / 2, barPos.y + barHeight * 3, menuTextSize[2], eloColor[data.difficulty]);
 	DrawText(optionsText[2].c_str(), barPos.x - MeasureText(optionsText[2].c_str(), menuTextSize[2]) * 1.2, screenHeight / 5 + menuTextSize[2] * 0.5, menuTextSize[2], BLUE);
 
 	int	eloSize = screenHeight / 9.0;
 	raylib::Vector2	pos(0, 0);
 	float	scale;
-	if (data.difficulty <= 2)
+	if (data.difficulty <= 5)
 	{
 		scale = (float)eloSize / 4096;
 		pos.x = screenWidth - scale * 4096 * 1.3;
@@ -187,7 +188,7 @@ static void	drawCircleAmountGUI(Data &data)
 	data.circleAmount = (data.interface.circAmtCircPos.x - barPos.x) / (barWidth / 8) + 1;
 	if (data.circleAmount > 8)
 		data.circleAmount = 8;
-	DrawCircle(data.interface.circAmtCircPos.x, data.interface.circAmtCircPos.y, 12, col);
+	DrawCircle(data.interface.circAmtCircPos.x, data.interface.circAmtCircPos.y, screenWidth / 150, col);
 	std::string	circAmtStr = std::to_string(data.circleAmount);
 	if (data.circleAmount == 4)
 		circAmtStr += " (Default)";
