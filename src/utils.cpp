@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 11:41:38 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:42:31 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,10 @@ void    updateWindow(Data &data)
 	SetWindowSize(screenWidth, screenHeight);
 	data.interface.heightStr = std::to_string(screenHeight);
 	data.interface.widthStr = std::to_string(screenWidth);
+    if (darkMode)
+        backgroundColor = BLACK;
+    else
+        backgroundColor = RAYWHITE;
     if (data.difficulty > 18 || data.difficulty < 0 || data.circleAmount < 1 || data.circleAmount > 8)
         newSettings(data);
 	data.interface.difCircPos.x = screenWidth / 5 * 3.3 + (screenWidth / 4 / 19) * data.difficulty + (screenWidth / 4 / 19 * 0.5);
@@ -269,6 +273,8 @@ static void    newSettings(Data &data)
     data.difficulty = 5;
     settings << "circle_amount=" << "4" << std::endl;
     data.circleAmount = 4;
+    settings << "darkmode=" << "0" << std::endl;
+    darkMode = false;
     updateWindow(data);
     settings.close();
 }
@@ -281,6 +287,7 @@ void    saveSettings(Data &data)
     settings << "height=" << screenHeight << std::endl;
     settings << "difficulty=" << data.difficulty << std::endl;
     settings << "circle_amount=" << data.circleAmount << std::endl;
+    settings << "darkmode=" << darkMode << std::endl;
     settings.close();
     updateWindow(data);
 }
@@ -323,6 +330,21 @@ void    loadSettings(Data &data)
     std::getline(settings, line);
     if (line.substr(0, 14) == "circle_amount=")
         data.circleAmount = stoi(line.substr(14, line.length()));
+    else
+    {
+        settings.close();
+        newSettings(data);
+        return ;
+    }
+    std::getline(settings, line);
+    if (line.substr(0, 9) == "darkmode=")
+    {
+        int i = stoi(line.substr(9, line.length()));
+        if (i == 0)
+            darkMode = false;
+        else
+            darkMode = true;
+    }
     else
     {
         settings.close();

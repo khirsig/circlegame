@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/03 13:06:42 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:43:33 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	loadResources(Data &data)
 			actualWidth = maxWidth;
 
 		BeginDrawing();
-		data.window.ClearBackground(RAYWHITE);
+		data.window.ClearBackground(backgroundColor);
 		DrawRectangle(xStart, yStart, maxWidth, yEnd - yStart, GRAY);
 		DrawRectangle(xStart, yStart, actualWidth, yEnd - yStart, RED);
 

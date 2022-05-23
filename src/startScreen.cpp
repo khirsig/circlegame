@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 11:30:55 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 14:11:10 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@ bool	drawMenuText(Data &data, int id, const char *text, int posX, int posY, int 
 		data.interface.mainMenuButton = id;
 	}
 	else
-		col = DARKGRAY;
+	{
+		if (darkMode)
+			col = LIGHTGRAY;
+		else
+			col = DARKGRAY;
+	}
 	DrawText(text, posX, posY, textSize, col);
 	if ((IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE)) && data.interface.mainMenuButton == id)
 		return (true);
@@ -58,7 +63,7 @@ bool	drawMenuText(Data &data, int id, const char *text, int posX, int posY, int 
 void	startScreen(Data &data)
 {
 	BeginDrawing();
-	data.window.ClearBackground(RAYWHITE);
+	data.window.ClearBackground(backgroundColor);
 	drawCircle(data);
 	checkCircleCollision(data);
 	DrawText(menuText[0].c_str(), screenWidth / 2 - MeasureText(menuText[0].c_str(), menuTextSize[0]) / 2, screenHeight / 8, menuTextSize[0], BLUE);

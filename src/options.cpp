@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 09:33:34 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 14:08:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ void	optionsScreen(Data &data)
 		changeHeight(data);
 
 	BeginDrawing();
-	ClearBackground(RAYWHITE);
+	ClearBackground(backgroundColor);
 
 	if (drawReturn(data, optionsText[0].c_str(), screenWidth / 2 - MeasureText(optionsText[0].c_str(), menuTextSize[1]) / 2, screenHeight / 8 * 7, menuTextSize[1]))
 	{

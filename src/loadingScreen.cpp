@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 12:03:18 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:43:38 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	loadingScreen(Data &data)
 {
 	setCurrentTime(data);
 	BeginDrawing();
-	data.window.ClearBackground(RAYWHITE);
+	data.window.ClearBackground(backgroundColor);
 	drawPlayer(data);
 	movePlayer(data);
 	modeGUI(data);

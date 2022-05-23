@@ -6,12 +6,13 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/13 12:46:31 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:41:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Circle.hpp"
 #include <iostream>
+#include "Interface.hpp"
 
 
 int		Circle::_circleAmount = 0;
@@ -71,7 +72,12 @@ void	Circle::resetCircle()
 		size = 1;
 	this->_size = size;
 	Circle::updateSpeed();
-	int colValue = GetRandomValue(30, 150);
+	int colValue;
+	if (darkMode)
+		colValue = GetRandomValue(110, 230);
+	else
+		colValue = GetRandomValue(30, 150);
+
 	this->_color.r = colValue;
 	this->_color.g = colValue;
 	this->_color.b = colValue;

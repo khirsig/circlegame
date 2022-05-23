@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 09:41:35 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:43:09 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int		currentFPS;
 int		currentTime;
 int		startTime;
 bool	gameover = false;
+bool			darkMode;
+raylib::Color	backgroundColor;
+
 
 std::vector<int>	menuTextSize = {
 	screenHeight / 8, screenHeight / 24, screenHeight / 36,

@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 09:32:22 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:40:09 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ void	eloScreen(Data &data)
 
 	BeginDrawing();
 	DrawTextureEx(data.interface.eloImg[data.user.elo.rank], pos, 0, scale, WHITE);
-	data.window.ClearBackground(RAYWHITE);
+	data.window.ClearBackground(backgroundColor);
 	DrawText(eloName[data.user.elo.rank].c_str(), screenWidth / 2 - MeasureText(eloName[data.user.elo.rank].c_str(), menuTextSize[3]) / 2, screenHeight / 4, menuTextSize[3], eloColor[data.user.elo.rank]);
 	std::string nbr(std::to_string(data.user.elo.points));
 	if (data.user.elo.rank < 18)
 		nbr += " / 100";
-	DrawText(nbr.c_str(), screenWidth / 2 - MeasureText(nbr.c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], DARKGRAY);
+	raylib::Color col;
+	if (darkMode)
+		col = LIGHTGRAY;
+	else
+		col = DARKGRAY;
+	DrawText(nbr.c_str(), screenWidth / 2 - MeasureText(nbr.c_str(), menuTextSize[4]) / 2, screenHeight / 3, menuTextSize[4], col);
 	if (data.user.elo.gain > 0)
 	{
 		if (data.user.elo.change == true)

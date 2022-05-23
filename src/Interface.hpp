@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/17 10:51:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/05/23 15:42:52 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ const static std::string	loadingText[] {
 	"Loading Powerup Textures...", "Loading Player 1 Mode Textures...", "Loading Player 2 Mode Textures...",
 	"Loading Misc Textures...", "Loading Elo Images..."
 };
+
+extern raylib::Color	backgroundColor;
+extern bool				darkMode;
 
 extern std::vector<int>	menuTextSize;
 
