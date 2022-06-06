@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Elo.cpp                                            :+:      :+:    :+:   */
+/*   elo.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:36:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 15:40:09 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:50:32 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	eloScreen(Data &data)
 	int	eloSize = screenHeight / 4.0;
 	raylib::Vector2	pos(0, 0);
 	float scale;
-	if (data.user.elo.rank <= 5)
+	if (data.user.elo.rank <= 16)
 	{
 		scale = (float)eloSize / 4096;
 		pos.x = screenWidth / 2 - scale * 2048;

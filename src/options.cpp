@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 14:08:26 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:52:02 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ static void	drawDifficultyGUI(Data &data)
 	int	eloSize = screenHeight / 9.0;
 	raylib::Vector2	pos(0, 0);
 	float	scale;
-	if (data.difficulty <= 5)
+	if (data.difficulty <= 17)
 	{
 		scale = (float)eloSize / 4096;
 		pos.x = screenWidth - scale * 4096 * 1.3;

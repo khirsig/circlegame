@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 09:32:29 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:50:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	eloGUI(Data &data)
 	int	eloSize = screenHeight / 6.0;
 	raylib::Vector2	pos(0, 0);
 	float	scale;
-	if (data.user.elo.rank <= 5)
+	if (data.user.elo.rank <= 16)
 	{
 		scale = (float)eloSize / 4096;
 		pos.x = screenWidth - scale * 4096;
