@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:14:24 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 15:43:09 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:02 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 int		screenWidth;
 int		screenHeight;

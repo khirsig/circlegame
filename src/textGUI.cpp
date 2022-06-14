@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:11:59 by khirsig           #+#    #+#             */
-/*   Updated: 2022/06/06 20:50:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:20 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 static void	modeGUIText(Data &data, int playerID, const char *modeText)
 {

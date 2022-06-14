@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:54:00 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/26 10:26:46 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:05 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 static void	setMoveDir(Data &data)
 {

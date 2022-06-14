@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:45:29 by khirsig           #+#    #+#             */
-/*   Updated: 2022/06/04 19:29:25 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:39:25 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <sstream>
 # include <random>
 # include <tgmath.h>
-# include "../include/json_struct.h"
-# include "../raylib-cpp/include/raylib-cpp.hpp"
-# include "../config.hpp"
+# include "../extern/json_struct/json_struct.h"
+# include "../extern/raylib-cpp/include/raylib-cpp.hpp"
+# include "config.hpp"
 # include "Circle.hpp"
 # include "Player.hpp"
 # include "PowerUp.hpp"

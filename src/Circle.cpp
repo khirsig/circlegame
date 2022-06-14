@@ -6,13 +6,13 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:42 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 15:41:17 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:37:34 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Circle.hpp"
 #include <iostream>
-#include "Interface.hpp"
+#include "../include/Circle.hpp"
+#include "../include/Interface.hpp"
 
 
 int		Circle::_circleAmount = 0;

@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 10:13:18 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 14:11:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:17 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 static void	moveThroughMenu(Data &data)
 {

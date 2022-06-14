@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:42:22 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/16 13:52:36 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:39:36 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define DOWN 2
 # define RIGHT 3
 
-# include "../raylib-cpp/include/raylib-cpp.hpp"
-# include "../config.hpp"
+# include "../extern/raylib-cpp/include/raylib-cpp.hpp"
+# include "config.hpp"
 
 class Circle {
 	public:

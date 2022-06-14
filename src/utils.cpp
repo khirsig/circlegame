@@ -6,12 +6,12 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:28:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 15:42:31 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:26 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
 #include <curl/curl.h>
+#include "../include/circlegame.hpp"
 
 static void    newSettings(Data &data);
 

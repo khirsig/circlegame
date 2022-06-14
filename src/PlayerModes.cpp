@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:56:44 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/02 14:59:24 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:13 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Player.hpp"
+#include "../include/Player.hpp"
 
 void	Player::growthMode()
 {

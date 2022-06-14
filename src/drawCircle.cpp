@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 10:44:47 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/05 10:47:05 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:37:38 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 void drawCircle(Data &data)
 {

@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:23 by khirsig           #+#    #+#             */
-/*   Updated: 2022/04/07 15:51:10 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:37:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interface.hpp"
+#include "../include/Interface.hpp"
 
 Interface::Interface() { }
 

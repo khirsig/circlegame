@@ -6,15 +6,15 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:43:53 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/23 15:42:52 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:39:42 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include "../raylib-cpp/include/raylib-cpp.hpp"
+# include "../extern/raylib-cpp/include/raylib-cpp.hpp"
 # include <vector>
-# include "../config.hpp"
+# include "config.hpp"
 
 const static std::string	mainMenuText[] { "Normal Game (1P)", "Ranked Game (1P)", "Split Screen (2P)", "Options", "Exit" };
 

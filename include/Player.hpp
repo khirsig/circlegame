@@ -6,15 +6,15 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:27:06 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/16 13:53:12 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:39:45 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include "../raylib-cpp/include/raylib-cpp.hpp"
+# include "../extern/raylib-cpp/include/raylib-cpp.hpp"
 # include "Circle.hpp"
-# include "../config.hpp"
+# include "config.hpp"
 # include <vector>
 
 # define STANDARD 0

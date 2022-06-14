@@ -6,11 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 09:42:50 by khirsig           #+#    #+#             */
-/*   Updated: 2022/06/06 20:52:02 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:38:08 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
+#include "../include/circlegame.hpp"
 
 static bool	drawReturn(Data &data, const char *text, int posX, int posY, int textSize)
 {

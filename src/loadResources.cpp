@@ -6,12 +6,11 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:30:58 by khirsig           #+#    #+#             */
-/*   Updated: 2022/06/04 20:01:04 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:37:58 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circlegame.hpp"
-// #include <json_struct.h>
+#include "../include/circlegame.hpp"
 
 std::string	getModePath(int i, int pNbr)
 {

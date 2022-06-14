@@ -6,7 +6,7 @@
 /*   By: khirsig <khirsig@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 09:41:38 by khirsig           #+#    #+#             */
-/*   Updated: 2022/05/16 13:53:23 by khirsig          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:39:47 by khirsig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define SHIELD 1
 # define IMPULSE 2
 
-# include "../raylib-cpp/include/raylib-cpp.hpp"
-# include "../config.hpp"
+# include "../extern/raylib-cpp/include/raylib-cpp.hpp"
+# include "config.hpp"
 # include <iostream>
 
 class PowerUp {
